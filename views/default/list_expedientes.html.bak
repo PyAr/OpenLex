@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>Listado de expedientes del usuario</h1>
+<ul>
+{{for expte in contenido:}}
+{{=LI(A(expte,_href=URL('edit_expediente', args=[expte.id,])))}}
+{{pass}}
+</ul>
+<h2>Agregue un nuevo expediente</h2>
+{{=form}}
+{{=BEAUTIFY(response._vars)}}

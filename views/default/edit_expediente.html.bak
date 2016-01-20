@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+<h1>Expediente: </h1>
+{{=expte}}
+<ul>
+{{for mov in contenido:}}
+{{=LI(mov.titulo)}}
+{{pass}}
+</ul>
+<h2>Agregue un nuevo movimiento</h2>
+{{=form}}
+{{=BEAUTIFY(response._vars)}}
