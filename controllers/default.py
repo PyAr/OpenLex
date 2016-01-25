@@ -8,6 +8,21 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
 
+'''export=dict(csv_with_hidden_cols=(ExporterCSV, 'CSV (columnas ocultas)'),
+csv=(ExporterCSV, 'CSV'),
+xml=(ExporterXML, 'XML'),
+html=(ExporterHTML, 'HTML'),
+tsv_with_hidden_cols=(ExporterTSV, 'TSV (Compatible con Excel, columnas ocultas)'),
+tsv=(ExporterTSV, 'TSV (Compatible con excel)'))'''
+
+myexport=dict(csv_with_hidden_cols=False,
+            csv=False,
+            xml=False,
+            html=False,
+            tsv_with_hidden_cols=False,
+            tsv=False,
+            json=False)
+
 def index():
     """
     example action using the internationalization operator T and flash
@@ -23,36 +38,60 @@ def index():
 
 @auth.requires_login()
 def admin_expedientes():
+
+    ar = request.args # save typing
+
+
     grid = SQLFORM.smartgrid(db.expediente,
                              fields=[db.expediente.numero,
                                      db.expediente.caratula,
                                      db.expediente.juzgado_id.
                                     db.movimiento.titulo,
-                                    db.movimiento.procesal,
+                                    db.movimiento.estado,
                                     db.agenda.vencimiento,
-                                    db.agenda.titulo],
+                                    db.agenda.titulo,
+                                    db.parte.persona_id,
+                                    db.parte.caracter],
                              constraints={'created_by':auth.user.id},
-                             linked_tables=['movimiento','agenda'])
+                             linked_tables=['movimiento','agenda','parte'],
+                            buttons_placement = 'left',
+                             ui='jquery-ui',
+                            #oncreate=dict(movimiento=[create_movimiento]),
+                            #onupdate=dict(movimiento=[update_movimiento,]),
+                             #oncreate=oncreate,onupdate=onupdate,
+                            exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
+def create_movimiento(form):
+    response.flash = T("create_movimiento")
+    print 'create!'
+    print form.vars
+
+@auth.requires_login()
+def update_movimiento(form):
+    response.flash = T("update_movimiento")
+    print 'update!'
+    print form.vars
+
+@auth.requires_login()
 def admin_juzgados():
-    grid = SQLFORM.grid(db.juzgado,user_signature=False)
+    grid = SQLFORM.grid(db.juzgado,user_signature=False,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def admin_personas():
-    grid = SQLFORM.grid(db.persona.created_by==auth.user.id,user_signature=False)
+    grid = SQLFORM.grid(db.persona.created_by==auth.user.id,user_signature=False,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def fueros():
-    grid = SQLFORM.grid(db.fuero)
+    grid = SQLFORM.grid(db.fuero,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def instancias():
-    grid = SQLFORM.grid(db.instancia)
+    grid = SQLFORM.grid(db.instancia,exportclasses=myexport)
     return locals()
 
 def user():
