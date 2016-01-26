@@ -150,4 +150,23 @@
 [2016-01-20 14:29:05] EDIT PyDoctor/models/db_pydoctor.py: 5
 [2016-01-20 14:30:53] EDIT PyDoctor/models/db_pydoctor.py: 1
 [2016-01-20 14:31:50] EDIT PyDoctor/controllers/default.py: -7
-                                                             
+                                                             [2016-01-26 09:56:15] EDIT PyDoctor/controllers/default.py: -1
+[2016-01-26 10:12:41] EDIT PyDoctor/models/db_pydoctor.py: 2
+[2016-01-26 10:24:06] EDIT PyDoctor/models/menu.py: 0
+[2016-01-26 10:24:36] EDIT PyDoctor/models/menu.py: 0
+[2016-01-26 10:28:26] EDIT PyDoctor/models/menu.py: 0
+[2016-01-26 11:07:32] EDIT PyDoctor/models/menu.py: 0
+[2016-01-26 11:19:40] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 11:23:10] EDIT PyDoctor/models/db_pydoctor.py: 1
+[2016-01-26 11:24:07] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 11:48:39] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 11:49:43] EDIT PyDoctor/models/db_pydoctor.py: 1
+[2016-01-26 11:51:31] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 11:55:00] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 11:55:28] EDIT PyDoctor/models/db_pydoctor.py: -1
+[2016-01-26 11:57:06] EDIT PyDoctor/models/db_pydoctor.py: -5
+[2016-01-26 12:20:41] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 12:21:28] EDIT PyDoctor/models/db_pydoctor.py: 0
+[2016-01-26 13:01:32] EDIT PyDoctor/models/db_pydoctor.py: -1
+[2016-01-26 13:22:23] EDIT PyDoctor/models/db_pydoctor.py: 1
+[2016-01-26 13:23:46] EDIT PyDoctor/controllers/default.py: 1

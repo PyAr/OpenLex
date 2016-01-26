@@ -23,7 +23,7 @@ db.define_table('persona',
                 Field('cuitcuil',required=True,label=T('CUIT/CUIL')),
                 Field('domicilio',required=True,label=T('Domicilio')),
                 Field('email',requires=IS_EMPTY_OR(IS_EMAIL()),label=T('E-Mail')),
-                Field('observaciones','text',label=T('Observaciones')),
+                Field('observaciones','text',label=T('Observaciones'), widget = advanced_editor),
                 Field('telefono',label=T('Teléfono')),
                 Field('celular',label=T('Celular')),
                 Field('fotografia','upload',requires = IS_EMPTY_OR(IS_IMAGE())),
@@ -32,7 +32,6 @@ db.define_table('persona',
                 auth.signature,
                format='%(cuitcuil)s %(apellido)s,%(nombre)s')
 db.persona.id.readable=db.persona.id.writable=False
-db.persona.observaciones.widget = advanced_editor
 
 db.define_table('fuero',
                 Field('descripcion',required=True,label=T('Descripción')),
@@ -51,6 +50,7 @@ db.define_table('juzgado',
                 auth.signature)
 db.juzgado.fuero_id.widget = SQLFORM.widgets.autocomplete(
      request, db.fuero.descripcion, id_field=db.fuero.id)
+#db.juzgado.fuero_id.widget.add_class('form-control')
 db.juzgado.instancia_id.widget = SQLFORM.widgets.autocomplete(
      request, db.instancia.descripcion, id_field=db.instancia.id)
 db.juzgado.fuero_id.requires = IS_IN_DB(db,db.fuero.id,'%(descripcion)s')
@@ -74,9 +74,12 @@ db.define_table('expediente',
                 Field('final','date', label=T('Fecha fin')),
                 auth.signature,
                format='%(numero)s %(caratula)s')
+#widget = lambda field, value:
+    #SQLFORM.widgets.string.widget(field, value, _class='my-string')
 db.expediente.id.readable=db.expediente.id.writable=False
 db.expediente.juzgado_id.widget = SQLFORM.widgets.autocomplete(
      request, db.juzgado.descripcion, id_field=db.juzgado.id)
+
 
 db.define_table('movimiento',
                 Field('expediente_id',db.expediente),
@@ -84,27 +87,26 @@ db.define_table('movimiento',
                                                    zero=None,
                                                    error_message='Seleccione estado del movimiento')),
                 Field('titulo',required=True, label=T('Título')),
-                Field('texto','text',label=T('Texto'),requires = IS_NOT_EMPTY()),
+                Field('texto','text',label=T('Texto'),requires = IS_NOT_EMPTY(),widget = advanced_editor),
                 Field('archivo','upload'),
                 auth.signature,
+                singular = T("Movimiento"), plural = T("Movimientos"),
                format='%(titulo)s')
 db.movimiento.expediente_id.readable=db.movimiento.expediente_id.writable=False
 db.movimiento.id.readable=db.movimiento.id.writable=False
-db.movimiento._singular = T("Movimiento")
-db.movimiento._plural = T("Movimientos")
 
 db.define_table('agenda',
                 Field('expediente_id',db.expediente),
                 Field('vencimiento','datetime',label=T('Vence en')),
                 Field('cumplido','datetime',label=T('Cumplido el')),
-                Field('prioridad',requires = IS_IN_SET({0:'Urgente',1:'Prioritario', 2:'Importante',3:'Recordar'},
-                                                   zero=1,
+                Field('prioridad',requires = IS_IN_SET({0:T('Urgente'),1:T('Prioritario'), 2:T('Importante'),3:T('Recordar')},
+                                                   zero=None,
                                                    error_message='Elija una prioridad')),
                 Field('estado',requires = IS_IN_SET({'P': T('Pendiente'), 'C':T('Cancelada'), 'R': T('Realizada')},
-                                                   zero='P',
+                                                   zero=None,
                                                    error_message=T('Establezca un estado'))),
                 Field('titulo',required=True, label=T('Título')),
-                Field('texto','text',label=T('Texto')),
+                Field('texto','text',label=T('Texto'),widget = advanced_editor),
                 auth.signature)
 db.agenda.expediente_id.readable=db.agenda.expediente_id.writable=False
 db.agenda.id.readable=db.agenda.id.writable=False
@@ -113,7 +115,7 @@ db.define_table('parte',
                 Field('expediente_id',db.expediente),
                 Field('persona_id',db.persona,label=T('Persona')),
                 Field('caracter',label=T('Carácter'),comment=T('Carácter en que se presenta la parte: actor, demandado, imputado, etc')),
-                Field('observaciones','text'),
+                Field('observaciones','text',widget = advanced_editor),
                 auth.signature)
 db.parte.expediente_id.readable=db.parte.expediente_id.writable=False
 db.parte.id.readable=db.parte.id.writable=False

@@ -41,13 +41,6 @@ def admin_expedientes():
 
     ar = request.args # save typing
 
-    if len(ar) > 2 and ar[1] == 'movimiento.expediente_id':
-        response.flash = T("ejemplo_veamos")
-        oncreate= create_movimiento
-        onupdate=update_movimiento
-    else:
-        oncreate=None
-        onupdate=None
 
     grid = SQLFORM.smartgrid(db.expediente,
                              fields=[db.expediente.numero,
@@ -61,10 +54,9 @@ def admin_expedientes():
                                     db.parte.caracter],
                              constraints={'created_by':auth.user.id},
                              linked_tables=['movimiento','agenda','parte'],
-                            buttons_placement = 'left',
-                             ui='jquery-ui',
-                            oncreate=dict(movimiento=[create_movimiento]),
-                            onupdate=dict(movimiento=[update_movimiento,]),
+                            buttons_placement = 'right',
+                            #oncreate=dict(movimiento=[create_movimiento]),
+                            #onupdate=dict(movimiento=[update_movimiento,]),
                              #oncreate=oncreate,onupdate=onupdate,
                             exportclasses=myexport)
     return locals()

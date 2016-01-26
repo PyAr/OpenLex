@@ -54,8 +54,7 @@ def admin_expedientes():
                                     db.parte.caracter],
                              constraints={'created_by':auth.user.id},
                              linked_tables=['movimiento','agenda','parte'],
-                            buttons_placement = 'left',
-                             ui='jquery-ui',
+                            buttons_placement = 'right',
                             #oncreate=dict(movimiento=[create_movimiento]),
                             #onupdate=dict(movimiento=[update_movimiento,]),
                              #oncreate=oncreate,onupdate=onupdate,
@@ -76,6 +75,7 @@ def update_movimiento(form):
 
 @auth.requires_login()
 def admin_juzgados():
+    db.juzgado.fuero_id.widget._class='form-control string'
     grid = SQLFORM.grid(db.juzgado,user_signature=False,exportclasses=myexport)
     return locals()
 

@@ -26,12 +26,12 @@ response.google_analytics_id = None
 
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
-    (T('Tablas'),False, '#', [
-            (T('Instancias'),False,URL('default','instancias')),
-            (T('Fueros'),False,URL('default','fueros')),
-            (T('Juzgados'),False,URL('default','admin_juzgados'))]),
+    (T('Expedientes'),False,URL('default','admin_expedientes')),
     (T('Personas'),False,URL('default','admin_personas')),
-    (T('Expedientes'),False,URL('default','admin_expedientes'))
+    (T('Tablas'),False, '#', [
+            (T('Juzgados'),False,URL('default','admin_juzgados')),
+            (T('Instancias'),False,URL('default','instancias')),
+            (T('Fueros'),False,URL('default','fueros'))]),
 
 ]
 
