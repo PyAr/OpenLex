@@ -1,3 +1,4 @@
 {{extend 'layout.html'}}
-<h1>Está es la plantilla default/admin_personas.html</h1>
+<h1>Personas</h1>
+{{=grid}}
 {{=BEAUTIFY(response._vars)}}

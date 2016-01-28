@@ -3,14 +3,52 @@
 {{block header}}
     <header class="container-fluid background">
       <div class="jumbotron text-center">
-        {{if response.title:}}
-        <h1>{{=response.title}}
-          <small>{{=response.subtitle or ''}}</small></h1>
-        {{pass}}
       </div>
     </header>
 {{end}}
 
-{{=content}}
-{{=BEAUTIFY(response._vars)}}
-{{pass}}
+<ul>
+    <h1>
+        Sistema de gestión para estudios jurídicos
+    </h1>
+    <div class="col-md-3 well well-lg">
+        <p align='center'><a href={{=URL('default','admin_expedientes')}}>
+            <img src={{=URL('static','expedientes.png')}} 
+                 alt="expedientes" height=64px width=64px />
+            
+        </p>
+        <p align='center'>
+            Administración de expedientes
+        </p>
+        </a>
+    </div>
+    <div class="col-md-3 well well-lg">
+        <p align='center'><a href={{=URL('default','admin_personas')}}>
+            <img src={{=URL('static','personas.png')}} 
+                 alt="contactos" height=64px width=64px />
+        </p>
+        <p align='center'>
+            Contactos personales
+        </p>
+        </a>
+    </div>
+    <div class="col-md-3 well well-lg">
+        <p align='center'><a href={{=URL('default','admin_juzgados')}}>
+            <img src={{=URL('static','juzgados.png')}} 
+                 alt="juzgados" height=64px width=64px />
+        </p>
+        <p align='center'>
+            Oficinas judiciales
+        </p>
+        </a>
+    </div>
+    <div class="col-md-3 well well-lg">
+        <p align='center'>
+            <img src={{=URL('static','calendario.png')}} 
+                 alt="calendario" height=64px width=64px />
+        </p>
+        <p align='center'>
+            Agenda de vencimientos
+        </p>
+    </div>
+</ul>

@@ -27,6 +27,8 @@
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+    <script type="text/javascript" src="{{=URL(request.application,'static','js/ckeditor/ckeditor.js')}}"></script>
+      
     <!--[if lt IE 9]>
         <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
         <![endif]-->
@@ -127,5 +129,12 @@
     {{pass}}
     <!-- Share ============================y============ -->
     <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
+      {{if DEVELOPMENT_MENU:}}
+      {{=BEAUTIFY(response._vars)}}
+      {{pass}}
+    <!-- This makes autocomplete look like any other form-control wowwww!  -->
+    <script>
+        $(".string").addClass("form-control")
+    </script>
   </body>
 </html>
