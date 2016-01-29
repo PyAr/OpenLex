@@ -54,8 +54,15 @@ def calendar():
     row.f_start_time
     row.f_end_time
     row.id'''
-    rows=db(db.agenda.created_by==auth.user.id)
+    rows=db(db.agenda.created_by==auth.user.id).select()
     return dict(rows=rows)
+
+@auth.requires_login()
+def agenda_edit():
+    evento = db.agenda(request.args(0,cast=int)) or redirect(URL('calendario'))
+    form = SQLFORM(db.agenda).process()
+    return dict(form=form)
+
 
 
 @auth.requires_login()

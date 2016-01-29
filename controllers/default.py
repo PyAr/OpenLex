@@ -57,6 +57,13 @@ def calendar():
     rows=db(db.agenda.created_by==auth.user.id).select()
     return dict(rows=rows)
 
+@auth.requires_login()
+def agenda_edit():
+    evento = db.agenda(request.args(0,cast=int)) or redirect(URL('calendario'))
+    form = SQLFORM(evento).process()
+    return dict(form=form)
+
+
 
 @auth.requires_login()
 def admin_expedientes():
