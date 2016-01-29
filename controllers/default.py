@@ -34,7 +34,29 @@ def index():
     response.flash = T("Bienvenido a pyDoctor")
     response.title = T("pyDoctor")
     content=T(u'Sistema para abogados y estudios jurídicos realizado por María Andrea Vignau')
-    return dict(message=T('Bienvenido!'),content=content)
+    modules=[{'url':URL('default','admin_expedientes'),'img':'expedientes.png','alt':T('Administración de expedientes')},
+             {'url':URL('default','agenda'),'img':'calendario.png','alt':T('Agenda de vencimientos')},
+             {'url':URL('default','admin_personas'),'img':'personas.png','alt':T('Contactos')},
+             {'url':URL('default','admin_juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')}
+    ]
+    return dict(message=T('Bienvenido!'),modules=modules)
+
+@auth.requires_login()
+def agenda():
+    grid = SQLFORM.grid(db.agenda.created_by==auth.user.id,user_signature=False,exportclasses=myexport)
+    return locals()
+
+@auth.requires_login()
+def calendar():
+    '''
+    rows
+    row.f_title
+    row.f_start_time
+    row.f_end_time
+    row.id'''
+    rows=db(db.agenda.created_by==auth.user.id).select()
+    return dict(rows=rows)
+
 
 @auth.requires_login()
 def admin_expedientes():

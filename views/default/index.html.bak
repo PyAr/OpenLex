@@ -3,52 +3,24 @@
 {{block header}}
     <header class="container-fluid background">
       <div class="jumbotron text-center">
+            <img src={{=URL('static','logo-grande.png')}} 
+                 alt="expedientes" />
       </div>
     </header>
 {{end}}
 
-<ul>
-    <h1>
-        Sistema de gestión para estudios jurídicos
-    </h1>
-    <div class="col-md-3 well well-lg">
-        <p align='center'><a href={{=URL('default','admin_expedientes')}}>
-            <img src={{=URL('static','expedientes.png')}} 
-                 alt="expedientes" height=64px width=64px />
-            
+<h1>
+    Sistema de gestión para estudios jurídicos
+</h1>
+{{for item in modules:}}
+    <div class="col-md-3">
+        <div class="well well-lg ">
+        <p align='center'><a href={{=item['url']}}>
+            <img src={{=URL('static',item['img'])}} 
+                 alt={{=item['alt']}} height=64px width=64px />
         </p>
         <p align='center'>
-            Administración de expedientes
-        </p>
-        </a>
-    </div>
-    <div class="col-md-3 well well-lg">
-        <p align='center'><a href={{=URL('default','admin_personas')}}>
-            <img src={{=URL('static','personas.png')}} 
-                 alt="contactos" height=64px width=64px />
-        </p>
-        <p align='center'>
-            Contactos personales
-        </p>
-        </a>
-    </div>
-    <div class="col-md-3 well well-lg">
-        <p align='center'><a href={{=URL('default','admin_juzgados')}}>
-            <img src={{=URL('static','juzgados.png')}} 
-                 alt="juzgados" height=64px width=64px />
-        </p>
-        <p align='center'>
-            Oficinas judiciales
-        </p>
-        </a>
-    </div>
-    <div class="col-md-3 well well-lg">
-        <p align='center'>
-            <img src={{=URL('static','calendario.png')}} 
-                 alt="calendario" height=64px width=64px />
-        </p>
-        <p align='center'>
-            Oficinas judiciales
-        </p>
-    </div>
-</ul>
+            {{=item['alt']}}
+        </p></a>
+    </div></div>
+{{pass}}
