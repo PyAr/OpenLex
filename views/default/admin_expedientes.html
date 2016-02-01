@@ -1,3 +1,12 @@
 {{extend 'layout.html'}}
 <h1>Expedientes</h1>
-{{=grid}}
+{{if expte:}}
+        <div class="col-md-4 well well-lg">
+            {{=expte}}
+        </div>
+        <div class="col-md-8">
+            {{=grid}}
+        </div>
+{{else:}}
+        {{=grid}}
+{{pass}}

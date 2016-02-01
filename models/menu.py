@@ -5,11 +5,11 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
-response.logo = A(B('web',SPAN(2),'py'),XML('&trade;&nbsp;'),
-                  _class="navbar-brand",_href="http://www.web2py.com/",
+response.logo = A(B(SPAN('Py'),'Doctor'),XML('&trade;&nbsp;'),
+                  _class="navbar-brand", #_href="http://www.web2py.com/",
                   _id="web2py-logo")
 response.title = request.application.replace('_',' ').title()
-response.subtitle = ''
+response.subtitle = 'Sistema de gestión para estudios jurídicos'
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
 response.meta.author = 'Your Name <you@example.com>'

@@ -2,25 +2,50 @@
 
 {{block header}}
     <header class="container-fluid background">
-      <div class="jumbotron text-center">
+      <div class="jumbotron">
+          <div class="col-md-6">
             <img src={{=URL('static','logo-grande.png')}} 
                  alt="expedientes" />
+          </div>
+          <div class="col-md-6">
+              <h1 class='text-center'>
+                  {{=response.subtitle}}
+              </h1>
+          </div>
       </div>
     </header>
 {{end}}
-
-<h1 class="text-center">
-    Sistema de gestión para estudios jurídicos
+<h1 class='text-center'>
+    {{=message}}
 </h1>
-{{for item in modules:}}
-    <div class="col-md-3">
-        <div class="well well-lg ">
-        <p align='center'><a href={{=item['url']}}>
-            <img src={{=URL('static',item['img'])}} 
-                 alt={{=item['alt']}} height=64px width=64px />
-        </p>
-        <p align='center'>
-            {{=item['alt']}}
-        </p></a>
-    </div></div>
+{{if modules:}}
+    {{for item in modules:}}
+        <div class="col-md-3">
+            <div class="well well-lg ">
+            <p align='center'><a href={{=item['url']}}>
+                <img src={{=URL('static',item['img'])}} 
+                     alt={{=item['alt']}} height=64px width=64px />
+            </p>
+            <p align='center'>
+                {{=item['alt']}}
+            </p></a>
+        </div></div>
+    {{pass}}
+{{else:}}
+    {{for item in features:}}
+        <div class="jumbotron" style="background-color:#d9edf7;border-color:#bce8f1" >
+            <div class="col-md-2">
+            <p align='center'>
+                <img src={{=URL('static',item['img'])}} 
+                     alt={{=item['alt']}} height=200px width=200px />
+            </p>
+            </div>
+            <div class="col-md-4" >
+            <h2 style="vertical-align:middle;align:center">
+                {{=item['alt']}}
+            </h2>
+            </div>
+        </div>
+    {{pass}}
+
 {{pass}}

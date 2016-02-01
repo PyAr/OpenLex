@@ -1,4 +1,12 @@
 {{extend 'layout.html'}}
 <h1>Expedientes</h1>
-{{=grid}}
-{{=BEAUTIFY(response._vars)}}
+{{if expte:}}
+        <div class="col-md-4 well well-lg">
+            {{=expte}}
+        </div>
+        <div class="col-md-5">
+            {{=grid}}
+        </div>
+{{else:}}
+        {{=grid}}
+{{pass}}
