@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+import html2text
+from gluon.contrib.markdown.markdown2 import markdown
+
+def advanced_repr(value, row):
+    mdtext=html2text.html2text(value)[:30]
+    mdtext=mdtext.replace('\n',' ')
+    return XML(markdown(mdtext))
 
 db = DAL('sqlite://storage_new.sqlite')
 from gluon.tools import *
@@ -23,7 +30,9 @@ db.define_table('persona',
                 Field('cuitcuil',required=True,label=T('CUIT/CUIL')),
                 Field('domicilio',required=True,label=T('Domicilio')),
                 Field('email',requires=IS_EMPTY_OR(IS_EMAIL()),label=T('E-Mail')),
-                Field('observaciones','text',label=T('Observaciones'), widget = advanced_editor),
+                Field('observaciones','text',label=T('Observaciones'),
+                      widget = advanced_editor,
+                      represent = advanced_repr ),
                 Field('telefono',label=T('Teléfono')),
                 Field('celular',label=T('Celular')),
                 Field('fotografia','upload',requires = IS_EMPTY_OR(IS_IMAGE())),
@@ -47,7 +56,8 @@ db.define_table('juzgado',
                 Field('descripcion',required=True,label=T('Descripción')),
                 Field('fuero_id',db.fuero,label=T('Fuero')),
                 Field('instancia_id',db.instancia,label=T('Instancia')),
-                auth.signature)
+                auth.signature,
+                format='%(descripcion)s')
 db.juzgado.fuero_id.widget = SQLFORM.widgets.autocomplete(
      request, db.fuero.descripcion, id_field=db.fuero.id)
 db.juzgado.fuero_id.widget._class='form-control string'
@@ -69,7 +79,8 @@ db.fuero.id.readable=db.fuero.id.writable=False
 db.define_table('expediente',
                 Field('numero',requires = IS_NOT_IN_DB(db, 'expediente.numero'),label=T('Nº de expediente')),
                 Field('caratula',required=True, label=T('Carátula')),
-                Field('juzgado_id',db.juzgado, label=T('Juzgado o Fiscalía de origen')),
+                Field('juzgado_id',db.juzgado, label=T('Origen'),
+                      comment=T('Juzgado o Fiscalía de origen')),
                 Field('inicio','date', label=T('Fecha inicio')),
                 Field('final','date', label=T('Fecha fin')),
                 auth.signature,
@@ -87,7 +98,10 @@ db.define_table('movimiento',
                                                    zero=None,
                                                    error_message='Seleccione estado del movimiento')),
                 Field('titulo',required=True, label=T('Título')),
-                Field('texto','text',label=T('Texto'),requires = IS_NOT_EMPTY(),widget = advanced_editor),
+                Field('texto','text',label=T('Texto'),
+                      requires = IS_NOT_EMPTY(),
+                      widget = advanced_editor,
+                      represent = advanced_repr ),
                 Field('archivo','upload'),
                 auth.signature,
                 singular = T("Movimiento"), plural = T("Movimientos"),
@@ -106,7 +120,7 @@ db.define_table('agenda',
                                                    zero=None,
                                                    error_message=T('Establezca un estado'))),
                 Field('titulo',required=True, label=T('Título')),
-                Field('texto','text',label=T('Texto'),widget = advanced_editor),
+                Field('texto','text',label=T('Texto'),widget = advanced_editor, represent = advanced_repr),
                 auth.signature)
 db.agenda.expediente_id.readable=db.agenda.expediente_id.writable=False
 db.agenda.id.readable=db.agenda.id.writable=False
@@ -115,7 +129,7 @@ db.define_table('parte',
                 Field('expediente_id',db.expediente),
                 Field('persona_id',db.persona,label=T('Persona')),
                 Field('caracter',label=T('Carácter'),comment=T('Carácter en que se presenta la parte: actor, demandado, imputado, etc')),
-                Field('observaciones','text',widget = advanced_editor),
+                Field('observaciones','text',widget = advanced_editor, represent = advanced_repr ),
                 auth.signature)
 db.parte.expediente_id.readable=db.parte.expediente_id.writable=False
 db.parte.id.readable=db.parte.id.writable=False

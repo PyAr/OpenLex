@@ -1,12 +1,15 @@
 {{extend 'layout.html'}}
 <h1>Expedientes</h1>
 {{if expte:}}
-        <div class="col-md-4 well well-lg">
+    <div class='container'>
+        <div class="col-md-3 well well-lg">
             {{=expte}}
         </div>
-        <div class="col-md-5">
+        <div class="col-md-9">
             {{=grid}}
         </div>
+   </div>
+
 {{else:}}
         {{=grid}}
 {{pass}}
