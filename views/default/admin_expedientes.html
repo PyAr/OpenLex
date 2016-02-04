@@ -2,6 +2,9 @@
 <h1>Expedientes</h1>
 {{if expte:}}
         <div class="col-md-3 well well-lg">
+            {{for link in links:}}
+                {{=link}}
+            {{pass}}
             {{=expte}}
         </div>
         <div class="col-md-9">
@@ -11,3 +14,15 @@
 {{else:}}
         {{=grid}}
 {{pass}}
+<script>
+    $('#expediente-numero').width('10%')
+    $('#expediente-caratula').width('35%')
+    $('#expediente-juzgado_id').width('25%')
+    $('#movimiento_estado').width('10%')
+    $('#movimiento_titulo').width('60%')
+    $('#agenda_vencimiento').width('15%')
+    $('#agenda_titulo').width('55%')
+    $('#parte_persona_id').width('45%')
+    $('#parte_caracter').width('25%')
+
+</script>

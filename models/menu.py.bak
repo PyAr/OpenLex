@@ -28,6 +28,7 @@ response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Expedientes'),False,URL('default','admin_expedientes')),
     (T('Contactos'),False,URL('default','admin_personas')),
+    (T('Calendario'),False,URL('default','calendar')),
     (T('Agenda'),False,URL('default','agenda')),
     (T('Juzgados'),False,URL('default','admin_juzgados')),
     (T('Tablas'),False, '#', [
@@ -37,6 +38,9 @@ response.menu = [
 ]
 
 DEVELOPMENT_MENU = True
+
+#fuerzo a la aplicación a usar el unico lenguage disponible por ahora
+T.force('es')
 
 #########################################################################
 ## provide shortcuts for development. remove in production

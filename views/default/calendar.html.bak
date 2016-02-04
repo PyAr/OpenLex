@@ -33,8 +33,9 @@
                 {{else:}}
                     end: new Date('{{=row.vencimiento.strftime('%Y-%m-%dT%H:%M:%S')}}'),
                 {{pass}}
+                    backgroundColor: '{{=colors[row.prioridad][1]}}',
                     url: '{{=URL("agenda_edit",args=row.id)}}'
-                }
+                },
             {{pass}}
             ]
         });

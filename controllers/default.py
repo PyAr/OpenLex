@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
-
+__author__=u"María Andrea Vignau <mavignau@gmail.com>"
 #########################################################################
 ## This is a sample controller
 ## - index is the default action of any application
@@ -34,7 +34,7 @@ def index():
     """
     response.flash = T("Bienvenido a pyDoctor")
     response.title = T("pyDoctor")
-    content=T(u'Sistema para abogados y estudios jurídicos realizado por María Andrea Vignau')
+    content=T(u'Sistema para abogados y estudios jurídicos')
     modules=None
     features=None
     if auth.user:
@@ -55,7 +55,18 @@ def index():
 
 @auth.requires_login()
 def agenda():
-    grid = SQLFORM.grid(db.agenda.created_by==auth.user.id,user_signature=False,exportclasses=myexport)
+    maxtextlengths={'db.agenda.vencimiento':15,
+            'db.agenda.titulo':60,
+            'db.agenda.texto':70}
+    grid = SQLFORM.grid(db.agenda.created_by==auth.user.id,
+                        fields=[db.agenda.vencimiento,db.agenda.titulo,db.agenda.texto,db.agenda.estado,db.agenda.prioridad],
+                        headers={'db.agenda.vencimiento':'Vence el',
+                            'db.agenda.titulo':'Titulo',
+                            'db.agenda.texto':'Descripcion',
+                            'db.agenda.estado':'E',
+                            'db.agenda.prioridad':'P'},
+                        maxtextlengths=maxtextlengths,maxtextlength=70,
+                        user_signature=False,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
@@ -71,66 +82,78 @@ def agenda_edit():
     return locals()
 
 
-
 @auth.requires_login()
 def admin_expedientes():
-
+    maxtextlengths={'db.expediente.numero' : 15,
+             'db.expediente.caratula':60,
+             'db.expediente.juzgado_id':45,
+            'db.movimiento.titulo':60,
+            'db.movimiento.texto':70,
+            'db.movimiento.estado':5,
+            'db.agenda.vencimiento':15,
+            'db.agenda.titulo':60,
+            'db.parte.persona_id':50,
+            'db.parte.caracter':30}
     ar = request.args # save typing
+    vv = request.vars.lang
     expte=''
+    linked_tables=['movimiento','agenda','parte']
     if ar and len(ar)>2:
         if 'expediente_id' in ar[1]:
             #expte= crud.read(db.expediente, ar[2])
             expte= SQLFORM(db.expediente, ar[2], readonly=True)
+            links=[]
+            for k in linked_tables:
+                args=['expediente','%s.expediente_id'%k,ar[2]]
+                url=URL('admin_expedientes',args=args, user_signature=True)
+                text=SPAN(k.capitalize()+'s',_class='buttontext button')
+                links.append(A(text,_href=url,_class='class="btn btn-default'))
+        if len(ar)>4 and ar[4]=="parte":
+            response.flash='Es una parte'
     grid = SQLFORM.smartgrid(db.expediente,
                              fields=[db.expediente.numero,
                                      db.expediente.caratula,
-                                     db.expediente.juzgado_id.
-                                    db.movimiento.titulo,
+                                     db.expediente.juzgado_id,
                                     db.movimiento.estado,
+                                    db.movimiento.titulo,
+                                    db.movimiento.texto,
+                                    db.agenda.estado,db.agenda.prioridad,
                                     db.agenda.vencimiento,
                                     db.agenda.titulo,
                                     db.parte.persona_id,
                                     db.parte.caracter],
-                             constraints={'created_by':auth.user.id},
+                             constraints={'expediente':(db.expediente.created_by==auth.user.id)},
                              linked_tables=['movimiento','agenda','parte'],
                             buttons_placement = 'right',
-                            #oncreate=dict(movimiento=[create_movimiento]),
-                            #onupdate=dict(movimiento=[update_movimiento,]),
-                             #oncreate=oncreate,onupdate=onupdate,
-                            exportclasses=myexport)
+                            exportclasses=myexport,
+                             maxtextlength=100,
+                            maxtextlengths=maxtextlengths)
+    #dd=info(grid)
     return locals()
 
-@auth.requires_login()
-def create_movimiento(form):
-    response.flash = T("create_movimiento")
-    print 'create!'
-    print form.vars
-
-@auth.requires_login()
-def update_movimiento(form):
-    response.flash = T("update_movimiento")
-    print 'update!'
-    print form.vars
 
 @auth.requires_login()
 def admin_juzgados():
     db.juzgado.fuero_id.widget._class='form-control string'
-    grid = SQLFORM.grid(db.juzgado,user_signature=False,exportclasses=myexport)
+    grid = SQLFORM.grid(db.juzgado,user_signature=False,maxtextlength=50,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def admin_personas():
-    grid = SQLFORM.grid(db.persona.created_by==auth.user.id,user_signature=False,exportclasses=myexport)
+    grid = SQLFORM.grid(db.persona.created_by==auth.user.id,
+                        user_signature=False,
+                        maxtextlength=50,
+                        exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def fueros():
-    grid = SQLFORM.grid(db.fuero,exportclasses=myexport)
+    grid = SQLFORM.grid(db.fuero,maxtextlength=50,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def instancias():
-    grid = SQLFORM.grid(db.instancia,exportclasses=myexport)
+    grid = SQLFORM.grid(db.instancia,maxtextlength=50,exportclasses=myexport)
     return locals()
 
 def user():
