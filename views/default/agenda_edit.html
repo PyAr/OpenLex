@@ -1,4 +1,8 @@
 {{extend 'layout.html'}}
 <h1>Editar ingreso de agenda</h1>
-{{=expte}}
-{{=form}}
+<div id='expte' class="col-md-3 well well-lg">
+    {{=LOAD('default','vista_expediente',args=[expte_id])}}
+</div>
+<div class="col-md-9">
+    {{=form}}
+</div>

@@ -1,3 +1,15 @@
 {{extend 'layout.html'}}
-<h1>Personas</h1>
-{{=grid}}
+<h1>Contacto</h1>
+{{if expte_rows:}}
+    <div id='expte' class="col-md-5 well well-lg">
+        <h2>
+            Es parte en:
+        </h2>
+        {{=expte_rows}}
+    </div>
+    <div class="col-md-7">
+        {{=grid}}
+    </div>
+{{else:}}
+    {{=grid}}
+{{pass}}

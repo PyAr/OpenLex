@@ -1,3 +1,4 @@
 {{extend 'layout.html'}}
-<h1>Está es la plantilla default/agenda_edit.html</h1>
-{{=BEAUTIFY(response._vars)}}
+<h1>Editar ingreso de agenda</h1>
+{{=expte}}
+{{=form}}

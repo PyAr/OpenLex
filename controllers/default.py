@@ -55,16 +55,16 @@ def index():
 
 @auth.requires_login()
 def agenda():
+    expte_id=False
+    if len(request.args)>1 and request.args[0]!='new':
+        record = db.agenda(request.args(2,cast=int))
+        if record:
+            expte_id=record.expediente_id
     maxtextlengths={'db.agenda.vencimiento':15,
             'db.agenda.titulo':60,
-            'db.agenda.texto':70}
+            'db.agenda.texto':50}
     grid = SQLFORM.grid(db.agenda.created_by==auth.user.id,
                         fields=[db.agenda.vencimiento,db.agenda.titulo,db.agenda.texto,db.agenda.estado,db.agenda.prioridad],
-                        headers={'db.agenda.vencimiento':'Vence el',
-                            'db.agenda.titulo':'Titulo',
-                            'db.agenda.texto':'Descripcion',
-                            'db.agenda.estado':'E',
-                            'db.agenda.prioridad':'P'},
                         maxtextlengths=maxtextlengths,maxtextlength=70,
                         user_signature=False,exportclasses=myexport)
     return locals()
@@ -77,13 +77,17 @@ def calendar():
 @auth.requires_login()
 def agenda_edit():
     record = db.agenda(request.args(0,cast=int)) or redirect(URL('calendario'))
-    expte= crud.read(db.expediente,record.expediente_id)
+    expte_id=record.expediente_id
     form = SQLFORM(db.agenda,record).process()
     return locals()
 
 
+linked_tables=['movimiento','agenda','parte']
 @auth.requires_login()
 def admin_expedientes():
+    db.movimiento.expediente_id.readable=db.movimiento.expediente_id.writable=False
+    db.parte.expediente_id.readable=db.parte.expediente_id.writable=False
+    db.agenda.expediente_id.readable=db.agenda.expediente_id.writable=False
     maxtextlengths={'db.expediente.numero' : 15,
              'db.expediente.caratula':60,
              'db.expediente.juzgado_id':45,
@@ -94,22 +98,6 @@ def admin_expedientes():
             'db.agenda.titulo':60,
             'db.parte.persona_id':50,
             'db.parte.caracter':30}
-    ar = request.args # save typing
-    vv = request.vars.lang
-    expte=''
-    linked_tables=['movimiento','agenda','parte']
-    if ar and len(ar)>2:
-        if 'expediente_id' in ar[1]:
-            #expte= crud.read(db.expediente, ar[2])
-            expte= SQLFORM(db.expediente, ar[2], readonly=True)
-            links=[]
-            for k in linked_tables:
-                args=['expediente','%s.expediente_id'%k,ar[2]]
-                url=URL('admin_expedientes',args=args, user_signature=True)
-                text=SPAN(k.capitalize()+'s',_class='buttontext button')
-                links.append(A(text,_href=url,_class='class="btn btn-default'))
-        if len(ar)>4 and ar[4]=="parte":
-            response.flash='Es una parte'
     grid = SQLFORM.smartgrid(db.expediente,
                              fields=[db.expediente.numero,
                                      db.expediente.caratula,
@@ -123,25 +111,47 @@ def admin_expedientes():
                                     db.parte.persona_id,
                                     db.parte.caracter],
                              constraints={'expediente':(db.expediente.created_by==auth.user.id)},
-                             linked_tables=['movimiento','agenda','parte'],
+                             linked_tables=linked_tables,
                             buttons_placement = 'right',
                             exportclasses=myexport,
                              maxtextlength=100,
                             maxtextlengths=maxtextlengths)
-    #dd=info(grid)
     return locals()
 
+def vista_expediente():
+    expte= SQLFORM(db.expediente, int(request.args[0]), formstyle='bootstrap', readonly=True)
+
+    url=URL('default','admin_expedientes',args=['expediente','edit','expediente',request.args[0]],user_signature=True)
+    links=[A('Expediente',_href=url, _type='button',_class='btn btn-default')]
+    for k in linked_tables:
+        args=['expediente','%s.expediente_id'%k,request.args[0]]
+        url=URL('admin_expedientes',args=args, user_signature=True)
+        text=SPAN(k.capitalize()+'s',_class='buttontext button')
+        links.append(A(text,_href=url,_type='button',_class='btn btn-default'))
+    return dict(links=links,expte=expte)
 
 @auth.requires_login()
 def admin_juzgados():
-    db.juzgado.fuero_id.widget._class='form-control string'
     grid = SQLFORM.grid(db.juzgado,user_signature=False,maxtextlength=50,exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def admin_personas():
+    expte_rows=False
+    if len(request.args)>1 and request.args[0]!='new':
+        query = db.parte.persona_id==(request.args(2,cast=int))
+        if db(query).select(db.parte.id):
+            expte_rows=SQLFORM.grid(db.parte.persona_id==(request.args(2,cast=int)),
+                                    fields=[db.parte.expediente_id,db.parte.caracter],
+                        maxtextlength=40,
+                        searchable=False,
+                        sortable=True,
+                        deletable=False,
+                        editable=False,
+                        details=False, create=False,
+                        exportclasses=myexport)
     grid = SQLFORM.grid(db.persona.created_by==auth.user.id,
-                        user_signature=False,
+                        user_signature=True,
                         maxtextlength=50,
                         exportclasses=myexport)
     return locals()

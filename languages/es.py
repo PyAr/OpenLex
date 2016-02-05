@@ -341,6 +341,7 @@
 'No records found': 'No se han encontrado registros',
 'Nombre': 'Nombre',
 'Not authorized': 'No autorizado',
+'not authorized': 'not authorized',
 'not in': 'no en',
 'Nº': 'Nº',
 'Nº de expediente': 'Nº de expediente',

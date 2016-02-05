@@ -1,3 +1,12 @@
 {{extend 'layout.html'}}
 <h1>Agenda</h1>
-{{=grid}}
+{{if expte_id:}}
+        <div id='expte' class="col-md-3 well well-lg">
+            {{=LOAD('default','vista_expediente',args=[expte_id])}}
+        </div>
+        <div class="col-md-9">
+            {{=grid}}
+        </div>
+{{else:}}
+        {{=grid}}
+{{pass}}
