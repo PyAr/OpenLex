@@ -22,6 +22,9 @@
               right: 'month,agendaWeek,agendaDay'
             },
             editable: false,
+            {{if request.args:}}
+            defaultDate:'{{=request.args[0]}}',
+            {{pass}}
             events: [
             {{for i,row in enumerate(rows):}}
                 {
@@ -34,12 +37,13 @@
                     end: new Date('{{=row.vencimiento.strftime('%Y-%m-%dT%H:%M:%S')}}'),
                 {{pass}}
                     backgroundColor: '{{=colors[int(row.prioridad)][1]}}',
-                    url: '{{=URL("agenda_edit",args=row.id)}}'
+                    url: '{{=URL("agenda","agenda_edit",args=row.id,user_signature=True)}}'
                 },
             {{pass}}
             ]
         });
 
     });
+
 </script>
 <div id='calendar'></div>

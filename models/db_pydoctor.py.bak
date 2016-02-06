@@ -2,6 +2,21 @@
 import html2text
 from gluon.contrib.markdown.markdown2 import markdown
 
+'''export=dict(csv_with_hidden_cols=(ExporterCSV, 'CSV (columnas ocultas)'),
+csv=(ExporterCSV, 'CSV'),
+xml=(ExporterXML, 'XML'),
+html=(ExporterHTML, 'HTML'),
+tsv_with_hidden_cols=(ExporterTSV, 'TSV (Compatible con Excel, columnas ocultas)'),
+tsv=(ExporterTSV, 'TSV (Compatible con excel)'))'''
+
+myexport=dict(csv_with_hidden_cols=False,
+            csv=False,
+            xml=False,
+            html=False,
+            tsv_with_hidden_cols=False,
+            tsv=False,
+            json=False)
+
 def advanced_repr(value, row):
     if not value:
         return ''
@@ -25,10 +40,10 @@ auth.define_tables()
 crud = Crud(globals(),db)
 
 def persona_format(row):
-    url=URL('default','admin_personas',args=['edit','persona',row.id],user_signature=True)
-    img=IMG(_src=URL('static','admin_personas.png'),_width=16,_height=16)
-    img=CAT(img,B(' %(apellido)s,%(nombre)s '%row),row.cuitcuil)
-    anchor=A(img,_href=url)
+    url=URL('contactos','index',args=['edit','persona',row.id],user_signature=True)
+    img=IMG(_src=URL('static','personas.png'),_width=16,_height=16)
+    text=CAT(img,B(' %(apellido)s,%(nombre)s '%row),row.cuitcuil)
+    anchor=A(text,_href=url)
     return anchor
 
 db.define_table('persona',
@@ -161,7 +176,11 @@ def agenda_titulo(value,row):
         value=I(value)
     elif row.estado == 'P':
         value=B(value)
-    value=P(icon+' '+value)
+    value=CAT(icon,' ',value)
+    if row.vencimiento:
+        url=URL('agenda','calendar',args=[row.vencimiento.strftime('%Y-%m-%d')])
+        img=IMG(_src=URL('static','calendario.png'),_width=16,_height=16)
+        value=CAT(value,' ',A(img,_href=url))
     return value
 
 db.define_table('agenda',

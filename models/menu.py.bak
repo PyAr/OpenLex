@@ -26,18 +26,18 @@ response.google_analytics_id = None
 
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
-    (T('Expedientes'),False,URL('default','admin_expedientes')),
-    (T('Contactos'),False,URL('default','admin_personas')),
-    (T('Calendario'),False,URL('default','calendar')),
-    (T('Agenda'),False,URL('default','agenda')),
-    (T('Juzgados'),False,URL('default','admin_juzgados')),
+    (T('Expedientes'),False,URL('expedientes','index')),
+    (T('Contactos'),False,URL('personas','index')),
+    (T('Calendario'),False,URL('agenda','calendar')),
+    (T('Agenda'),False,URL('agenda','agenda')),
+    (T('Juzgados'),False,URL('other_tables','juzgados')),
     (T('Tablas'),False, '#', [
-            (T('Instancias'),False,URL('default','instancias')),
-            (T('Fueros'),False,URL('default','fueros'))]),
+            (T('Instancias'),False,URL('other_tables','instancias')),
+            (T('Fueros'),False,URL('other_tables','fueros'))]),
 
 ]
 
-DEVELOPMENT_MENU = True
+DEVELOPMENT_MENU = False
 
 #fuerzo a la aplicación a usar el unico lenguage disponible por ahora
 T.force('es')

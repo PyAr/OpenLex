@@ -2,11 +2,11 @@
 <h1>Expedientes</h1>
 {{if len(request.args)>2 and 'expediente_id' in request.args[1]:}}
         <div id='expte' class="col-md-3 well well-lg">
-            {{=LOAD('default','vista_expediente',args=[request.args[2]])}}
+            {{=LOAD('expedientes','vista_expediente',args=[request.args[2]])}}
         </div>
         <div class="col-md-9">
             {{=grid}}
-            {{if len(request.args)>2 and request.args[4]=="parte":}}
+            {{if len(request.args)>3 and request.args[4]=="parte":}}
                 'Persona'
             {{pass}}
         </div>

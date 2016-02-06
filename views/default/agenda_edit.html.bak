@@ -1,4 +1,0 @@
-{{extend 'layout.html'}}
-<h1>Editar ingreso de agenda</h1>
-{{=expte}}
-{{=form}}
