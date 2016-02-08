@@ -1,0 +1,13 @@
+db.tables()
+2+2
+db.expediente(1)
+db(db.movimiento.modified_on).select(db.movimiento.expediente_id==1)
+db(db.movimiento.expediente_id==1).select(db.movimiento.modified_on)
+r=db(db.movimiento.expediente_id==1).select(db.movimiento.modified_on)
+r
+[x.modified_on for x in r]
+r=db(db.movimiento.expediente_id==1).select(db.movimiento.modified_on,orderby=modified_on)
+r=db(db.movimiento.expediente_id==1).select(db.movimiento.modified_on,orderby=db.movimiento.modified_on)
+[x.modified_on for x in r]
+db._lastsql
+r=db(db.movimiento.expediente_id==1).select(db.movimiento.modified_on,orderby=±db.movimiento.modified_on)

@@ -4,19 +4,26 @@
 linked_tables=['movimiento','agenda','parte']
 @auth.requires_login()
 def index():
+    '''
+    if len(request.args)>2 and 'expediente_id' in request.args[1]:
+        cur=request.args(2,cast=int)
+        db.movimiento.expediente_id=cur
+        db.parte.expediente_id=cur
+        db.agenda.expediente_id=cur
+    '''
     db.movimiento.expediente_id.readable=db.movimiento.expediente_id.writable=False
     db.parte.expediente_id.readable=db.parte.expediente_id.writable=False
     db.agenda.expediente_id.readable=db.agenda.expediente_id.writable=False
     maxtextlengths={'db.expediente.numero' : 15,
-             'db.expediente.caratula':60,
-             'db.expediente.juzgado_id':45,
-            'db.movimiento.titulo':60,
-            'db.movimiento.texto':70,
-            'db.movimiento.estado':5,
-            'db.agenda.vencimiento':15,
-            'db.agenda.titulo':60,
-            'db.parte.persona_id':50,
-            'db.parte.caracter':30}
+                    'db.expediente.caratula':60,
+                    'db.expediente.juzgado_id':45,
+                    'db.movimiento.titulo':40,
+                    'db.movimiento.texto':40,
+                    'db.movimiento.estado':5,
+                    'db.agenda.vencimiento':15,
+                    'db.agenda.titulo':60,
+                    'db.parte.persona_id':40,
+                    'db.parte.caracter':30}
     grid = SQLFORM.smartgrid(db.expediente,
                              fields=[db.expediente.numero,
                                      db.expediente.caratula,
@@ -28,13 +35,18 @@ def index():
                                     db.agenda.vencimiento,
                                     db.agenda.titulo,
                                     db.parte.persona_id,
-                                    db.parte.caracter],
-                             constraints={'expediente':(db.expediente.created_by==auth.user.id)},
-                             linked_tables=linked_tables,
-                            buttons_placement = 'right',
-                            exportclasses=myexport,
-                             maxtextlength=100,
-                            maxtextlengths=maxtextlengths)
+                                    db.parte.caracter,
+                                    db.movimiento.expediente_id,
+                                    db.parte.expediente_id,
+                                    db.agenda.expediente_id
+                                    ],
+                    constraints={'expediente':(db.expediente.created_by==auth.user.id)},
+                    linked_tables=linked_tables,
+                    buttons_placement = 'right',
+                    exportclasses=myexport,
+                    advanced_search=False,
+                    maxtextlength=100,
+                    maxtextlengths=maxtextlengths)
     return locals()
 
 def vista_expediente():

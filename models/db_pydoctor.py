@@ -17,7 +17,25 @@ myexport=dict(csv_with_hidden_cols=False,
             tsv=False,
             json=False)
 
+
+db = DAL('sqlite://storage2.sqlite')
+from gluon.tools import *
+
+auth = Auth(globals(),db)
+auth.define_tables()
+crud = Crud(globals(),db)
+
+#Crear el editor avanzado
+
+def advanced_editor(field, value):
+    'usado para mostrar el widget de procesamiento de texto'
+    return TEXTAREA(_id = str(field).replace('.','_'),
+                    _name=field.name,
+                    _class='text ckeditor',
+                    value=value, _cols=80, _rows=15)
+
 def advanced_repr(value, row):
+    'representa los primeros caracteres de un texto editado por advanced_editor'
     if not value:
         return ''
     mdtext=html2text.html2text(value)
@@ -26,23 +44,13 @@ def advanced_repr(value, row):
     mdtext=mdtext.replace('\n',' ')
     return XML(markdown(mdtext))
 
-db = DAL('sqlite://storage2.sqlite')
-from gluon.tools import *
-
-def advanced_editor(field, value):
-    return TEXTAREA(_id = str(field).replace('.','_'),
-                    _name=field.name,
-                    _class='text ckeditor',
-                    value=value, _cols=80, _rows=15)
-
-auth = Auth(globals(),db)
-auth.define_tables()
-crud = Crud(globals(),db)
+#tabla de contactos, o personas
 
 def persona_format(row):
+    'Agrega a la representacion de persona el icono y link'
     url=URL('contactos','index',args=['edit','persona',row.id],user_signature=True)
-    img=IMG(_src=URL('static','personas.png'),_width=16,_height=16)
-    text=CAT(img,B(' %(apellido)s,%(nombre)s '%row),row.cuitcuil)
+    icon=SPAN('',_class="glyphicon glyphicon-user")
+    text=CAT(icon,B(' %(apellido)s,%(nombre)s '%row),row.cuitcuil)
     anchor=A(text,_href=url)
     return anchor
 
@@ -67,6 +75,8 @@ db.define_table('persona',
                format=persona_format)
 db.persona.id.readable=db.persona.id.writable=False
 
+
+#tablas de fuero (penal,civil,familia,..) e instancia (1ra,2da..)
 db.define_table('fuero',
                 Field('descripcion',length=60,required=True,label=T('Descripción')),
                format='%(descripcion)s')
@@ -83,10 +93,6 @@ db.define_table('juzgado',
                 Field('instancia_id',db.instancia,label=T('Instancia')),
                 auth.signature,
                 format='%(descripcion)s')
-#db.juzgado.fuero_id.widget = SQLFORM.widgets.autocomplete(
-#     request, db.fuero.descripcion, id_field=db.fuero.id)
-#db.juzgado.instancia_id.widget = SQLFORM.widgets.autocomplete(
-#     request, db.instancia.descripcion, id_field=db.instancia.id)
 db.juzgado.fuero_id.requires = IS_IN_DB(db,db.fuero.id,'%(descripcion)s')
 db.juzgado.instancia_id.requires = IS_IN_DB(db,db.instancia.id,'%(descripcion)s')
 db.juzgado.descripcion.requires = IS_NOT_IN_DB(db, 'juzgado.descripcion')
@@ -100,12 +106,15 @@ db.define_table('tipoproceso',
                plural=T('Tipo de proceso'),)
 db.fuero.id.readable=db.fuero.id.writable=False
 
+#tablas relacionadas a los expedientes
 def expediente_format(row):
+    'agrega formato e iconos, y links para que se vean mejor los listados de exptes'
     url=URL('expedientes','index',args=['expediente','edit','expediente',row.id],user_signature=True)
     img=IMG(_src=URL('static','expedientes.png'),_width=16,_height=16)
     img=CAT(img,' %(numero)s %(caratula)s'%row)
     anchor=A(img,_href=url)
     return anchor
+
 
 
 db.define_table('expediente',
@@ -117,19 +126,24 @@ db.define_table('expediente',
                       comment=T('Juzgado o Fiscalía de origen')),
                 Field('inicio','date', label=T('Fecha inicio')),
                 Field('final','date', label=T('Fecha fin')),
-                auth.signature,
+                Field('changed_at','datetime',update=request.now,readable=False,writable=False),
+                auth.signature,migrate=True,
                format=expediente_format)
-#widget = lambda field, value:
-    #SQLFORM.widgets.string.widget(field, value, _class='my-string')
+
+#se usa autocompletado para agilizar la UI
 db.expediente.id.readable=db.expediente.id.writable=False
 db.expediente.juzgado_id.widget = SQLFORM.widgets.autocomplete(
      request, db.juzgado.descripcion, id_field=db.juzgado.id)
 db.expediente.tipoproceso_id.widget = SQLFORM.widgets.autocomplete(
      request, db.tipoproceso.descripcion, id_field=db.tipoproceso.id)
 
+
+#definición del widget general para ingresar expedientes
 autocomplete_expte_widget=SQLFORM.widgets.autocomplete(
      request, db.expediente.numero, id_field=db.expediente.id)
+
 def movimiento_titulo(value,row):
+    'resalta los movimientos si no son borrador, y pone en italicas para los no procesales'
     if row.estado != 'B':
         value=B(value)
     if row.estado != 'P':
@@ -137,12 +151,13 @@ def movimiento_titulo(value,row):
     return value
 
 db.define_table('movimiento',
-                Field('expediente_id',db.expediente, widget=autocomplete_expte_widget),
+                Field('expediente_id',db.expediente, label=T('Expediente'), widget=autocomplete_expte_widget),
                 Field('estado',length=2,readable=False,
                       requires = IS_IN_SET({'P':'Procesal', 'E':'Extraprocesal','B':'Borrador'},
                           zero=None,
                           error_message='Seleccione estado del movimiento')),
-                Field('titulo',length=150,required=True, label=T('Título'), represent=movimiento_titulo),
+                Field('titulo',length=150,required=True, 
+                      label=T('Título'), represent=movimiento_titulo),
                 Field('texto','text',length=65536,label=T('Texto'),
                       requires = IS_NOT_EMPTY(),
                       widget = advanced_editor,
@@ -150,8 +165,11 @@ db.define_table('movimiento',
                 Field('archivo','upload'),
                 auth.signature,
                 singular = T("Movimiento"), plural = T("Movimientos"),
-               format='%(titulo)s')
+               format='%(titulo)s',
+               migrate='movimiento.table')
 db.movimiento.id.readable=db.movimiento.id.writable=False
+#python web2py.py -S PyDoctor -M
+
 
 colors=[(T('Urgente'),'#b94a48','glyphicon-fire'),
          (T('Prioritario'),'#c09853','glyphicon-exclamation-sign'),
@@ -165,6 +183,7 @@ b94a48	red
 468847	green'''
 
 def agenda_titulo(value,row):
+    'representa con iconos los estados de las tareas agendadas, agrega links, etc'
     p=colors[int(row.prioridad)]
     icon=SPAN('',_style="color:%s"%p[1],_class="glyphicon %s"%p[2])
     if row.estado == 'R':
@@ -179,12 +198,12 @@ def agenda_titulo(value,row):
     value=CAT(icon,' ',value)
     if row.vencimiento:
         url=URL('agenda','calendar',args=[row.vencimiento.strftime('%Y-%m-%d')])
-        img=IMG(_src=URL('static','calendario.png'),_width=16,_height=16)
-        value=CAT(value,' ',A(img,_href=url))
+        icon=SPAN('',_class="glyphicon glyphicon-calendar")
+        value=CAT(value,' ',A(icon,_href=url))
     return value
 
 db.define_table('agenda',
-                Field('expediente_id',db.expediente, widget=autocomplete_expte_widget),
+                Field('expediente_id',db.expediente, label=T('Expediente'), widget=autocomplete_expte_widget),
                 Field('vencimiento','datetime',label=T('Vence en')),
                 Field('cumplido','datetime',label=T('Cumplido el')),
                 Field('prioridad',length=2,readable=False, 
@@ -195,17 +214,39 @@ db.define_table('agenda',
                       requires = IS_IN_SET({'P': T('Pendiente'), 'C':T('Cancelada'), 'R': T('Realizada')},
                           zero=None,
                           error_message=T('Establezca un estado'))),
-                Field('titulo',length=150,required=True, label=T('Título'), represent = agenda_titulo),
-                Field('texto','text',length=65536,label=T('Texto'),widget = advanced_editor, represent = advanced_repr),
+                Field('titulo',length=150,required=True, label=T('Título'), 
+                      represent = agenda_titulo),
+                Field('texto','text',length=65536,label=T('Texto'),
+                      widget = advanced_editor, represent = advanced_repr),
                 auth.signature)
 
 db.agenda.id.readable=db.agenda.id.writable=False
 
 db.define_table('parte',
-                Field('expediente_id',db.expediente, widget=autocomplete_expte_widget),
+                Field('expediente_id',db.expediente, label=T('Expediente'), widget=autocomplete_expte_widget),
                 Field('persona_id',db.persona,label=T('Persona')),
-                Field('caracter',length=80,label=T('Carácter'),comment=T('Carácter en que se presenta la parte: actor, demandado, imputado, etc')),
+                Field('caracter',length=80,label=T('Carácter'),
+                      comment=T('Carácter en que se presenta la parte: actor, demandado, imputado, etc')),
                 Field('observaciones','text',length=65536,widget = advanced_editor, represent = advanced_repr ),
                 auth.signature)
 
 db.parte.id.readable=db.parte.id.writable=False
+
+
+#para mantener los ultimos expedientes cambiados de alguna forma en vista
+def changed_expediente(set_,number):
+    if number:
+        db(db.expediente.id==number).update(changed_at=request.now)
+    else:
+        for r in set_.select():
+            db(db.expediente.id==r.expediente_id).update(changed_at=request.now)
+
+db.movimiento._after_insert.append(lambda f,id: changed_expediente(None,f['expediente_id']))
+db.movimiento._after_update.append(lambda s,f: changed_expediente(s,None))
+db.movimiento._before_delete.append(lambda s: changed_expediente(s,None))
+db.agenda._after_insert.append(lambda f,id: changed_expediente(None,f['expediente_id']))
+db.agenda._after_update.append(lambda s,f: changed_expediente(s,None))
+db.agenda._before_delete.append(lambda s: changed_expediente(s,None))
+db.parte._after_insert.append(lambda f,id: changed_expediente(None,f['expediente_id']))
+db.parte._after_update.append(lambda s,f: changed_expediente(s,None))
+db.parte._before_delete.append(lambda s: changed_expediente(s,None))

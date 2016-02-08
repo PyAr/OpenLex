@@ -13,8 +13,11 @@ def agenda():
             'db.agenda.texto':50}
     grid = SQLFORM.grid(db.agenda.created_by==auth.user.id,
                         fields=[db.agenda.vencimiento,db.agenda.titulo,db.agenda.texto,db.agenda.estado,db.agenda.prioridad],
-                        maxtextlengths=maxtextlengths,maxtextlength=70,
-                        user_signature=False,exportclasses=myexport)
+                        maxtextlengths=maxtextlengths,
+                        maxtextlength=70,
+                        advanced_search=False,
+                        user_signature=False,
+                        exportclasses=myexport)
     return locals()
 
 @auth.requires_login()

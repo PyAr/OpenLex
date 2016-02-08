@@ -24,7 +24,7 @@ def calendar():
 
 @auth.requires_login()
 def agenda_edit():
-    record = db.agenda(request.args(0,cast=int)) or redirect(URL('calendario'))
+    record = db.agenda(request.args(0,cast=int)) or redirect(URL('calendar'))
     expte_id=record.expediente_id
     form = SQLFORM(db.agenda,record).process()
     return locals()

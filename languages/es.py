@@ -205,6 +205,7 @@
 'Errors': 'Errores',
 'Errors in form, please check it out.': 'Hay errores en el formulario, por favor comprúebelo.',
 'Estado': 'Estado',
+'Expediente': 'Expediente',
 'Expediente Id': 'Expediente Id',
 'Expedientes': 'Expedientes',
 'export as csv file': 'exportar como archivo CSV',
