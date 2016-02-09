@@ -9,16 +9,15 @@ def index():
     searchText = request.get_vars.searchText
 
     #  Build query
-    queries=[db.persona.created_by==auth.user.id]
+    query=(db.persona.created_by==auth.user.id)
     if searchText and searchText.strip() != '':
-        queries.append(db.persona.apellido.contains(searchText))
-    if sex:
-        id_sex=[k[1] for k in sexo_dic].index(sex)
-        cod_sex=[k[1] for k in sexo_dic][id_sex]
-        if id_sex:
-            queries.append(db.persona.sexo==cod_sex)
-    if len(queries) > 0:
-        query = reduce(lambda a,b:(a&b),queries)
+        q=(db.persona.apellido.contains(searchText))
+        q|=(db.persona.nombre.contains(searchText))
+        q|=(db.persona.domicilio.contains(searchText))
+        q|=(db.persona.email.contains(searchText))
+        query&=q
+    #if len(queries) > 0:
+        #query = reduce(lambda a,b:(a&b),queries)
         #constraints={'contact':query}
 
 
@@ -53,18 +52,14 @@ def index():
 
 def contactSearch(self,url):
     'widget personalizado para la busqueda de personas'
-    form = FORM(LABEL(T('Sexo:')),
-        SELECT(_name='sexo', _id='sexo',
-                    _style='width:100px;',
-                    value=request.get_vars.sexo,
-                    *[k[1] for k in sexo_dic]),' ',
+    form = FORM(
         LABEL(T('Ingrese:')),INPUT(_name='searchText',_value=request.get_vars.searchText,
            _style='width:70%;',
            _id='searchText'),
         INPUT(_type='submit',_value=T('Search')),
         INPUT(_type='submit',_value=T('Clear'),
 
-        _onclick="jQuery('#district').val('');jQuery('#searchText').val('');"),
+        _onclick="jQuery('#sexo').val('');jQuery('#searchText').val('');"),
         _id='contactSearch',
         _method='GET',
         _action=url,

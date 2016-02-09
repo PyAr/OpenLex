@@ -49,12 +49,12 @@ def index():
                     orderby={'expediente':db.expediente.numero,
                              'movimiento':db.movimiento.id,
                              'parte':db.parte.persona_id,
-                             'agenda':~db.agenda.vencimiento}
-                             
+                             'agenda':~db.agenda.vencimiento},
                     maxtextlengths=maxtextlengths)
     return locals()
 
 def vista_expediente():
+    'muestra un panel a la izquierda que tiene los datos del expediente y permite navegar en él'
     expte= SQLFORM(db.expediente, int(request.args[0]), formstyle='bootstrap', readonly=True)
 
     url=URL('index',args=['expediente','edit','expediente',request.args[0]],user_signature=True)
@@ -64,4 +64,5 @@ def vista_expediente():
         url=URL('index',args=args, user_signature=True)
         text=SPAN(k.capitalize()+'s',_class='buttontext button')
         links.append(A(text,_href=url,_type='button',_class='btn btn-default'))
+        
     return dict(links=links,expte=expte)

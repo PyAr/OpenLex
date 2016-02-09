@@ -32,6 +32,7 @@ response.menu = [
     (T('Agenda'),False,URL('agenda','agenda')),
     (T('Juzgados'),False,URL('other_tables','juzgados')),
     (T('Tablas'),False, '#', [
+            (T('Tipos de proceso'),False,URL('other_tables','tipoproceso')),
             (T('Instancias'),False,URL('other_tables','instancias')),
             (T('Fueros'),False,URL('other_tables','fueros'))]),
 

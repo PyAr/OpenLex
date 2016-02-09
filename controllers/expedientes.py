@@ -4,16 +4,13 @@
 linked_tables=['movimiento','agenda','parte']
 @auth.requires_login()
 def index():
-    '''
-    if len(request.args)>2 and 'expediente_id' in request.args[1]:
-        cur=request.args(2,cast=int)
-        db.movimiento.expediente_id=cur
-        db.parte.expediente_id=cur
-        db.agenda.expediente_id=cur
-    '''
+    'muestra la grilla y permite la edición de los datos de los expedientes'
+
+    #para que no aparezca visible el expediente al editarse datos relacionados
     db.movimiento.expediente_id.readable=db.movimiento.expediente_id.writable=False
     db.parte.expediente_id.readable=db.parte.expediente_id.writable=False
     db.agenda.expediente_id.readable=db.agenda.expediente_id.writable=False
+    
     maxtextlengths={'db.expediente.numero' : 15,
                     'db.expediente.caratula':60,
                     'db.expediente.juzgado_id':45,
@@ -54,6 +51,7 @@ def index():
     return locals()
 
 def vista_expediente():
+    'muestra un panel a la izquierda que tiene los datos del expediente y permite navegar en él'
     expte= SQLFORM(db.expediente, int(request.args[0]), formstyle='bootstrap', readonly=True)
 
     url=URL('index',args=['expediente','edit','expediente',request.args[0]],user_signature=True)
@@ -63,4 +61,5 @@ def vista_expediente():
         url=URL('index',args=args, user_signature=True)
         text=SPAN(k.capitalize()+'s',_class='buttontext button')
         links.append(A(text,_href=url,_type='button',_class='btn btn-default'))
+        
     return dict(links=links,expte=expte)

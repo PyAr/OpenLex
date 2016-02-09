@@ -7,6 +7,8 @@
 {{extend 'layout.html'}}
 
 <h1>Calendario</h1>
+<div class="container">
+
 <script type='text/javascript'>
   jQuery(document).ready(function() {
 
@@ -14,13 +16,15 @@
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
+        
 
         $('#calendar').fullCalendar({
             header: {
-              left: 'prev,next today',
+              left: 'prevYear,nextYear prev,next today',
               center: 'title',
               right: 'month,agendaWeek,agendaDay'
             },
+            eventLimit: true,
             editable: false,
             {{if request.args:}}
             defaultDate:'{{=request.args[0]}}',
@@ -28,14 +32,9 @@
             events: [
             {{for i,row in enumerate(rows):}}
                 {
-                    title: '{{=row.titulo}}',
+                    title: '{{=row.titulo[:25]}}',
                     allDay: false,
                     start: new Date('{{=row.vencimiento.strftime('%Y-%m-%dT%H:%M:%S')}}'),
-                {{if row.cumplido:}}
-                    end: new Date('{{=row.cumplido.strftime('%Y-%m-%dT%H:%M:%S')}}'),
-                {{else:}}
-                    end: new Date('{{=row.vencimiento.strftime('%Y-%m-%dT%H:%M:%S')}}'),
-                {{pass}}
                     backgroundColor: '{{=colors[int(row.prioridad)][1]}}',
                     url: '{{=URL("agenda","agenda_edit",args=row.id,user_signature=True)}}'
                 },
@@ -47,3 +46,4 @@
 
 </script>
 <div id='calendar'></div>
+</div>

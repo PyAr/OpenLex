@@ -489,6 +489,7 @@
 'Timestamp': 'Marca de tiempo',
 'Tipo': 'Tipo',
 'Tipo de proceso': 'Tipo de proceso',
+'Tipos de proceso': 'Tipos de proceso',
 'to  previous version.': 'a la versión previa.',
 'To emulate a breakpoint programatically, write:': 'Emular un punto de ruptura programáticamente, escribir:',
 'to use the debugger!': '¡usar el depurador!',

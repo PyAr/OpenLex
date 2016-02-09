@@ -104,7 +104,7 @@ db.define_table('tipoproceso',
                format='%(descripcion)s',
                singular=T('Tipo de proceso'),
                plural=T('Tipo de proceso'),)
-db.fuero.id.readable=db.fuero.id.writable=False
+db.tipoproceso.id.readable=db.tipoproceso.id.writable=False
 
 #tablas relacionadas a los expedientes
 def expediente_format(row):

@@ -11,10 +11,27 @@ def juzgados():
 
 @auth.requires_login()
 def fueros():
-    grid = SQLFORM.grid(db.fuero,maxtextlength=50,exportclasses=myexport)
+    grid = SQLFORM.grid(db.fuero,
+                        maxtextlength=50,
+                        advanced_search=False,
+                        orderby=db.fuero.descripcion,
+                        exportclasses=myexport)
     return locals()
 
 @auth.requires_login()
 def instancias():
-    grid = SQLFORM.grid(db.instancia,maxtextlength=50,exportclasses=myexport)
+    grid = SQLFORM.grid(db.instancia,
+                        maxtextlength=50,
+                        advanced_search=False,
+                        orderby=db.instancia.descripcion,
+                        exportclasses=myexport)
+    return locals()
+
+@auth.requires_login()
+def tipoproceso():
+    grid = SQLFORM.grid(db.tipoproceso,
+                        maxtextlength=50,
+                        advanced_search=False,
+                        orderby=db.tipoproceso.descripcion,
+                        exportclasses=myexport)
     return locals()

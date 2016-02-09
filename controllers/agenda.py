@@ -22,7 +22,10 @@ def agenda():
 
 @auth.requires_login()
 def calendar():
-    rows=db(db.agenda.created_by==auth.user.id).select()
+    query=(db.agenda.created_by==auth.user.id)
+    #query&=(db.agenda.cumplido==None)
+    query&=(db.agenda.estado=="P")
+    rows=db(query).select()
     return dict(rows=rows)
 
 @auth.requires_login()

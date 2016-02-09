@@ -108,7 +108,7 @@ db.fuero.id.readable=db.fuero.id.writable=False
 
 #tablas relacionadas a los expedientes
 def expediente_format(row):
-    return expediente_numero(' %(numero)s %(caratula)s'%row,row)
+    return expediente_numero('%(numero)s %(caratula)s'%row,row)
 
 def expediente_numero(value,row):
     'agrega formato e iconos, y links para que se vean mejor los listados de exptes'
