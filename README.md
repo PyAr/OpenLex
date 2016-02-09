@@ -39,7 +39,7 @@ Descargar el instalador desde [descarga windows](http://www.web2py.com/examples/
 clonar usando 
 > git clone https://github.com/web2py/web2py.git
 
-### 2. Instalar pyDoctor
+### 2. Instalar OpenLex
 en el directorio: 
 > *Directorio web2py*/applications
 
