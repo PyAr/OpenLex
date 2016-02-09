@@ -38,6 +38,13 @@ def index():
                         exportclasses=myexport)
 
     grid = SQLFORM.grid(query,
+                        fields=[db.persona.apellido,
+                                db.persona.nombre,
+                                db.persona.domicilio,
+                                db.persona.email,
+                                db.persona.telefono,
+                                db.persona.celular],
+                        orderby=db.persona.apellido,
                         user_signature=True,
                         maxtextlength=50,
                         search_widget=contactSearch)
@@ -45,7 +52,7 @@ def index():
 
 
 def contactSearch(self,url):
-    #  Build drop-down list for districts
+    'widget personalizado para la busqueda de personas'
     form = FORM(LABEL(T('Sexo:')),
         SELECT(_name='sexo', _id='sexo',
                     _style='width:100px;',
@@ -57,7 +64,7 @@ def contactSearch(self,url):
         INPUT(_type='submit',_value=T('Search')),
         INPUT(_type='submit',_value=T('Clear'),
 
-        _onclick="jQuery('#district').val('');jQuery('#searchText').val('');"),
+        _onclick="jQuery('#sexo').val('');jQuery('#searchText').val('');"),
         _id='contactSearch',
         _method='GET',
         _action=url,

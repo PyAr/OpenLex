@@ -46,6 +46,10 @@ def index():
                     exportclasses=myexport,
                     advanced_search=False,
                     maxtextlength=100,
+                    orderby={'expediente':db.expediente.numero,
+                             'movimiento':db.movimiento.id,
+                             'parte':db.parte.persona_id,
+                             'agenda':~db.agenda.vencimiento},
                     maxtextlengths=maxtextlengths)
     return locals()
 

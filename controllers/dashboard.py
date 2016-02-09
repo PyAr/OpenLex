@@ -5,6 +5,58 @@
 # un listado de las tareas que vencen esta semana o que están vencidas
 # mostrando un resumen de la tarea junto con accesos al expediente
 
-def index(): 
-    rows=db(db.expediente).select(db.expediente.ALL, limitby=[0,10], orderby=~db.expediente.changed_at)
+import datetime
+@auth.requires_login()
+def view(): 
+    if auth.user:
+        message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
+    expte_grid=SQLFORM.grid(db.expediente.created_by==auth.user.id,
+            fields=[db.expediente.numero,db.expediente.caratula],
+            orderby=~db.expediente.changed_at,
+            paginate=20,
+            maxtextlength=40,
+            searchable=False,
+            sortable=True,
+            deletable=False,
+            editable=False,
+            details=False, create=False,
+            exportclasses=myexport)
+    query_agenda = (db.agenda.created_by==auth.user.id)
+    query_agenda &= (db.agenda.estado == 'P')
+    ahora = datetime.datetime.now()
+    query_semana = query_agenda & (db.agenda.vencimiento> ahora)
+    ahora += datetime.timedelta(7)
+    query_semana &=(db.agenda.vencimiento< ahora)
+    query_vencidos = query_agenda & (db.agenda.vencimiento < datetime.datetime.now())
+
+    semanal_grid=SQLFORM.grid(query_semana,
+            fields=[db.agenda.titulo,db.agenda.vencimiento,db.agenda.prioridad,db.agenda.estado],
+            orderby=db.agenda.vencimiento,
+            paginate=9,
+            maxtextlength=40,
+            searchable=False,
+            sortable=True,
+            deletable=False,
+            editable=False,
+            details=False, create=False,
+            exportclasses=myexport)
+    vencidos_grid=SQLFORM.grid(query_vencidos,
+            fields=[db.agenda.titulo,db.agenda.vencimiento,db.agenda.prioridad,db.agenda.estado],
+            orderby=db.agenda.vencimiento,
+            paginate=9,
+            maxtextlength=40,
+            searchable=False,
+            sortable=True,
+            deletable=False,
+            editable=False,
+            details=False, create=False,
+            exportclasses=myexport)
+
+    message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
+    modules=[{'url':URL('expedientes','index'),'img':'expedientes.png','alt':T('Administración de expedientes')},
+             {'url':URL('agenda','calendar'),'img':'calendario.png','alt':T('Calendario de vencimientos')},
+             {'url':URL('contactos','index'),'img':'personas.png','alt':T('Contactos')},
+             {'url':URL('other_tables','juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')}
+    ]
+
     return locals()

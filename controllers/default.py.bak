@@ -24,12 +24,7 @@ def index():
     modules=None
     features=None
     if auth.user:
-        message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
-        modules=[{'url':URL('expedientes','index'),'img':'expedientes.png','alt':T('Administración de expedientes')},
-                 {'url':URL('agenda','calendar'),'img':'calendario.png','alt':T('Calendario de vencimientos')},
-                 {'url':URL('contactos','index'),'img':'personas.png','alt':T('Contactos')},
-                 {'url':URL('default','admin_juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')}
-        ]
+        redirect(URL('dashboard','view'))
     else:
         message=T('¡Bienvenido! Pruébelo ya mismo.')
         features=[{'img':'feature-easy.png','alt':T('Intuitivo y muy fácil de usar, Ud. estára trabajando en sus expedientes inmediatamente. ')},

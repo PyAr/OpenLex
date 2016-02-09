@@ -24,20 +24,14 @@ def index():
     modules=None
     features=None
     if auth.user:
-        message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
-        modules=[{'url':URL('expedientes','index'),'img':'expedientes.png','alt':T('Administración de expedientes')},
-                 {'url':URL('agenda','calendar'),'img':'calendario.png','alt':T('Calendario de vencimientos')},
-                 {'url':URL('contactos','index'),'img':'personas.png','alt':T('Contactos')},
-                 {'url':URL('other_tables','juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')}
-        ]
-    else:
-        message=T('¡Bienvenido! Pruébelo ya mismo.')
-        features=[{'img':'feature-easy.png','alt':T('Intuitivo y muy fácil de usar, Ud. estára trabajando en sus expedientes inmediatamente. ')},
-                 {'img':'feature-responsive.png','alt':T('Acceso total desde cualquier parte con conexión Internet. Podrá acceder desde todos sus dispositivos, computadoras o móviles')},
-                 {'img':'feature-secure.png','alt':T('Tendrá sus datos en la seguridad absoluta de nuestros servidores. ¡Olvídese de las copias de seguridad!')},
-                 {'img':'feature-fast.png','alt':T('Rápido de usar y veloz para empezar. Ahórrese el tiempo para instalar y configurar su software. Úselo ya mismo')}
-        ]
-    return dict(message=message,modules=modules,features=features)
+        redirect(URL('dashboard','view'))
+    message=T('¡Bienvenido! Pruébelo ya mismo.')
+    features=[{'img':'feature-easy.png','alt':T('Intuitivo y muy fácil de usar, Ud. estára trabajando en sus expedientes inmediatamente. ')},
+             {'img':'feature-responsive.png','alt':T('Acceso total desde cualquier parte con conexión Internet. Podrá acceder desde todos sus dispositivos, computadoras o móviles')},
+             {'img':'feature-secure.png','alt':T('Tendrá sus datos en la seguridad absoluta de nuestros servidores. ¡Olvídese de las copias de seguridad!')},
+             {'img':'feature-fast.png','alt':T('Rápido de usar y veloz para empezar. Ahórrese el tiempo para instalar y configurar su software. Úselo ya mismo')}
+    ]
+    return dict(message=message,features=features)
 
 def user():
     """

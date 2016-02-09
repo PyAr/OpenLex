@@ -21,9 +21,9 @@ def index():
         query = reduce(lambda a,b:(a&b),queries)
         #constraints={'contact':query}
 
-            expte_rows=False
 
     #para mostrar la grilla del costado que permite navegar en los expedientes
+    expte_rows=False
     if len(request.args)>1 and request.args[0]!='new':
         query = db.parte.persona_id==(request.args(2,cast=int))
         if db(query).select(db.parte.id):
@@ -38,6 +38,13 @@ def index():
                         exportclasses=myexport)
 
     grid = SQLFORM.grid(query,
+                        fields=[db.persona.apellido,
+                                db.persona.nombre,
+                                db.persona.domicilio,
+                                db.persona.email,
+                                db.persona.telefono,
+                                db.persona.celular],
+                        orderby=db.persona.apellido,
                         user_signature=True,
                         maxtextlength=50,
                         search_widget=contactSearch)
@@ -45,7 +52,7 @@ def index():
 
 
 def contactSearch(self,url):
-    #  Build drop-down list for districts
+    'widget personalizado para la busqueda de personas'
     form = FORM(LABEL(T('Sexo:')),
         SELECT(_name='sexo', _id='sexo',
                     _style='width:100px;',
