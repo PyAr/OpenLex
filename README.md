@@ -1,4 +1,4 @@
-# PyDoctor
+# OpenLex
 Software para el manejo de estudios jurídicos y oficinas judiciales
 
 ## Características de nuestra propuesta 
