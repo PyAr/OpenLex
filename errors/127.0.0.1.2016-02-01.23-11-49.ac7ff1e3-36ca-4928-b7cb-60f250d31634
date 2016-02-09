@@ -1,0 +1,631 @@
+(dp1
+S'output'
+p2
+S''
+sS'layer'
+p3
+S'Framework'
+p4
+sS'code'
+p5
+S''
+sS'snapshot'
+p6
+(dp7
+S'exception'
+p8
+(dp9
+S'__module__'
+p10
+S"'bdb'"
+p11
+sS'__getslice__'
+p12
+S"<method-wrapper '__getslice__' of BdbQuit object>"
+p13
+sS'__str__'
+p14
+S"<method-wrapper '__str__' of BdbQuit object>"
+p15
+sS'__reduce__'
+p16
+S'<built-in method __reduce__ of BdbQuit object>'
+p17
+sS'__dict__'
+p18
+S'{}'
+p19
+sS'__sizeof__'
+p20
+S'<built-in method __sizeof__ of BdbQuit object>'
+p21
+sS'__weakref__'
+p22
+S'None'
+p23
+sS'__init__'
+p24
+S"<method-wrapper '__init__' of BdbQuit object>"
+p25
+sS'__setattr__'
+p26
+S"<method-wrapper '__setattr__' of BdbQuit object>"
+p27
+sS'__reduce_ex__'
+p28
+S'<built-in method __reduce_ex__ of BdbQuit object>'
+p29
+sS'__new__'
+p30
+S'<built-in method __new__ of type object>'
+p31
+sS'__format__'
+p32
+S'<built-in method __format__ of BdbQuit object>'
+p33
+sS'__class__'
+p34
+S"<class 'bdb.BdbQuit'>"
+p35
+sS'__doc__'
+p36
+S"'Exception to give up completely'"
+p37
+sS'__getitem__'
+p38
+S"<method-wrapper '__getitem__' of BdbQuit object>"
+p39
+sS'__setstate__'
+p40
+S'<built-in method __setstate__ of BdbQuit object>'
+p41
+sS'__getattribute__'
+p42
+S"<method-wrapper '__getattribute__' of BdbQuit object>"
+p43
+sS'args'
+p44
+S'()'
+p45
+sS'__subclasshook__'
+p46
+S'<built-in method __subclasshook__ of type object>'
+p47
+sS'__unicode__'
+p48
+S'<built-in method __unicode__ of BdbQuit object>'
+p49
+sS'__delattr__'
+p50
+S"<method-wrapper '__delattr__' of BdbQuit object>"
+p51
+sS'__repr__'
+p52
+S"<method-wrapper '__repr__' of BdbQuit object>"
+p53
+sS'__hash__'
+p54
+S"<method-wrapper '__hash__' of BdbQuit object>"
+p55
+ssS'evalue'
+p56
+S''
+sS'request'
+p57
+cgluon.html
+XML_unpickle
+p58
+(S's\xca^\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>PyDoctor</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>c250738529121</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>appadmin</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-d51e1187-997b-44fc-a16a-91c2f058bb05<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_pydoctor</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-07734367-e312-4fb2-b737-ed68cb707b19<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>*/*</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-07734367-e312-4fb2-b737-ed68cb707b19; session_id_admin=127.0.0.1-d51e1187-997b-44fc-a16a-91c2f058bb05; session_id_pydoctor=127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/admin/default/edit/PyDoctor/modules/html2text.py?id=modules__html2text__py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_WEB2PY_COMPONENT_ELEMENT</td><td style="vertical-align:top;">:</td><td><div>c250738529121</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_WEB2PY_COMPONENT_LOCATION</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/admin/default/edit/PyDoctor/modules/html2text.py?id=modules__html2text__py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_X_REQUESTED_WITH</td><td style="vertical-align:top;">:</td><td><div>XMLHttpRequest</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/PyDoctor/appadmin/hooks</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>41378</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>marian-GA-MA770T-UD3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/marian/web2py/applications/welcome/&#x27;, &#x27;/home/marian/web2py/applications/PyDoctor/&#x27;, &#x27;/home/marian/web2py/applications/admin/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x7f31798f8d40: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;127.0.1.1&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;marian-GA-MA770T-UD3&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/marian/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>*/*</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-07734367-e312-4fb2-b737-ed68cb707b19; session_id_admin=127.0.0.1-d51e1187-997b-44fc-a16a-91c2f058bb05; session_id_pydoctor=127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/admin/default/edit/PyDoctor/modules/html2text.py?id=modules__html2text__py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_web2py_component_element</td><td style="vertical-align:top;">:</td><td><div>c250738529121</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_web2py_component_location</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/admin/default/edit/PyDoctor/modules/html2text.py?id=modules__html2text__py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_x_requested_with</td><td style="vertical-align:top;">:</td><td><div>XMLHttpRequest</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::1</div></td></tr><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>marian-GA-MA770T-UD3</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/PyDoctor/appadmin/hooks</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>41378</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/PyDoctor/appadmin/hooks</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>marian-GA-MA770T-UD3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.13.3-stable+timestamp.2015.12.24.08.08.22</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x7f31809351e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x7f3179926390&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x7f31355b1550&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x7f31809351e0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x7f3179926390&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x7f31355b1550&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py/applications/PyDoctor/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>hooks</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/marian/web2py/applications/welcome/&#x27;, &#x27;/home/marian/web2py/applications/PyDoctor/&#x27;, &#x27;/home/marian/web2py/applications/admin/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x7f31798f8d40: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;127.0.1.1&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;marian-GA-MA770T-UD3&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/home/marian/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::1</div></td></tr><tr><td><div>127.0.1.1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>marian-GA-MA770T-UD3</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.13.3-stable+timestamp.2015.12.24.08.08.22</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 2, 1, 23, 11, 49, 970884)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/PyDoctor/appadmin/hooks</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 2, 2, 2, 11, 49, 970905)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x7f3135b551d0&gt;</div></td></tr></table></div>'
+tRp59
+sS'frames'
+p60
+(lp61
+(dp62
+S'file'
+p63
+S'/home/marian/web2py/gluon/main.py'
+p64
+sS'dump'
+p65
+(dp66
+S'gluon.debug.dbg.do_debug'
+p67
+S'<bound method Qdb.do_debug of <gluon.contrib.qdb.Qdb instance>>'
+p68
+sS'gluon.debug'
+p69
+S"<module 'gluon.debug' from '/home/marian/web2py/gluon/debug.pyc'>"
+p70
+sS'gluon.debug.dbg'
+p71
+S'<gluon.contrib.qdb.Qdb instance>'
+p72
+sS'request'
+p73
+S"<Storage {'_vars': None, 'function': 'hooks', 'c...': '/home/marian/web2py/applications/PyDoctor/'}>"
+p74
+sS'gluon'
+p75
+S"<module 'gluon' from '/home/marian/web2py/gluon/__init__.pyc'>"
+p76
+sS'request.folder'
+p77
+S"'/home/marian/web2py/applications/PyDoctor/'"
+p78
+sS'mainpyfile'
+p79
+S'undefined'
+p80
+ssS'lnum'
+p81
+I448
+sS'lines'
+p82
+(dp83
+I448
+S'                    gluon.debug.dbg.do_debug(mainpyfile=request.folder)'
+p84
+sI449
+S''
+sI450
+S'                serve_controller(request, response, session)'
+p85
+sI451
+S''
+sI452
+S'            except HTTP, http_response:'
+p86
+sI443
+S'                # ##################################################'
+p87
+sI444
+S''
+sI445
+S'                if global_settings.debugging and app != "admin":'
+p88
+sI446
+S'                    import gluon.debug'
+p89
+sI447
+S'                    # activate the debugger'
+p90
+ssS'call'
+p91
+S"(environ={'HTTP_ACCEPT': '*/*', 'HTTP_ACCEPT_ENCODING': 'gzip, deflate', 'HTTP_ACCEPT_LANGUAGE': 'en-US,en;q=0.5', 'HTTP_CONNECTION': 'keep-alive', 'HTTP_COOKIE': 'session_id_welcome=127.0.0.1-07734367-e312-4fb2-...or=127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e', 'HTTP_HOST': '127.0.0.1:8000', 'HTTP_REFERER': 'http://127.0.0.1:8000/admin/default/edit/PyDoctor/modules/html2text.py?id=modules__html2text__py', 'HTTP_USER_AGENT': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0', 'HTTP_WEB2PY_COMPONENT_ELEMENT': 'c250738529121', 'HTTP_WEB2PY_COMPONENT_LOCATION': 'http://127.0.0.1:8000/admin/default/edit/PyDoctor/modules/html2text.py?id=modules__html2text__py', ...}, responder=<function responder2>)"
+p92
+sS'func'
+p93
+S'wsgibase'
+p94
+sa(dp95
+g63
+S'/home/marian/web2py/gluon/contrib/qdb.py'
+p96
+sg65
+(dp97
+S'self'
+p98
+S'<gluon.contrib.qdb.Qdb instance>'
+p99
+sS'self.reset'
+p100
+S'<bound method Qdb.reset of <gluon.contrib.qdb.Qdb instance>>'
+p101
+ssg81
+I214
+sg82
+(dp102
+I209
+S'        finally:'
+p103
+sI210
+S'            self.waiting = False'
+p104
+sI211
+S'        self.frame = None'
+p105
+sI212
+S''
+sI213
+S'    def do_debug(self, mainpyfile=None, wait_breakpoint=1):'
+p106
+sI214
+S'        self.reset()'
+p107
+sI215
+S'        if not wait_breakpoint or mainpyfile:'
+p108
+sI216
+S'            self._wait_for_mainpyfile = 1'
+p109
+sI217
+S'            if not mainpyfile:'
+p110
+sI218
+S'                frame = sys._getframe().f_back'
+p111
+ssg91
+S"(self=<gluon.contrib.qdb.Qdb instance>, mainpyfile='/home/marian/web2py/applications/PyDoctor/', wait_breakpoint=1)"
+p112
+sg93
+S'do_debug'
+p113
+sa(dp114
+g63
+S'/home/marian/web2py/gluon/contrib/qdb.py'
+p115
+sg65
+(dp116
+S'bdb.Bdb.reset'
+p117
+S'<unbound method Bdb.reset>'
+p118
+sS'self'
+p119
+S'<gluon.contrib.qdb.Qdb instance>'
+p120
+sS'global bdb'
+p121
+S"<module 'bdb' from '/usr/lib/python2.7/bdb.pyc'>"
+p122
+sS'bdb.Bdb'
+p123
+S'<class bdb.Bdb>'
+p124
+ssg81
+I440
+sg82
+(dp125
+I435
+S'        assignment of the _ variable in the builtins.'
+p126
+sI436
+S'        """'
+p127
+sI437
+S'        self.displayhook_value = repr(obj)'
+p128
+sI438
+S''
+sI439
+S'    def reset(self):'
+p129
+sI440
+S'        bdb.Bdb.reset(self)'
+p130
+sI441
+S'        self.waiting = False'
+p131
+sI442
+S'        self.frame = None'
+p132
+sI443
+S''
+sI444
+S'    def post_mortem(self, t=None):'
+p133
+ssg91
+S'(self=<gluon.contrib.qdb.Qdb instance>)'
+p134
+sg93
+S'reset'
+p135
+sa(dp136
+g63
+S'/usr/lib/python2.7/bdb.py'
+p137
+sg65
+(dp138
+S'builtinNone'
+p139
+S'None'
+p140
+sS'self'
+p141
+S'<gluon.contrib.qdb.Qdb instance>'
+p142
+sS'self._set_stopinfo'
+p143
+S'<bound method Qdb._set_stopinfo of <gluon.contrib.qdb.Qdb instance>>'
+p144
+ssg81
+I43
+sg82
+(dp145
+I38
+S''
+sI39
+S'    def reset(self):'
+p146
+sI40
+S'        import linecache'
+p147
+sI41
+S'        linecache.checkcache()'
+p148
+sI42
+S'        self.botframe = None'
+p149
+sI43
+S'        self._set_stopinfo(None, None)'
+p150
+sI44
+S''
+sI45
+S'    def trace_dispatch(self, frame, event, arg):'
+p151
+sI46
+S'        if self.quitting:'
+p152
+sI47
+S'            return # None'
+p153
+ssg91
+S'(self=<gluon.contrib.qdb.Qdb instance>)'
+p154
+sg93
+g135
+sa(dp155
+g63
+S'/usr/lib/python2.7/bdb.py'
+p156
+sg65
+(dp157
+S'self'
+p158
+S'<gluon.contrib.qdb.Qdb instance>'
+p159
+sS'self.stopframe'
+p160
+S'<frame object>'
+p161
+sS'stopframe'
+p162
+S'None'
+p163
+ssg81
+I177
+sg82
+(dp164
+I172
+S'        """This method is called if an exception occurs,'
+p165
+sI173
+S'        but only if we are to stop at or just below this level."""'
+p166
+sI174
+S'        pass'
+p167
+sI175
+S''
+sI176
+S'    def _set_stopinfo(self, stopframe, returnframe, stoplineno=0):'
+p168
+sI177
+S'        self.stopframe = stopframe'
+p169
+sI178
+S'        self.returnframe = returnframe'
+p170
+sI179
+S'        self.quitting = 0'
+p171
+sI180
+S'        # stoplineno >= 0 means: stop at line >= the stoplineno'
+p172
+sI181
+S"        # stoplineno -1 means: don't stop at all"
+p173
+ssg91
+S'(self=<gluon.contrib.qdb.Qdb instance>, stopframe=None, returnframe=None, stoplineno=0)'
+p174
+sg93
+S'_set_stopinfo'
+p175
+sa(dp176
+g63
+S'/usr/lib/python2.7/bdb.py'
+p177
+sg65
+(dp178
+S'self'
+p179
+S'<gluon.contrib.qdb.Qdb instance>'
+p180
+sS'self.stopframe'
+p181
+S'<frame object>'
+p182
+sS'stopframe'
+p183
+S'None'
+p184
+ssg81
+I177
+sg82
+(dp185
+I172
+S'        """This method is called if an exception occurs,'
+p186
+sI173
+S'        but only if we are to stop at or just below this level."""'
+p187
+sI174
+S'        pass'
+p188
+sI175
+S''
+sI176
+S'    def _set_stopinfo(self, stopframe, returnframe, stoplineno=0):'
+p189
+sI177
+S'        self.stopframe = stopframe'
+p190
+sI178
+S'        self.returnframe = returnframe'
+p191
+sI179
+S'        self.quitting = 0'
+p192
+sI180
+S'        # stoplineno >= 0 means: stop at line >= the stoplineno'
+p193
+sI181
+S"        # stoplineno -1 means: don't stop at all"
+p194
+ssg91
+S'(self=<gluon.contrib.qdb.Qdb instance>, stopframe=None, returnframe=None, stoplineno=0)'
+p195
+sg93
+g175
+sa(dp196
+g63
+S'/home/marian/web2py/gluon/contrib/qdb.py'
+p197
+sg65
+(dp198
+S'self.dispatch_line'
+p199
+S'<bound method Qdb.dispatch_line of <gluon.contrib.qdb.Qdb instance>>'
+p200
+sS'self'
+p201
+S'<gluon.contrib.qdb.Qdb instance>'
+p202
+sS'frame'
+p203
+S'<frame object>'
+p204
+ssg81
+I89
+sg82
+(dp205
+I84
+S'            self.pull_actions()'
+p206
+sI85
+S'        # process the frame (see Bdb.trace_dispatch)'
+p207
+sI86
+S'        if self.quitting:'
+p208
+sI87
+S'            return  # None'
+p209
+sI88
+S"        if event == 'line':"
+p210
+sI89
+S'            return self.dispatch_line(frame)'
+p211
+sI90
+S"        if event == 'call':"
+p212
+sI91
+S'            return self.dispatch_call(frame, arg)'
+p213
+sI92
+S"        if event == 'return':"
+p214
+sI93
+S'            return self.dispatch_return(frame, arg)'
+p215
+ssg91
+S"(self=<gluon.contrib.qdb.Qdb instance>, frame=<frame object>, event='line', arg=None)"
+p216
+sg93
+S'trace_dispatch'
+p217
+sa(dp218
+g63
+S'/usr/lib/python2.7/bdb.py'
+p219
+sg65
+(dp220
+S'self'
+p221
+S'<gluon.contrib.qdb.Qdb instance>'
+p222
+sS'self.quitting'
+p223
+S'1'
+sS'global BdbQuit'
+p224
+S"<class 'bdb.BdbQuit'>"
+p225
+ssg81
+I68
+sg82
+(dp226
+I64
+S''
+sI65
+S'    def dispatch_line(self, frame):'
+p227
+sI66
+S'        if self.stop_here(frame) or self.break_here(frame):'
+p228
+sI67
+S'            self.user_line(frame)'
+p229
+sI68
+S'            if self.quitting: raise BdbQuit'
+p230
+sI69
+S'        return self.trace_dispatch'
+p231
+sI70
+S''
+sI71
+S'    def dispatch_call(self, frame, arg):'
+p232
+sI72
+S"        # XXX 'arg' is no longer used"
+p233
+sI63
+S'        return self.trace_dispatch'
+p234
+ssg91
+S'(self=<gluon.contrib.qdb.Qdb instance>, frame=<frame object>)'
+p235
+sg93
+S'dispatch_line'
+p236
+sasS'pyver'
+p237
+S'Python 2.7.10: /usr/bin/python (prefix: /usr)'
+p238
+sS'session'
+p239
+g58
+(S's\xe3\x08\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">expiration</td><td style="vertical-align:top;">:</td><td><div>3600</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">hmac_key</td><td style="vertical-align:top;">:</td><td><div>75ba71b1-996f-4c5c-901c-f07a0fbefb03</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_visit</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 2, 1, 23, 6, 49, 983805)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remember_me</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">email</td><td style="vertical-align:top;">:</td><td><div>user2@root.com</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">first_name</td><td style="vertical-align:top;">:</td><td><div>user2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">id</td><td style="vertical-align:top;">:</td><td><div>2L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_name</td><td style="vertical-align:top;">:</td><td><div>user2</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_id</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">reset_password_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user_groups</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">2</td><td style="vertical-align:top;">:</td><td><div>user_2</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr></table></div>'
+tRp240
+sS'etype'
+p241
+S"<class 'bdb.BdbQuit'>"
+p242
+sS'date'
+p243
+S'Mon Feb  1 23:12:25 2016'
+p244
+sS'response'
+p245
+g58
+(S'sH\x16\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x7f3135545d50&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_pydoctor</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div>: </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>table3cols</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_pydoctor</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/home/marian/web2py/applications/PyDoctor/sessions/1fb/08d/127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e&#x27;, mode &#x27;rb+&#x27; at 0x7f3135e73e40&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/home/marian/web2py/applications/PyDoctor/sessions/127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>f46be4d3485d25bf1456f3c84a8842d4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-da759c28-9322-499c-87a2-f7bab08df22e</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_pydoctor</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>PyDoctor</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr></table></div>'
+tRp246
+sS'locals'
+p247
+(dp248
+S'frame'
+p249
+S'<frame object>'
+p250
+sS'self'
+p251
+S'<gluon.contrib.qdb.Qdb instance>'
+p252
+sssS'traceback'
+p253
+S'Traceback (most recent call last):\n  File "/home/marian/web2py/gluon/main.py", line 448, in wsgibase\n    gluon.debug.dbg.do_debug(mainpyfile=request.folder)\n  File "/home/marian/web2py/gluon/contrib/qdb.py", line 214, in do_debug\n    self.reset()\n  File "/home/marian/web2py/gluon/contrib/qdb.py", line 440, in reset\n    bdb.Bdb.reset(self)\n  File "/usr/lib/python2.7/bdb.py", line 43, in reset\n    self._set_stopinfo(None, None)\n  File "/usr/lib/python2.7/bdb.py", line 177, in _set_stopinfo\n    self.stopframe = stopframe\n  File "/usr/lib/python2.7/bdb.py", line 177, in _set_stopinfo\n    self.stopframe = stopframe\n  File "/home/marian/web2py/gluon/contrib/qdb.py", line 89, in trace_dispatch\n    return self.dispatch_line(frame)\n  File "/usr/lib/python2.7/bdb.py", line 68, in dispatch_line\n    if self.quitting: raise BdbQuit\nBdbQuit\n'
+p254
+s.

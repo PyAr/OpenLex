@@ -18,21 +18,19 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
-    response.flash = T("Bienvenido a pyDoctor")
-    response.title = T("pyDoctor")
-    content=T(u'Sistema para abogados y estudios jurídicos')
-    modules=None
-    features=None
     if auth.user:
         redirect(URL('dashboard','view'))
     else:
+        response.flash = T("Bienvenido a pyDoctor")
+        response.title = T("pyDoctor")
+        content=T(u'Sistema para abogados y estudios jurídicos')
         message=T('¡Bienvenido! Pruébelo ya mismo.')
         features=[{'img':'feature-easy.png','alt':T('Intuitivo y muy fácil de usar, Ud. estára trabajando en sus expedientes inmediatamente. ')},
                  {'img':'feature-responsive.png','alt':T('Acceso total desde cualquier parte con conexión Internet. Podrá acceder desde todos sus dispositivos, computadoras o móviles')},
                  {'img':'feature-secure.png','alt':T('Tendrá sus datos en la seguridad absoluta de nuestros servidores. ¡Olvídese de las copias de seguridad!')},
                  {'img':'feature-fast.png','alt':T('Rápido de usar y veloz para empezar. Ahórrese el tiempo para instalar y configurar su software. Úselo ya mismo')}
         ]
-    return dict(message=message,modules=modules,features=features)
+        return dict(message=message,features=features)
 
 def user():
     """

@@ -27,7 +27,7 @@ response.google_analytics_id = None
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Expedientes'),False,URL('expedientes','index')),
-    (T('Contactos'),False,URL('personas','index')),
+    (T('Contactos'),False,URL('contactos','index')),
     (T('Calendario'),False,URL('agenda','calendar')),
     (T('Agenda'),False,URL('agenda','agenda')),
     (T('Juzgados'),False,URL('other_tables','juzgados')),

@@ -107,14 +107,16 @@ db.define_table('tipoproceso',
 db.fuero.id.readable=db.fuero.id.writable=False
 
 #tablas relacionadas a los expedientes
+def expediente_format(row):
+    return expediente_numero('%(numero)s %(caratula)s'%row,row)
+
 def expediente_numero(value,row):
     'agrega formato e iconos, y links para que se vean mejor los listados de exptes'
     url=URL('expedientes','index',args=['expediente','edit','expediente',row.id],user_signature=True)
     img=IMG(_src=URL('static','expedientes.png'),_width=16,_height=16)
-    img=CAT(img,' %s'%value)
+    img=CAT(img,' ',value)
     anchor=A(img,_href=url)
     return anchor
-
 
 
 db.define_table('expediente',
@@ -131,7 +133,7 @@ db.define_table('expediente',
                 Field('final','date', label=T('Fecha fin')),
                 Field('changed_at','datetime',update=request.now,readable=False,writable=False),
                 auth.signature,migrate=True,
-               format='%(numero)s')
+               format=expediente_format)
 
 #se usa autocompletado para agilizar la UI
 db.expediente.id.readable=db.expediente.id.writable=False

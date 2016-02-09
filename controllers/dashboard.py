@@ -53,8 +53,8 @@ def view():
             exportclasses=myexport)
 
     message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
-    modules=[{'url':URL('expedientes','index'),'img':'expedientes.png','alt':T('Administración de expedientes')},
-             {'url':URL('agenda','calendar'),'img':'calendario.png','alt':T('Calendario de vencimientos')},
+    modules=[{'url':URL('expedientes','index'),'img':'expedientes.png','alt':T('Expedientes')},
+             {'url':URL('agenda','calendar'),'img':'calendario.png','alt':T('Calendario')},
              {'url':URL('contactos','index'),'img':'personas.png','alt':T('Contactos')},
              {'url':URL('other_tables','juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')}
     ]
