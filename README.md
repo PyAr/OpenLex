@@ -43,9 +43,9 @@ clonar usando
 en el directorio: 
 > *Directorio web2py*/applications
 
-descargue y descomprima el archivo: [zip pydoctor](https://github.com/UniversidadDelEste/PyDoctor/archive/master.zip)
+descargue y descomprima el archivo: [zip OpenLex](https://github.com/UniversidadDelEste/OpenLex/archive/master.zip)
 
-### 3. Ejecutar pyDoctor
+### 3. Ejecutar OpenLex
 Ejecute web2py:
 > python.exe web2py.py
 
