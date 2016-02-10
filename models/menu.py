@@ -5,6 +5,8 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
+DEVELOPMENT_MENU = False
+
 response.logo = A(B(SPAN('Open'),'Lex'),XML('&trade;&nbsp;'),
                   _class="navbar-brand", #_href="http://www.web2py.com/",
                   _id="web2py-logo")
@@ -24,7 +26,7 @@ response.google_analytics_id = None
 ## this is the main application menu add/remove items as required
 #########################################################################
 
-response.menu = [
+'''response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Expedientes'),False,URL('expedientes','index')),
     (T('Contactos'),False,URL('contactos','index')),
@@ -35,10 +37,28 @@ response.menu = [
             (T('Tipos de proceso'),False,URL('other_tables','tipoproceso')),
             (T('Instancias'),False,URL('other_tables','instancias')),
             (T('Fueros'),False,URL('other_tables','fueros'))]),
-
 ]
+'''
 
-DEVELOPMENT_MENU = False
+if not auth.user:
+    response.menu = [
+        (T('Home'), False, URL('default', 'index'), [])]
+else:
+    response.menu = [
+        (T('Home'), False, URL('dashboard', 'view'), []),
+        (T('Expedientes'),False,URL('expedientes','index')),
+        (T('Contactos'),False,URL('contactos','index')),
+        (T('Calendario'),False,URL('agenda','calendar')),
+        (T('Agenda'),False,URL('agenda','agenda')),
+        (T('Juzgados'),False,URL('other_tables','juzgados')),
+    ]
+    if auth.has_membership(user_id=auth.user.id, role='admin'):
+        response.menu.append((T('Tablas'),False, '#', [
+                    (T('Tipos de proceso'),False,URL('other_tables','tipoproceso')),
+                    (T('Instancias'),False,URL('other_tables','instancias')),
+                    (T('Fueros'),False,URL('other_tables','fueros'))
+                ]))
+
 
 #fuerzo a la aplicación a usar el unico lenguage disponible por ahora
 T.force('es')

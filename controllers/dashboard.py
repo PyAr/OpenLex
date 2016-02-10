@@ -8,8 +8,6 @@
 import datetime
 @auth.requires_login()
 def view(): 
-    if auth.user:
-        message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
     expte_grid=SQLFORM.grid(db.expediente.created_by==auth.user.id,
             fields=[db.expediente.numero,db.expediente.caratula],
             orderby=~db.expediente.changed_at,
@@ -52,11 +50,12 @@ def view():
             details=False, create=False,
             exportclasses=myexport)
 
-    message=T("Bienvenido a pyDoctor, %s %s")%(auth.user.first_name,auth.user.last_name)
+    message=T("Bienvenido, %s %s")%(auth.user.first_name,auth.user.last_name)
     modules=[{'url':URL('expedientes','index'),'img':'expedientes.png','alt':T('Expedientes')},
              {'url':URL('agenda','calendar'),'img':'calendario.png','alt':T('Calendario')},
              {'url':URL('contactos','index'),'img':'personas.png','alt':T('Contactos')},
-             {'url':URL('other_tables','juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')}
     ]
+    if auth.has_membership(user_id=auth.user.id, role='admin'):
+        modules.append({'url':URL('other_tables','juzgados'),'img':'juzgados.png','alt':T('Oficinas judiciales')})
 
     return locals()

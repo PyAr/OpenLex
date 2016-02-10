@@ -1,6 +1,5 @@
 {{extend 'layout.html'}}
 <h1>Agenda</h1>
-{{=CAT(reference)}}
 {{if expte_id:}}
         <div id='expte' class="col-md-3 well well-lg">
             {{=LOAD('expedientes','vista_expediente',args=[expte_id])}}
@@ -11,3 +10,4 @@
 {{else:}}
         {{=grid}}
 {{pass}}
+{{=CAT(reference)}}

@@ -35,7 +35,10 @@ def index():
                                     db.parte.caracter,
                                     db.movimiento.expediente_id,
                                     db.parte.expediente_id,
-                                    db.agenda.expediente_id
+                                    db.agenda.expediente_id,
+                                    db.movimiento.id,
+                                    db.parte.id,
+                                    db.agenda.id,
                                     ],
                     constraints={'expediente':(db.expediente.created_by==auth.user.id)},
                     linked_tables=linked_tables,

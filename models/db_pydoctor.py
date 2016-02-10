@@ -181,6 +181,18 @@ colors=[(T('Urgente'),'#b94a48','glyphicon-fire'),
          (T('Importante'),'#446e9b','glyphicon-star'),
          (T('Recordar'),'#468847','glyphicon-heart')]
 prioridad_set=dict([(k,v[0]) for k,v in enumerate(colors)])
+reference=[LABEL(T('Prioridad:'))]
+for p in colors:
+    icon=SPAN('',_style="color:%s"%p[1],_class="glyphicon %s"%p[2])
+    reference.append(CAT(icon,' ',p[0],' '))
+reference.append(LABEL(T(' Estado:')))
+reference.append(B(T(' Pendiente')))
+icon=SPAN('',_class="glyphicon glyphicon-ok")
+reference.append(CAT(' ',icon,' ',T('Realizada')))
+icon=SPAN('',_class="glyphicon glyphicon-remove")
+reference.append(CAT(' ',icon,' ',I(T('Cancelada'))))
+
+
 '''
 446e9b	blue
 c09853	yellow
@@ -233,9 +245,10 @@ db.define_table('parte',
                 Field('caracter',length=80,label=T('Carácter'),
                       comment=T('Carácter en que se presenta la parte: actor, demandado, imputado, etc')),
                 Field('observaciones','text',length=65536,widget = advanced_editor, represent = advanced_repr ),
-                auth.signature)
+                auth.signature,
+                migrate=True)
 
-db.parte.id.readable=db.parte.id.writable=False
+db.parte.id.readable=False
 
 
 #para mantener los ultimos expedientes cambiados de alguna forma en vista

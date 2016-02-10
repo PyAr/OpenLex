@@ -35,6 +35,9 @@
     <!-- Favicons -->
     {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
     {{block head}}{{end}}
+      {{if DEVELOPMENT_MENU:}}
+      {{=db._lastsql}}
+      {{pass}}
     {{
     # using sidebars need to know what sidebar you want to use
     mc0 = 'col-md-12'

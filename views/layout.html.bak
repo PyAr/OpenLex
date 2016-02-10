@@ -135,6 +135,8 @@
     <!-- This makes autocomplete look like any other form-control wowwww!  -->
     <script>
         $(".string").addClass("form-control")
+        $(".web2py_breadcrumbs").hide()
+        $(".w2p_export_menu").hide()
     </script>
   </body>
 </html>

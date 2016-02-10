@@ -4,16 +4,13 @@
 linked_tables=['movimiento','agenda','parte']
 @auth.requires_login()
 def index():
-    '''
-    if len(request.args)>2 and 'expediente_id' in request.args[1]:
-        cur=request.args(2,cast=int)
-        db.movimiento.expediente_id=cur
-        db.parte.expediente_id=cur
-        db.agenda.expediente_id=cur
-    '''
+    'muestra la grilla y permite la edición de los datos de los expedientes'
+
+    #para que no aparezca visible el expediente al editarse datos relacionados
     db.movimiento.expediente_id.readable=db.movimiento.expediente_id.writable=False
     db.parte.expediente_id.readable=db.parte.expediente_id.writable=False
     db.agenda.expediente_id.readable=db.agenda.expediente_id.writable=False
+    
     maxtextlengths={'db.expediente.numero' : 15,
                     'db.expediente.caratula':60,
                     'db.expediente.juzgado_id':45,
@@ -38,10 +35,17 @@ def index():
                                     db.parte.caracter,
                                     db.movimiento.expediente_id,
                                     db.parte.expediente_id,
-                                    db.agenda.expediente_id
+                                    db.agenda.expediente_id,
+                                    db.movimiento.id,
+                                    db.parte.id,
+                                    db.agenda.id,
                                     ],
                     constraints={'expediente':(db.expediente.created_by==auth.user.id)},
                     linked_tables=linked_tables,
+                    field_id={'expediente':db.expediente.id,
+                             'movimiento':db.movimiento.id,
+                             'parte':db.parte.id,
+                             'agenda':db.agenda.id},
                     buttons_placement = 'right',
                     exportclasses=myexport,
                     advanced_search=False,
