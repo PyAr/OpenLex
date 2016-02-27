@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# try something like
+__author__ = "María Andrea Vignau (mavignau@gmail.com)"
+__copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
+
 
 @auth.requires_login()
 def index():
@@ -51,13 +53,14 @@ def index():
 def contactSearch(self,url):
     'widget personalizado para la busqueda de personas'
     form = FORM(
-        LABEL(T('Ingrese:')),INPUT(_name='searchText',_value=request.get_vars.searchText,
+        LABEL(T('Ingrese:')),
+        INPUT(_name='searchText',_value=request.get_vars.searchText,
            _style='width:70%;',
            _id='searchText'),
         INPUT(_type='submit',_value=T('Search')),
         INPUT(_type='submit',_value=T('Clear'),
 
-        _onclick="jQuery('#sexo').val('');jQuery('#searchText').val('');"),
+        _onclick="jQuery('#searchText').val('');"),
         _id='contactSearch',
         _method='GET',
         _action=url,

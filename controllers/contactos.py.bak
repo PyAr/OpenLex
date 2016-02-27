@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 # try something like
-sexo_dic=[('','Todos'),('F','Femenino'), ('M','Masculino'), ('J','P.Jurídica')]
 
 @auth.requires_login()
 def index():
     #  Get filters
-    sex = request.get_vars.sexo
     searchText = request.get_vars.searchText
 
     #  Build query
@@ -53,13 +51,14 @@ def index():
 def contactSearch(self,url):
     'widget personalizado para la busqueda de personas'
     form = FORM(
-        LABEL(T('Ingrese:')),INPUT(_name='searchText',_value=request.get_vars.searchText,
+        LABEL(T('Ingrese:')),
+        INPUT(_name='searchText',_value=request.get_vars.searchText,
            _style='width:70%;',
            _id='searchText'),
         INPUT(_type='submit',_value=T('Search')),
         INPUT(_type='submit',_value=T('Clear'),
 
-        _onclick="jQuery('#sexo').val('');jQuery('#searchText').val('');"),
+        _onclick="jQuery('#searchText').val('');"),
         _id='contactSearch',
         _method='GET',
         _action=url,

@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+__author__ = "María Andrea Vignau (mavignau@gmail.com)"
+__copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
+
 
 def info(object, spacing=10, collapse=1): 
     """Print methods and doc strings.

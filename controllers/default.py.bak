@@ -21,8 +21,8 @@ def index():
     if auth.user:
         redirect(URL('dashboard','view'))
     else:
-        response.flash = T("Bienvenido a pyDoctor")
-        response.title = T("pyDoctor")
+        response.flash = T("Bienvenido a OpenLex")
+        response.title = T("OpenLex")
         content=T(u'Sistema para abogados y estudios jurídicos')
         message=T('¡Bienvenido! Pruébelo ya mismo.')
         features=[{'img':'feature-easy.png','alt':T('Intuitivo y muy fácil de usar, Ud. estára trabajando en sus expedientes inmediatamente. ')},

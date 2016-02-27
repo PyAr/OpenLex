@@ -3,11 +3,11 @@
 {{block header}}
     <header class="container-fluid background">
       <div class="jumbotron" >
-          <div class="col-md-6" style="padding-bottom:30px">
+          <div class="col-md-5 text-center" style="padding-bottom:20px;padding-top:20px;">
             <img src={{=URL('static','logoOpenLex.png')}} 
                  alt="expedientes" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-7">
               <h1 class='text-center'>
                   {{=response.subtitle}}
               </h1>

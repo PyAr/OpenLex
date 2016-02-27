@@ -20,7 +20,7 @@
 
         $('#calendar').fullCalendar({
             header: {
-              left: 'prevYear,nextYear,prev,next today',
+              left: 'prevYear,nextYear prev,next today',
               center: 'title',
               right: 'month,agendaWeek,agendaDay'
             },

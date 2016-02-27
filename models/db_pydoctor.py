@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+__author__ = "María Andrea Vignau (mavignau@gmail.com)"
+__copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
+
 import html2text
 from gluon.contrib.markdown.markdown2 import markdown
 
@@ -48,7 +51,8 @@ def advanced_repr(value, row):
 
 def persona_format(row):
     'Agrega a la representacion de persona el icono y link'
-    url=URL('contactos','index',args=['edit','persona',row.id],user_signature=True)
+    url=URL('contactos','index',
+            args=['edit','persona',row.id],user_signature=True)
     icon=SPAN('',_class="glyphicon glyphicon-user")
     text=CAT(icon,B(' %(apellido)s,%(nombre)s '%row),row.cuitcuil)
     anchor=A(text,_href=url)
@@ -112,7 +116,8 @@ def expediente_format(row):
 
 def expediente_numero(value,row):
     'agrega formato e iconos, y links para que se vean mejor los listados de exptes'
-    url=URL('expedientes','index',args=['expediente','edit','expediente',row.id],user_signature=True)
+    url=URL('expedientes','index',
+            args=['expediente','edit','expediente',row.id],user_signature=True)
     img=IMG(_src=URL('static','expedientes.png'),_width=16,_height=16)
     img=CAT(img,' ',value)
     anchor=A(img,_href=url)
@@ -131,7 +136,8 @@ db.define_table('expediente',
                       comment=T('Juzgado o Fiscalía de origen')),
                 Field('inicio','date', label=T('Fecha inicio')),
                 Field('final','date', label=T('Fecha fin')),
-                Field('changed_at','datetime',update=request.now,readable=False,writable=False),
+                Field('changed_at','datetime',
+                      update=request.now,readable=False,writable=False),
                 auth.signature,migrate=True,
                format=expediente_format)
 
@@ -176,28 +182,11 @@ db.movimiento.id.readable=db.movimiento.id.writable=False
 #python web2py.py -S PyDoctor -M
 
 
-colors=[(T('Urgente'),'#b94a48','glyphicon-fire'),
-         (T('Prioritario'),'#c09853','glyphicon-exclamation-sign'),
-         (T('Importante'),'#446e9b','glyphicon-star'),
-         (T('Recordar'),'#468847','glyphicon-heart')]
+colors=[(T('Urgente'),'#b94a48','glyphicon-fire'),  #red
+    (T('Prioritario'),'#c09853','glyphicon-exclamation-sign'), #yellow
+    (T('Importante'),'#446e9b','glyphicon-star'),  #blue
+    (T('Recordar'),'#468847','glyphicon-heart')]   #green
 prioridad_set=dict([(k,v[0]) for k,v in enumerate(colors)])
-reference=[LABEL(T('Prioridad:'))]
-for p in colors:
-    icon=SPAN('',_style="color:%s"%p[1],_class="glyphicon %s"%p[2])
-    reference.append(CAT(icon,' ',p[0],' '))
-reference.append(LABEL(T(' Estado:')))
-reference.append(B(T(' Pendiente')))
-icon=SPAN('',_class="glyphicon glyphicon-ok")
-reference.append(CAT(' ',icon,' ',T('Realizada')))
-icon=SPAN('',_class="glyphicon glyphicon-remove")
-reference.append(CAT(' ',icon,' ',I(T('Cancelada'))))
-
-
-'''
-446e9b	blue
-c09853	yellow
-b94a48	red
-468847	green'''
 
 def agenda_titulo(value,row):
     'representa con iconos los estados de las tareas agendadas, agrega links, etc'
@@ -219,8 +208,20 @@ def agenda_titulo(value,row):
         value=CAT(value,' ',A(icon,_href=url))
     return value
 
+reference=[LABEL(T('Prioridad:'))]
+for p in colors:
+    icon=SPAN('',_style="color:%s"%p[1],_class="glyphicon %s"%p[2])
+    reference.append(CAT(icon,' ',p[0],' '))
+reference.append(LABEL(T(' Estado:')))
+reference.append(B(T(' Pendiente')))
+icon=SPAN('',_class="glyphicon glyphicon-ok")
+reference.append(CAT(' ',icon,' ',T('Realizada')))
+icon=SPAN('',_class="glyphicon glyphicon-remove")
+reference.append(CAT(' ',icon,' ',I(T('Cancelada'))))
+
 db.define_table('agenda',
-                Field('expediente_id',db.expediente, label=T('Expediente'), widget=autocomplete_expte_widget),
+                Field('expediente_id',db.expediente, 
+                      label=T('Expediente'), widget=autocomplete_expte_widget),
                 Field('vencimiento','datetime',label=T('Vence en')),
                 Field('cumplido','datetime',label=T('Cumplido el')),
                 Field('prioridad',length=2,readable=False, 
@@ -240,7 +241,8 @@ db.define_table('agenda',
 db.agenda.id.readable=db.agenda.id.writable=False
 
 db.define_table('parte',
-                Field('expediente_id',db.expediente, label=T('Expediente'), widget=autocomplete_expte_widget),
+                Field('expediente_id',db.expediente, 
+                      label=T('Expediente'), widget=autocomplete_expte_widget),
                 Field('persona_id',db.persona,label=T('Persona')),
                 Field('caracter',length=80,label=T('Carácter'),
                       comment=T('Carácter en que se presenta la parte: actor, demandado, imputado, etc')),
@@ -249,6 +251,8 @@ db.define_table('parte',
                 migrate=True)
 
 db.parte.id.readable=False
+db.parte.persona_id.widget=SQLFORM.widgets.autocomplete(
+     request, db.persona.apellido, id_field=db.persona.id)
 
 
 #para mantener los ultimos expedientes cambiados de alguna forma en vista

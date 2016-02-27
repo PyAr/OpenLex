@@ -13,4 +13,3 @@
 {{else:}}
     {{=grid}}
 {{pass}}
-{{=db._lastsql}}

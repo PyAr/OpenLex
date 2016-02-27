@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# try something like
+__author__ = "María Andrea Vignau (mavignau@gmail.com)"
+__copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
+
 
 @auth.requires_membership('admin')
 def juzgados():

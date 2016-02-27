@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-# this file is released under public domain and you can use without limitations
+__author__ = "María Andrea Vignau (mavignau@gmail.com)"
+__copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
+
 
 #########################################################################
 ## Customize your APP title, subtitle and menus here

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-# this file is released under public domain and you can use without limitations
-__author__=u"María Andrea Vignau <mavignau@gmail.com>"
+__author__ = "María Andrea Vignau (mavignau@gmail.com)"
+__copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
+
 #########################################################################
 ## This is a sample controller
 ## - index is the default action of any application
