@@ -49,6 +49,6 @@ descargue y descomprima el archivo: [zip OpenLex](https://github.com/Universidad
 Ejecute web2py:
 > python.exe web2py.py
 
-Abra el navegador de internet e ingrese el link http://127.0.0.1:8000/PyDoctor/default/index
+Abra el navegador de internet e ingrese el link http://127.0.0.1:8000/OpenLex/default/index
 
 ¡Que lo disfrute!
