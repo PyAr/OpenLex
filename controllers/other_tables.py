@@ -12,6 +12,7 @@ def juzgados():
                         exportclasses=myexport)
     return locals()
 
+
 @auth.requires_membership('admin')
 def fueros():
     grid = SQLFORM.grid(db.fuero,
@@ -21,6 +22,7 @@ def fueros():
                         exportclasses=myexport)
     return locals()
 
+
 @auth.requires_membership('admin')
 def instancias():
     grid = SQLFORM.grid(db.instancia,
@@ -29,6 +31,7 @@ def instancias():
                         orderby=db.instancia.descripcion,
                         exportclasses=myexport)
     return locals()
+
 
 @auth.requires_membership('admin')
 def tipoproceso():
