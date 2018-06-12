@@ -1,9 +1,9 @@
 # for web2py
-cache
-databases
-errors
-sessions
-uploads
+cache/
+databases/
+errors/
+sessions/
+uploads/git 
 
 # inherit https://github.com/github/gitignore/blob/master/Python.gitignore
 
