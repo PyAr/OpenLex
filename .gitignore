@@ -36,7 +36,7 @@ pip-log.txt
 .mr.developer.cfg
 
 #web2py
-*.py.bak
+*.bak
 *.table
 *.log
 
