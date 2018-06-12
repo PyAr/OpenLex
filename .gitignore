@@ -34,3 +34,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#web2py
+*.py.bak
+*.table
+*.log
+
+#PyCharm
+.idea/
