@@ -24,7 +24,7 @@ myexport = dict(csv_with_hidden_cols=False,
                 json=False)
 
 
-db = DAL('sqlite://storage2.sqlite')
+db = DAL('sqlite://openlex.sqlite')
 
 auth = Auth(globals(), db)
 auth.define_tables()
@@ -113,11 +113,18 @@ db.define_table('instancia',
                 format='%(descripcion)s')
 db.instancia.id.readable = db.instancia.id.writable = False
 
+db.define_table('jurisdiccion',
+                Field('descripcion', length=60, required=True,
+                      label=T('Descripción')),
+                format='%(descripcion)s')
+db.jurisdiccion.id.readable = db.jurisdiccion.id.writable = False
+
 db.define_table('juzgado',
                 Field('descripcion', length=120, required=True,
                       label=T('Descripción')),
                 Field('fuero_id', db.fuero, label=T('Fuero')),
                 Field('instancia_id', db.instancia, label=T('Instancia')),
+                Field('jurisdiccion_id', db.jurisdiccion, label=T('Jurisdiccion')),
                 auth.signature,
                 format='%(descripcion)s')
 db.juzgado.fuero_id.requires = IS_IN_DB(db, db.fuero.id, '%(descripcion)s')

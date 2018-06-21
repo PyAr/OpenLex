@@ -868,3 +868,11 @@
 [2016-02-26 21:58:23] EDIT OpenLex/views/other_tables/juzgados.html: 4
 [2016-02-26 21:58:52] DELETE OpenLex/controllers/test.py: -41
 [2016-02-26 21:59:01] DELETE OpenLex/views/test/index.html: -3
+[2018-06-21 15:43:52] EDIT OpenLex/controllers/other_tables.py: -2
+[2018-06-21 16:24:05] EDIT OpenLex/models/db_pydoctor.py: 6
+[2018-06-21 16:24:09] EDIT OpenLex/models/db_pydoctor.py: 0
+[2018-06-21 16:25:21] EDIT OpenLex/controllers/other_tables.py: 7
+[2018-06-21 16:25:56] EDIT OpenLex/models/menu.py: 1
+[2018-06-21 16:30:33] EDIT OpenLex/models/db_pydoctor.py: 0
+[2018-06-21 20:22:45] EDIT OpenLex/controllers/other_tables.py: 1
+[2018-06-21 20:23:33] EDIT OpenLex/models/db_pydoctor.py: 0

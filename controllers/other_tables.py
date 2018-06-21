@@ -3,7 +3,7 @@ __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
 
-@auth.requires_membership('admin')
+
 def juzgados():
     grid = SQLFORM.grid(db.juzgado,
                         user_signature=False,
@@ -32,8 +32,17 @@ def instancias():
                         exportclasses=myexport)
     return locals()
 
-
 @auth.requires_membership('admin')
+def jurisdicciones():
+    grid = SQLFORM.grid(db.jurisdiccion,
+                        maxtextlength=50,
+                        advanced_search=False,
+                        orderby=db.jurisdiccion.descripcion,
+                        exportclasses=myexport)
+    return locals()
+
+
+
 def tipoproceso():
     grid = SQLFORM.grid(db.tipoproceso,
                         maxtextlength=50,
