@@ -68,4 +68,5 @@ user: jperez@user.com  contraseña: jperez
 Para más información sobre la estructura interna del sistema:
 [Descripción sistema](https://github.com/UniversidadDelEste/OpenLex/blob/master/documents/Descripci%C3%B3n%20sistema.pdf)
 
+
 ¡Que lo disfrute!
