@@ -7,7 +7,9 @@ uploads/git
 
 # inherit https://github.com/github/gitignore/blob/master/Python.gitignore
 
-*.py[co]
+__pycache__/
+*.py[cod]
+*$py.class
 
 # Packages
 *.egg
