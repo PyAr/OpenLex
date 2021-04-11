@@ -38,30 +38,35 @@ alt="tutorial y demostración" width="480" height="360" border="10" /></a>
 ## Instalación y ejecución
 ### 1. Instalación de web2py:
 #### En windows o mac: 
-Descargar el instalador desde [descarga windows](http://www.web2py.com/examples/static/web2py_win.zip) o [descarga mac](http://www.web2py.com/examples/static/web2py_osx.zip), descomprimirlo usando Winzip o similar y cliquear en web2py.exe (windows) o web2py.app (osx). 
+Descargar el instalador desde [descarga windows](https://mdipierro.pythonanywhere.com/examples/static/web2py_win_py37.zip) o [descarga mac](https://mdipierro.pythonanywhere.com/examples/static/web2py_osx_py37.zip), descomprimirlo usando Winzip o similar y cliquear en web2py.exe (windows) o web2py.app (osx). 
 
 
 #### En linux:
 clonar usando 
-> git clone --recursive https://github.com/web2py/web2py.git
+```
+git clone --recursive https://github.com/web2py/web2py.git
+```
 
 ### 2. Instalar OpenLex
 en el directorio: 
  *Directorio web2py*/applications
 
-descargue y descomprima el archivo: [zip OpenLex](https://github.com/UniversidadDelEste/OpenLex/archive/master.zip)
+descargue y descomprima el archivo: [zip OpenLex](https://github.com/PyAr/OpenLex/archive/master.zip)
 
 o bien clone en el subdirectorio applications
-> git clone https://github.com/UniversidadDelEste/OpenLex.git
+```
+git clone https://github.com/PyAr/OpenLex.git
+```
 
 ### 3. Ejecutar OpenLex
 Ejecute web2py:
-> python.exe web2py.py
-
+```
+python.exe web2py.py
+```
 o en Linux
-
-> python3 web2py.py
-
+```
+python3 web2py.py
+```
 Abra el navegador de internet e ingrese el link http://127.0.0.1:8000/OpenLex/default/index
 
 puede ingresar como usuarios de prueba
@@ -70,7 +75,7 @@ user: egomez@user.com  contraseña: egomez
 user: jperez@user.com  contraseña: jperez
 
 Para más información sobre la estructura interna del sistema:
-[Descripción sistema](https://github.com/UniversidadDelEste/OpenLex/blob/master/documents/Descripci%C3%B3n%20sistema.pdf)
+[Descripción sistema](https://github.com/PyAr/OpenLex/blob/master/documents/Descripci%C3%B3n%20sistema.pdf)
 
 
 ¡Que lo disfrute!
