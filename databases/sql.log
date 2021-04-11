@@ -1,4 +1,4 @@
-timestamp: 2018-06-21T19:01:12.166975
+timestamp: 2021-04-10T20:10:11.739261
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -9,7 +9,51 @@ CREATE TABLE "auth_user"(
     "reset_password_key" CHAR(512),
     "registration_id" CHAR(512)
 );
-timestamp: 2018-06-21T19:02:57.316135
+success!
+timestamp: 2021-04-10T20:10:11.744196
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-04-10T20:10:11.760829
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-04-10T20:10:11.772452
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2021-04-10T20:10:11.784159
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-04-10T20:10:11.795921
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2021-04-10T20:10:11.846776
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -20,7 +64,128 @@ CREATE TABLE "auth_user"(
     "reset_password_key" CHAR(512),
     "registration_id" CHAR(512)
 );
-timestamp: 2018-06-21T20:19:28.861589
+success!
+timestamp: 2021-04-10T20:10:11.850267
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-04-10T20:10:11.862791
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-04-10T20:10:11.874495
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2021-04-10T20:10:11.886446
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-04-10T20:10:11.898295
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2021-04-10T20:10:11.911189
+CREATE TABLE "persona"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "sexo" CHAR(2),
+    "apellido" CHAR(70),
+    "nombre" CHAR(100),
+    "cuitcuil" CHAR(20),
+    "domicilio" CHAR(150),
+    "email" CHAR(150),
+    "observaciones" TEXT,
+    "telefono" CHAR(50),
+    "celular" CHAR(50),
+    "fotografia" CHAR(65536),
+    "matricula" CHAR(10),
+    "domiciliolegal" CHAR(150),
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-04-10T20:10:11.923766
+CREATE TABLE "fuero"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" CHAR(60)
+);
+success!
+timestamp: 2021-04-10T20:10:11.935746
+CREATE TABLE "instancia"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" CHAR(60)
+);
+success!
+timestamp: 2021-04-10T20:10:11.947544
+CREATE TABLE "jurisdiccion"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" CHAR(60)
+);
+success!
+timestamp: 2021-04-10T20:10:11.960703
+CREATE TABLE "juzgado"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" CHAR(120),
+    "fuero_id" INTEGER REFERENCES "fuero" ("id") ON DELETE CASCADE  ,
+    "instancia_id" INTEGER REFERENCES "instancia" ("id") ON DELETE CASCADE  ,
+    "jurisdiccion_id" INTEGER REFERENCES "jurisdiccion" ("id") ON DELETE CASCADE  ,
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-04-10T20:10:11.983392
+CREATE TABLE "tipoproceso"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" CHAR(150)
+);
+success!
+timestamp: 2021-04-10T20:10:11.995642
+CREATE TABLE "expediente"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "numero" CHAR(40),
+    "caratula" CHAR(200),
+    "tipoproceso_id" INTEGER REFERENCES "tipoproceso" ("id") ON DELETE CASCADE  ,
+    "juzgado_id" INTEGER REFERENCES "juzgado" ("id") ON DELETE CASCADE  ,
+    "inicio" DATE,
+    "final" DATE,
+    "changed_at" TIMESTAMP,
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-04-10T20:10:12.008818
 CREATE TABLE "movimiento"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "expediente_id" INTEGER REFERENCES "expediente" ("id") ON DELETE CASCADE  ,
@@ -35,4 +200,34 @@ CREATE TABLE "movimiento"(
     "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
 );
 success!
+timestamp: 2021-04-10T20:10:12.021888
+CREATE TABLE "agenda"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "expediente_id" INTEGER REFERENCES "expediente" ("id") ON DELETE CASCADE  ,
+    "vencimiento" TIMESTAMP,
+    "cumplido" TIMESTAMP,
+    "prioridad" CHAR(2),
+    "estado" CHAR(2),
+    "titulo" CHAR(150),
+    "texto" TEXT,
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-04-10T20:10:12.034651
+CREATE TABLE "parte"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "expediente_id" INTEGER REFERENCES "expediente" ("id") ON DELETE CASCADE  ,
+    "persona_id" INTEGER REFERENCES "persona" ("id") ON DELETE CASCADE  ,
+    "caracter" CHAR(80),
+    "observaciones" TEXT,
+    "is_active" CHAR(1),
+    "created_on" TIMESTAMP,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "modified_on" TIMESTAMP,
+    "modified_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  
+);
 success!
