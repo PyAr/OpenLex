@@ -44,15 +44,9 @@ document.write("</table>")
 document.write("</td>")
 document.write("<td align='center'><table width='95%' height='100%'><tr><td>")
 document.write("<h3 align='center'>This is a html file created by using JavaScript</h3>")
-Copy Codedocument.write("</body></html>")
-Copy Code<script language="JavaScript" src="header.js"></script>
-<h3 align="center">This is a html file created by using JavaScript</h3>
-<script language="JavaScript" src="footer.js"></script>
+<h3 align="center">
 document.write("</pre></table></td></tr><tr><td valign='bottom' height='50'>")
 document.write("<hr><pre>3A Web Design @ 2000, All Rights Reserved</pre>")
 document.write("</td></tr></table>")
 document.write("")
 document.write("")
-<script language="JavaScript" src="header.js"></script>
-<h3 align="center">This is a html file created by using JavaScript</h3>
-<script language="JavaScript" src="footer.js"></script>
