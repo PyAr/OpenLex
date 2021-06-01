@@ -23,3 +23,22 @@ def test_register(page):
     assert page.url.endswith("/dashboard/view#")
     # confirmar que se creó el usuario:
     assert page.inner_text("text=Bienvenido, Juan Perez")
+
+
+def test_login(page):
+    # ADVERTENCIA: este test depende del anterior (sería bueno que sea independiente)
+    # ir a la página de inicio (ver pytest.ini para la url base)
+    page.goto("")
+    # desplegar el menu, ir a la página de registración (y confirmar url)
+    page.click("text=Log In")
+    page.click(":nth-match(:text(\"Log In\"), 2)")
+    assert page.url.endswith("/openlex/default/user/login?_next=/openlex/default/index")
+
+    # complear el formulario:
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+    page.fill("input[name=\"password\"]", "openlex1234")
+    page.click("input:has-text(\"Log In\")")
+
+    # confirmar
+    assert page.url.endswith("/dashboard/view#")
