@@ -1,7 +1,8 @@
 def test_register(page):
     # ir a la página de inicio (ver pytest.ini para la url base)
     page.goto("")
-    # ir a la página de registración (y confirmar url)
+    # desplegar el menu, ir a la página de registración (y confirmar url)
+    page.click("text=Log In")
     page.click("text=Registrarse")
     assert page.url.endswith("openlex/default/user/register")
 
