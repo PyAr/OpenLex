@@ -4,7 +4,7 @@ def test_register(page):
     # desplegar el menu, ir a la página de registración (y confirmar url)
     page.click("text=Log In")
     page.click("text=Registrarse")
-    assert page.url.endswith("openlex/default/user/register?_next=/openlex/default/index")
+    assert page.url.endswith("OpenLex/default/user/register?_next=/OpenLex/default/index")
 
     # completar el formulario de registro:
     page.click("input[name=\"first_name\"]")
@@ -32,7 +32,7 @@ def test_login(page):
     # desplegar el menu, ir a la página de registración (y confirmar url)
     page.click("text=Log In")
     page.click(":nth-match(:text(\"Log In\"), 2)")
-    assert page.url.endswith("/openlex/default/user/login?_next=/openlex/default/index")
+    assert page.url.endswith("/OpenLex/default/user/login?_next=/OpenLex/default/index")
 
     # complear el formulario:
     page.fill("input[name=\"email\"]", "example@example.com")
