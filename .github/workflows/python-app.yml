@@ -42,11 +42,13 @@ jobs:
         pytest --html=report.html --self-contained-html
     - name: Upload test report
       uses: actions/upload-artifact@v2
+      if: ${{ always() }}
       with:
         name: report.html
         path: web2py/applications/openlex/report.html
     - name: Upload test videos
       uses: actions/upload-artifact@v2
+      if: ${{ always() }}
       with:
         name: videos
         path: web2py/applications/openlex/videos
