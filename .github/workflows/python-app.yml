@@ -38,14 +38,15 @@ jobs:
         python web2py/web2py.py -a 'admin1234' &
     - name: Run PyTest UTs
       run: |
-        pytest --html=report.html --self-contained-html web2py/applications/openlex/tests/
+        cd web2py/applications/openlex/
+        pytest --html=report.html --self-contained-html
     - name: Upload test report
       uses: actions/upload-artifact@v2
       with:
         name: report.html
-        path: report.html
+        path: web2py/applications/openlex/report.html
     - name: Upload test videos
       uses: actions/upload-artifact@v2
       with:
         name: videos
-        path: videos
+        path: web2py/applications/openlex/videos
