@@ -4,7 +4,7 @@ def test_register(page):
     # desplegar el menu, ir a la página de registración (y confirmar url)
     page.click("text=Log In")
     page.click("text=Registrarse")
-    assert page.url.endswith("openlex/default/user/register")
+    assert page.url.endswith("openlex/default/user/register?_next=/openlex/default/index")
 
     # completar el formulario de registro:
     page.click("input[name=\"first_name\"]")
