@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f requirements.txt ]; then pip install -r web2py/applications/openlex/requirements.txt; fi
     - name: Install playwright & browsers
       run: |
         playwright install chromium ffmpeg
@@ -39,7 +39,7 @@ jobs:
         python web2py/web2py.py -a 'admin1234' &
     - name: Run PyTest UTs
       run: |
-        pytest --html=report.html --self-contained-html web2py/applications/openlex
+        pytest --html=report.html --self-contained-html web2py/applications/openlex/tests/
     - name: Upload test report
       uses: actions/upload-artifact@v2
       with:
