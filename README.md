@@ -78,3 +78,23 @@ Para más información sobre la estructura interna del sistema:
 
 
 ¡Que lo disfrute!
+
+
+### 4. Ejecutar  Pruebas
+
+Instalar dependencias (pytest y playwright):
+```
+pip install -r requirements.txt
+playwright install
+```
+
+Ejecutar pruebas:
+```
+pytest --headed
+```
+
+Para grabar tests automatizados (abre el navegador y permite interactuar):
+```
+playwright codegen http://127.0.0.1:8000/OpenLex
+```
+
