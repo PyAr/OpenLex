@@ -23,9 +23,9 @@ def upload(out_csv):
 
 def parse_args():
     parser = argparse.ArgumentParser(description = "Este Script sirve para filtrar los csv que contengan una lista de jurisdicciones")
-    parser.add_argument("file_csv", help = "Archivo de entrada csv")
-    parser.add_argument("ent_column", help = "Nombre de columna de jurisdicciones")
-    parser.add_argument("out_csv", help = "Archivo csv de salida")
+    parser.add_argument("file_csv", help="Archivo de entrada csv")
+    parser.add_argument("ent_column", help="Nombre de columna de jurisdicciones")
+    parser.add_argument("out_csv", help="Archivo csv de salida")
     return parser.parse_args()
 
 def main():
