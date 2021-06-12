@@ -6,7 +6,7 @@ import argparse
 data = []
 data_in_column =[]
 
-def filter(file_csv,ent_column):
+def filtered(file_csv,ent_column):
     with open(file_csv, newline='') as File:
         input_data = csv.reader(File)
 
@@ -38,7 +38,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    filter(args.file_csv,args.ent_column)
+    filtered(args.file_csv,args.ent_column)
     upload(args.out_csv)
 
 
