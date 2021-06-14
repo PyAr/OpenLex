@@ -331,6 +331,9 @@ db.define_table(
         label=T('Texto'),
         widget=advanced_editor,
         represent=advanced_repr),
+    Field('movimiento_id',
+        db.movimiento,
+        label=T('Movimiento')),
     auth.signature)
 
 db.agenda.id.readable = db.agenda.id.writable = False
