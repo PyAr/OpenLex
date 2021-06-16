@@ -63,6 +63,29 @@ def index():
         maxtextlengths=maxtextlengths)
     return locals()
 
+@auth.requires_login()
+def download():
+    import io
+    #vars = request.args[0]
+    tempfile = io.BytesIO()
+    temparchive = zipfile.ZipFile(tempfile, 'w', zipfile.ZIP_DEFLATED)
+    #fileIDs = vars.values()
+    rows = db(db.movimiento.archivo != None).select()
+    try:
+        for file_id in rows:
+            #file_single = db.movimiento[file_id].archivo #No encuentra el objeto que le es pasado por indice # Debo obtener algo como esto movimiento.archivo.82426746fd76a46e.ZGF0b3MtZXN0cnVjdHVyYWxlcy0yMDE4LmNzdg==.csv
+            file_single = file_id.archivo
+            #file_single = 'movimiento.archivo.82426746fd76a46e.ZGF0b3MtZXN0cnVjdHVyYWxlcy0yMDE4LmNzdg==.csv'
+            fileLoc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' +  file_single #Funciona
+            temparchive.write(fileLoc, file_single) #Funciona
+            #zip.write(file_id)
+    finally:
+        
+        temparchive.close() #writes
+        tempfile.seek(0)
+        response.headers['Content-Disposition'] = 'attachment;filename=my_python_files.zip' #Funciona correctamente creando el zip con el boton
+        response.headers['Content-Type'] = 'application/zip'
+
 
 def vista_expediente():
     'muestra un panel a la izquierda que tiene los datos del expediente y permite navegar en él'
@@ -87,5 +110,10 @@ def vista_expediente():
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
+    url = URL('download', args=args, user_signature=True) #Boton de descarga
+    text1="Descarga"
+    links.append(A(text1, _href=url, _type='button',
+                       _class='btn btn-default'))
 
     return dict(links=links, expte=expte)
+
