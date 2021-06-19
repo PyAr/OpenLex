@@ -4,7 +4,7 @@ __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
 
 linked_tables = ['movimiento', 'agenda', 'parte']
-
+import zipfile
 
 @auth.requires_login()
 def index():
@@ -67,24 +67,24 @@ def index():
 def download():
     import io
     #vars = request.args[0]
+    zip_filename = 'Movimiento.zip'
     tempfile = io.BytesIO()
     temparchive = zipfile.ZipFile(tempfile, 'w', zipfile.ZIP_DEFLATED)
     #fileIDs = vars.values()
     rows = db(db.movimiento.archivo != None).select()
     try:
         for file_id in rows:
-            #file_single = db.movimiento[file_id].archivo #No encuentra el objeto que le es pasado por indice # Debo obtener algo como esto movimiento.archivo.82426746fd76a46e.ZGF0b3MtZXN0cnVjdHVyYWxlcy0yMDE4LmNzdg==.csv
-            file_single = file_id.archivo
+            file_single = file_id.archivo #Funciona
             #file_single = 'movimiento.archivo.82426746fd76a46e.ZGF0b3MtZXN0cnVjdHVyYWxlcy0yMDE4LmNzdg==.csv'
-            fileLoc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' +  file_single #Funciona
-            temparchive.write(fileLoc, file_single) #Funciona
+            fileLoc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' + file_single #Funciona
+            file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']#Funciona
+            temparchive.writestr(file_single , open(fileLoc, 'rb').read()) #Funciona
             #zip.write(file_id)
     finally:
-        
         temparchive.close() #writes
         tempfile.seek(0)
-        response.headers['Content-Disposition'] = 'attachment;filename=my_python_files.zip' #Funciona correctamente creando el zip con el boton
         response.headers['Content-Type'] = 'application/zip'
+        response.headers['Content-Disposition'] = 'attachment; filename = %s' % zip_filename
 
 
 def vista_expediente():
@@ -110,7 +110,7 @@ def vista_expediente():
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
-    url = URL('download', args=args, user_signature=True) #Boton de descarga
+    url = URL('download', args='movimiento.archivo', user_signature=True) #Boton de descarga
     text1="Descarga"
     links.append(A(text1, _href=url, _type='button',
                        _class='btn btn-default'))
