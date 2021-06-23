@@ -3,10 +3,8 @@ __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
 import zipfile
-import os
-
-
 linked_tables = ['movimiento', 'agenda', 'parte']
+
 
 @auth.requires_login()
 def index():
@@ -65,6 +63,7 @@ def index():
         maxtextlengths=maxtextlengths)
     return locals()
 
+
 @auth.requires_login()
 def download():
     import io
@@ -74,15 +73,15 @@ def download():
     rows = db(db.movimiento.archivo != None).select()
     try:
         for file_id in rows:
-            file_single = file_id.archivo  # Funciona
+            file_single = file_id.archivo
             if not file_single:
                 # if movimiento doesn't have a file, ignore it
                 continue
-            file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' + file_single # Funciona
-            file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']  # Funciona
-            temparchive.write(file_loc, file_name)  # Funciona
+            file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path']+ '/' + file_single
+            file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']
+            temparchive.write(file_loc, file_name)
     finally:
-        temparchive.close() #writes
+        temparchive.close()
         tempfile.seek(0)
 
     response.headers['Content-Type'] = 'application/zip'
@@ -114,10 +113,8 @@ def vista_expediente():
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
-    url = URL('download', args='movimiento.archivo', user_signature=True) #Boton de descarga
-    text1="Descarga"
+    url = URL('download', args='movimiento.archivo', user_signature=True)
+    text1 = "Descarga"
     links.append(A(text1, _href=url, _type='button',
-                       _class='btn btn-default'))
-
+                 _class='btn btn-default'))
     return dict(links=links, expte=expte)
-
