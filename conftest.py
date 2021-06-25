@@ -67,7 +67,7 @@ def context(
     current_video_name = context.current_video_name
     current_video_path = current_video_name
     updated_video_path = os.path.join(
-        video_path, f"{request.node.originalname}_{browser_name}.webm"
+        video_path, f"{request.node.originalname}_{browser_name}.mp4"
     )
     context.close()
     os.rename(current_video_path, updated_video_path)
