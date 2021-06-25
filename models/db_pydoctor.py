@@ -2,6 +2,7 @@
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
+import os
 from gluon.contrib.markdown.markdown2 import markdown
 from gluon.tools import *
 
@@ -22,9 +23,12 @@ myexport = dict(csv_with_hidden_cols=False,
                 tsv_with_hidden_cols=False,
                 tsv=False,
                 json=False)
-
-
-db = DAL('sqlite://openlex.sqlite')
+# import pdb; breakpoint()
+if os.getenv('WEB2PY_USE_DB_TESTING'):
+    temp_dir = '/dev/shm'
+    db = DAL('sqlite://testing.sqlite', folder=temp_dir)
+else:
+    db = DAL('sqlite://openlex.sqlite')
 
 auth = Auth(globals(), db)
 auth.define_tables()

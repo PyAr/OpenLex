@@ -35,7 +35,7 @@ jobs:
         playwright install chromium ffmpeg
     - name: Serve website locally
       run: |
-        python web2py/web2py.py -a 'admin1234' &
+        python web2py/web2py.py -a 'admin1234' -p 8020 &
     - name: Run PyTest UTs
       run: |
         cd web2py/applications/OpenLex/
