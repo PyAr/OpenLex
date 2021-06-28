@@ -425,6 +425,7 @@
 'Remember me (for 30 days)': 'Recuérdame (durante 30 días)',
 'remove compiled': 'eliminar compiladas',
 'Request reset password': 'Solicitar reinicio de contraseña',
+'Request Reset Password': 'Request Reset Password',
 'Reset password': 'Reiniciar contraseña',
 'Reset Password key': 'Restaurar Llave de la Contraseña',
 'Resolve Conflict file': 'archivo Resolución de Conflicto',
