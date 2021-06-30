@@ -20,7 +20,8 @@ def fueros():
                         advanced_search=False,
                         orderby=db.fuero.descripcion,
                         exportclasses=myexport)
-    return locals()
+    formcsv = import_table(db(db.fuero))
+    return dict(grid=grid, formcsv=formcsv)
 
 
 @auth.requires_membership('admin')
@@ -30,7 +31,8 @@ def instancias():
                         advanced_search=False,
                         orderby=db.instancia.descripcion,
                         exportclasses=myexport)
-    return locals()
+    formcsv = import_table(db(db.instancia))
+    return dict(grid=grid, formcsv=formcsv)
 
 @auth.requires_membership('admin')
 def jurisdicciones():
@@ -39,7 +41,8 @@ def jurisdicciones():
                         advanced_search=False,
                         orderby=db.jurisdiccion.descripcion,
                         exportclasses=myexport)
-    return locals()
+    formcsv = import_table(db(db.jurisdiccion))
+    return dict(grid=grid, formcsv=formcsv)
 
 
 
@@ -49,4 +52,27 @@ def tipoproceso():
                         advanced_search=False,
                         orderby=db.tipoproceso.descripcion,
                         exportclasses=myexport)
-    return locals()
+    formcsv = import_table(db(db.tipoproceso))
+    return dict(grid=grid, formcsv=formcsv)
+
+
+def import_csv(table, file):
+    table.import_from_csv_file(file)
+
+def import_table(table):
+    csv_table = table or request.vars.table
+    if csv_table:
+        formcsv = FORM(str(T('or import from csv file')) + " ",
+                       INPUT(_type='file', _name='csvfile'),
+                       INPUT(_type='hidden', _value=csv_table, _name='table'),
+                       INPUT(_type='submit', _value=T('import')))
+    else:
+        formcsv = None
+    if formcsv and formcsv.process().accepted:
+        try:
+            import_csv(db[request.vars.table],
+                       request.vars.csvfile.file)
+            response.flash = T('data uploaded')
+        except Exception as e:
+            response.flash = DIV(T('unable to parse csv file'), PRE(str(e)))
+    return formcsv
