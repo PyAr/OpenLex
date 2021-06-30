@@ -18,7 +18,6 @@ def upload(out_csv):
     with open(out_csv, "w", newline='') as file_:
         uploading = csv.writer(file_)
         uploading.writerows(DATA_IN_COLUMN)
-    file_.close()
 
 
 def parse_args():
