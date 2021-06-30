@@ -6,7 +6,7 @@ DATA_IN_COLUMN = []
 
 
 def filtered_csv(file_csv, ent_column):
-    global data_in_column
+    global DATA_IN_COLUMN
     with open(file_csv, newline='') as file_:
         input_data = csv.DictReader(file_)
         data = [file[ent_column] for file in input_data]
@@ -41,4 +41,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
