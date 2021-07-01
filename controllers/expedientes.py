@@ -2,8 +2,12 @@
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
-
-linked_tables = ['movimiento', 'agenda', 'parte']
+import zipfile
+import io
+from collections import OrderedDict
+LINKED_TABLES = ['movimiento', 'agenda', 'parte']
+ZIP_FILENAME = 'Movimiento.zip'
+CHUNK_SIZE = 4096
 
 
 @auth.requires_login()
@@ -50,7 +54,7 @@ def index():
         constraints={
             'expediente': (
                 db.expediente.created_by == auth.user.id)},
-        linked_tables=linked_tables,
+        linked_tables=LINKED_TABLES,
         buttons_placement='right',
         exportclasses=myexport,
         advanced_search=False,
@@ -62,6 +66,37 @@ def index():
             'agenda': ~db.agenda.vencimiento},
         maxtextlengths=maxtextlengths)
     return locals()
+
+
+@auth.requires_login()
+def download():
+    zip_filename = 'Movimiento.zip'
+    tempfiles = io.BytesIO()
+    temparchive = zipfile.ZipFile(tempfiles, 'w', zipfile.ZIP_DEFLATED)
+    #Obtener ID de expediente y guardarlo en una lista.
+    rowB = db(db.movimiento).select()
+    expediente_list = [numero.expediente_id for numero in rowB]
+    expediente_lists = OrderedDict.fromkeys(expediente_list).keys()
+        #Separar archivos por el numero de expediente.
+    for expedientes in expediente_lists:
+        rows = db(db.movimiento.expediente_id == expedientes).select(orderby=db.movimiento.archivo)
+        rowC = db(db.expediente.id == expedientes).select(db.expediente.numero)
+        expediente = [numero.numero for numero in rowC]
+        try:
+            for file_id in rows:
+                file_single = file_id.archivo
+                if file_single:
+                    file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' + file_single
+                    file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']
+                    temparchive.write(file_loc, "upload/" + str(expediente[0]) + "/" + file_name)
+        finally:
+            continue
+    temparchive.close()
+    tempfiles.seek(0)
+    response.headers['Content-Type'] = 'application/zip'
+    response.headers['Content-Disposition'] = 'attachment; filename = %s' % ZIP_FILENAME
+    res = response.stream(tempfiles, CHUNK_SIZE)
+    return res
 
 
 def vista_expediente():
@@ -81,11 +116,16 @@ def vista_expediente():
         user_signature=True)
     links = [A('Expediente', _href=url, _type='button',
                _class='btn btn-default')]
-    for k in linked_tables:
+    for k in LINKED_TABLES:
         args = ['expediente', '%s.expediente_id' % k, request.args[0]]
         url = URL('index', args=args, user_signature=True)
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
+    url = URL('download', args='movimiento.archivo') #Boton de descarga
+    text1="Descarga"
+    links.append(A(text1, _href=url, _type='button',
+                 _class='btn btn-default'))
 
     return dict(links=links, expte=expte)
+
