@@ -1,3 +1,6 @@
+#Este es un testing de una solicitud por contraseña olvidada.
+#Genera un error al cargar una dirección de e-mail registrada, pero con un servidor ficticio. Ya fue reportado como issue.
+
 from playwright.sync_api import sync_playwright
 
 def run(playwright):
@@ -30,18 +33,6 @@ def run(playwright):
     # Click text=Solicitar reinicio de contraseña
     page.click("text=Solicitar reinicio de contraseña")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/request_reset_password?_next=/OpenLex/default/index#"
-
-    # Click text=OpenLex/127.0.0.1.2021-06-27.21-46-16.f49647e5-6f93-4b47-a330-f3bfb4f6ba1a
-    with page.expect_popup() as popup_info:
-        page.click("text=OpenLex/127.0.0.1.2021-06-27.21-46-16.f49647e5-6f93-4b47-a330-f3bfb4f6ba1a")
-    page1 = popup_info.value
-
-    # Fill input[name="password"]
-    page1.fill("input[name=\"password\"]", "openlex1234")
-
-    # Press Enter
-    page1.press("input[name=\"password\"]", "Enter")
-    # assert page1.url == "http://127.0.0.1:8020/admin/default/ticket/OpenLex/127.0.0.1.2021-06-27.21-46-16.f49647e5-6f93-4b47-a330-f3bfb4f6ba1a"
 
     # Close page
     page1.close()

@@ -1,3 +1,6 @@
+#Acá realizaremos un testing de la funcionalidad de carga de eventos en la agenda.
+#El script está incompleto, ya que tuve que declarar un issue sobre un error especificado al testear.
+
 from playwright.sync_api import sync_playwright
 
 def run(playwright):
@@ -119,27 +122,12 @@ def run(playwright):
     # Click text=Agenda
     page.frame(url="about:blank").click("text=Agenda")
 
-    # Click text=AgendaAgenda de ejemplo
-    page.frame(url="about:blank").click("text=AgendaAgenda de ejemplo")
+    # Click text=Agenda de ejemplo
+    page.frame(url="about:blank").click("text=Agenda de ejemplo")
 
     # Click text=Enviar
     page.click("text=Enviar")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/agenda/agenda/new/agenda#"
-
-    # Click text=OpenLex/127.0.0.1.2021-06-27.21-07-24.021c57c0-7c45-427e-91b9-e3d34f0970b5
-    with page.expect_popup() as popup_info:
-        page.click("text=OpenLex/127.0.0.1.2021-06-27.21-07-24.021c57c0-7c45-427e-91b9-e3d34f0970b5")
-    page1 = popup_info.value
-
-    # Click input[name="password"]
-    page1.click("input[name=\"password\"]")
-
-    # Fill input[name="password"]
-    page1.fill("input[name=\"password\"]", "openlex1234")
-
-    # Click button:has-text("Inicio de sesión")
-    page1.click("button:has-text(\"Inicio de sesión\")")
-    # assert page1.url == "http://127.0.0.1:8020/admin/default/ticket/OpenLex/127.0.0.1.2021-06-27.21-07-24.021c57c0-7c45-427e-91b9-e3d34f0970b5"
 
     # Close page
     page1.close()

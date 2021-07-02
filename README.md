@@ -69,7 +69,7 @@ python3 web2py.py
 ```
 Abra el navegador de internet e ingrese el link http://127.0.0.1:8000/OpenLex/default/index
 
-Puede registrar un usuario de ejemplo, y realizar pruebas con eso
+Puede registrar un nuevo usuario, con el fin de realizar pruebas.
 
 Para más información sobre la estructura interna del sistema:
 [Descripción sistema](https://github.com/PyAr/OpenLex/blob/master/documents/Descripci%C3%B3n%20sistema.pdf)

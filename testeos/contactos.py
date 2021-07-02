@@ -1,3 +1,5 @@
+#Acá realizaremos un testing de la funcionalidad de carga y eliminación de contactos.
+
 from playwright.sync_api import sync_playwright
 
 def run(playwright):

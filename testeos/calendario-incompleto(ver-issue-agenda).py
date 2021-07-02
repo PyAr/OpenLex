@@ -1,3 +1,6 @@
+#Acá realizaremos un testing del recorrido del calendario.
+#El testing está incompleto, ya que depende de la funcionalidad de carga de agenda, la cual requiere una revisión marcada como issue.
+
 from playwright.sync_api import sync_playwright
 
 def run(playwright):
