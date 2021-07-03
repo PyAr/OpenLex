@@ -1,5 +1,5 @@
-#Este es el testing de lectura y carga de juzgados.
-#No puede ser testeado apropiadamente hasta resolver el issue de las tablas.
+# Este es el testing de lectura y carga de juzgados.
+# No puede ser testeado apropiadamente hasta resolver el issue de las tablas.
 
 from playwright.sync_api import sync_playwright
 

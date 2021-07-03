@@ -43,7 +43,7 @@ class ParamAbm(object):
         return '\n'.join(sal)
 
     def listme(self):
-        print self
+        print(self)
 
     def get_reg(self):
         'Ingreso de los campos descriptivos'
@@ -70,7 +70,7 @@ class ParamAbm(object):
                 cur.execute(self.sql_one, [key, ])
                 if cur.fetchone():
                     return key
-            print 'Debe ingresar un id válido'
+            print('Debe ingresar un id válido')
 
     def del_reg(self):
         'Borrado del registro'
@@ -104,8 +104,8 @@ class ParamAbm(object):
                 self.options[opt]()
             else:
                 if opt != 'f':
-                    print 'Error al elegir opcion'
-        print 'Terminada la edicion de %s' % self.table
+                    print('Error al elegir opcion')
+        print('Terminada la edicion de %s' % self.table)
 
 
 def main():
@@ -117,20 +117,20 @@ def main():
     opt = 100
     while opt:
         for idx, op in enumerate(options):
-            print '%d)\t%s' % (idx + 1, op[0])
+            print('%d)\t%s' % (idx + 1, op[0]))
         opt = raw_input('Ingrese una tabla para editar (0 para salir):')
         if not opt or not opt.isdigit():
-            print 'Opcion no valida'
+            print('Opcion no valida')
             opt = 100
         else:
             opt = int(opt)
             if opt > len(options):
-                print 'Opcion no valida'
+                print('Opcion no valida')
 
             elif opt > 0:
                 par = options[opt - 1]
                 obj_Table = ParamAbm(par[0], par[1])
-                print obj_Table
+                print(obj_Table)
                 obj_Table.run()
 
 

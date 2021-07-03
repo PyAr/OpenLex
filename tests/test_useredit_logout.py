@@ -1,4 +1,4 @@
-#Testing script para editar el nombre de usuario, su contraseña, y una sucesión de log-out y log-in.
+# Testing script para editar el nombre de usuario, su contraseña, y una sucesión de log-out y log-in.
 
 from playwright.sync_api import sync_playwright
 

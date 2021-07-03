@@ -1,5 +1,5 @@
-#Este es un testing de una solicitud por contraseña olvidada.
-#Genera un error al cargar una dirección de e-mail registrada, pero con un servidor ficticio. Ya fue reportado como issue.
+# Este es un testing de una solicitud por contraseña olvidada.
+# Genera un error al cargar una dirección de e-mail registrada, pero con un servidor ficticio. Ya fue reportado como issue.
 
 from playwright.sync_api import sync_playwright
 

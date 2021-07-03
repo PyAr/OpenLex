@@ -1,5 +1,5 @@
-#Este es el testing de la página principal.
-#Para ser completado, debería revisarse el issue de la agenda.
+# Este es el testing de la página principal.
+# Para ser completado, debería revisarse el issue de la agenda.
 
 from playwright.sync_api import sync_playwright
 

@@ -1,4 +1,4 @@
-#Testing obligatorio para tener un usuario y contraseña de prueba, para usar los demás scripts.
+# Testing obligatorio para tener un usuario y contraseña de prueba, para usar los demás scripts.
 
 from playwright.sync_api import sync_playwright
 

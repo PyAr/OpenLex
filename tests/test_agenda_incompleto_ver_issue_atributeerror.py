@@ -1,5 +1,5 @@
-#Acá realizaremos un testing de la funcionalidad de carga de eventos en la agenda.
-#El script está incompleto, ya que tuve que declarar un issue sobre un error especificado al testear.
+# Acá realizaremos un testing de la funcionalidad de carga de eventos en la agenda.
+# El script está incompleto, ya que tuve que declarar un issue sobre un error especificado al testear.
 
 from playwright.sync_api import sync_playwright
 
