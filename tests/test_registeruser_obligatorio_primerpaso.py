@@ -2,7 +2,7 @@
 
 def test_register(page):
     # Go to main page
-    page.goto("")
+    page.goto("http://127.0.0.1:8020/OpenLex/")
 
     # Click text=Log In
     page.click("text=Log In")
