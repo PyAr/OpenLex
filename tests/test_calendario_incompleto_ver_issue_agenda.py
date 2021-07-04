@@ -223,5 +223,3 @@ def test_calendario(page):
 
     # Close page
     page.close()
-
-test_calendario(page)

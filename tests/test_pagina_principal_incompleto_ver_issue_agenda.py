@@ -74,6 +74,3 @@ def test_mainpage(page):
 
     # Close page
     page.close()
-
-
-test_mainpage(page)

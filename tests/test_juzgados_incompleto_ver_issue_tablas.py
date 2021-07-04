@@ -46,6 +46,3 @@ def test_juzgados(page):
 
     # Close page
     page.close()
-
-
-test_juzgados(page)

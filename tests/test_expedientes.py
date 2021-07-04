@@ -125,6 +125,3 @@ def test_expedientes(page):
 
     # Close page
     page.close()
-
-
-test_expedientes(page)

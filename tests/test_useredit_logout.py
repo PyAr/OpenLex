@@ -196,6 +196,3 @@ def test_edituser(page):
 
     # Close page
     page.close()
-
-
-test_edituser(page)

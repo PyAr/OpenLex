@@ -31,6 +31,3 @@ def test_passwordchange(page):
 
     # Close page
     page.close()
-
-
-test_passwordchange(page)

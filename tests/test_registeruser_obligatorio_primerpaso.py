@@ -48,6 +48,3 @@ def test_register(page):
 
     # Close page
     page.close()
-
-
-test_register(page)

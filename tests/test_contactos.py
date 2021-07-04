@@ -184,5 +184,3 @@ def test_contactos(page):
 
     # Close page
     page.close()
-
-test_contactos(page)

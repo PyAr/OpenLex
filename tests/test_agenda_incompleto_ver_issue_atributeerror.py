@@ -126,5 +126,3 @@ def test_agenda(page):
 
     # Close page
     page.close()
-
-test_agenda(page)
