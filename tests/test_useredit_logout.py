@@ -1,16 +1,8 @@
 # Testing script para editar el nombre de usuario, su contraseña, y una sucesión de log-out y log-in.
 
-from playwright.sync_api import sync_playwright
-
-def run(playwright):
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-
-    # Open new page
-    page = context.new_page()
-
-    # Go to http://127.0.0.1:8020/OpenLex/default/index
-    page.goto("http://127.0.0.1:8020/OpenLex/default/index")
+def test_edituser(page):
+    # Go to main page
+    page.goto("")
 
     # Click text=Log In
     page.click("text=Log In")
@@ -205,9 +197,5 @@ def run(playwright):
     # Close page
     page.close()
 
-    # ---------------------
-    context.close()
-    browser.close()
 
-with sync_playwright() as playwright:
-    run(playwright)
+test_edituser(page)
