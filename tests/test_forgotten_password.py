@@ -21,6 +21,7 @@ def test_passwordchange(page):
 
     # Fill input[name="email"]
     page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
 
     # Click text=Solicitar reinicio de contraseña
     page.click("text=Solicitar reinicio de contraseña")

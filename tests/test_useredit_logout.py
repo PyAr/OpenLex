@@ -16,6 +16,7 @@ def test_edituser(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -33,12 +34,14 @@ def test_edituser(page):
 
     # Fill input[name="first_name"]
     page.fill("input[name=\"first_name\"]", "Jorge")
+    page.press("input[name=\"first_name\"]", "Tab")
 
     # Double click input[name="last_name"]
     page.dblclick("input[name=\"last_name\"]")
 
     # Fill input[name="last_name"]
     page.fill("input[name=\"last_name\"]", "Lopez")
+    page.press("input[name=\"last_name\"]", "Tab")
 
     # Click text=Aplicar cambios
     page.click("text=Aplicar cambios")
@@ -56,12 +59,14 @@ def test_edituser(page):
 
     # Fill input[name="first_name"]
     page.fill("input[name=\"first_name\"]", "Juan")
+    page.press("input[name=\"first_name\"]", "Tab")
 
     # Click input[name="last_name"]
     page.click("input[name=\"last_name\"]")
 
     # Fill input[name="last_name"]
     page.fill("input[name=\"last_name\"]", "Perez")
+    page.press("input[name=\"last_name\"]", "Tab")
 
     # Click text=Aplicar cambios
     page.click("text=Aplicar cambios")
@@ -76,18 +81,21 @@ def test_edituser(page):
 
     # Fill input[name="old_password"]
     page.fill("input[name=\"old_password\"]", "openlex1234")
+    page.press("input[name=\"old_password\"]", "Tab")
 
     # Click input[name="new_password"]
     page.click("input[name=\"new_password\"]")
 
     # Fill input[name="new_password"]
     page.fill("input[name=\"new_password\"]", "closedlex1234")
+    page.press("input[name=\"new_password\"]", "Tab")
 
     # Click input[name="new_password2"]
     page.click("input[name=\"new_password2\"]")
 
     # Fill input[name="new_password2"]
     page.fill("input[name=\"new_password2\"]", "closedlex1234")
+    page.press("input[name=\"new_password2\"]", "Tab")
 
     # Click input:has-text("Cambie la contraseña")
     page.click("input:has-text(\"Cambie la contraseña\")")
@@ -109,12 +117,14 @@ def test_edituser(page):
 
     # Fill input[name="email"]
     page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
 
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -125,6 +135,7 @@ def test_edituser(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "closedlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -142,12 +153,14 @@ def test_edituser(page):
 
     # Fill input[name="new_password"]
     page.fill("input[name=\"new_password\"]", "openlex1234")
+    page.press("input[name=\"new_password\"]", "Tab")
 
     # Click input[name="new_password2"]
     page.click("input[name=\"new_password2\"]")
 
     # Fill input[name="new_password2"]
     page.fill("input[name=\"new_password2\"]", "openlex1234")
+    page.press("input[name=\"new_password2\"]", "Tab")
 
     # Click input:has-text("Cambie la contraseña")
     page.click("input:has-text(\"Cambie la contraseña\")")
@@ -172,6 +185,7 @@ def test_edituser(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "closedlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -182,6 +196,7 @@ def test_edituser(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")

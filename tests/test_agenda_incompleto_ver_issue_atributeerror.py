@@ -17,12 +17,14 @@ def test_agenda(page):
 
     # Fill input[name="email"]
     page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
 
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -41,18 +43,21 @@ def test_agenda(page):
 
     # Fill input[name="numero"]
     page.fill("input[name=\"numero\"]", "1")
+    page.press("input[name=\"numero\"]", "Tab")
 
     # Click input[name="caratula"]
     page.click("input[name=\"caratula\"]")
 
     # Fill input[name="caratula"]
     page.fill("input[name=\"caratula\"]", "Ejemplo1")
+    page.press("input[name=\"caratula\"]", "Tab")
 
     # Click input[name="_autocomplete_tipoproceso_descripcion_aux"]
     page.click("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]")
 
     # Fill input[name="_autocomplete_tipoproceso_descripcion_aux"]
     page.fill("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]", "")
+    page.press("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]", "Tab")
 
     # Click input[name="inicio"]
     page.click("input[name=\"inicio\"]")
@@ -83,6 +88,7 @@ def test_agenda(page):
 
     # Fill input[name="_autocomplete_expediente_numero_aux"]
     page.fill("input[name=\"_autocomplete_expediente_numero_aux\"]", "1")
+    page.press("input[name=\"_autocomplete_expediente_numero_aux\"]", "Tab")
 
     # Click input[name="vencimiento"]
     page.click("input[name=\"vencimiento\"]")
@@ -107,6 +113,7 @@ def test_agenda(page):
 
     # Fill input[name="titulo"]
     page.fill("input[name=\"titulo\"]", "Agenda1")
+    page.press("input[name=\"titulo\"]", "Tab")
 
     # Click html
     page.frame(url="about:blank").click("html")

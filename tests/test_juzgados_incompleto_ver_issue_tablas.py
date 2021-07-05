@@ -17,6 +17,7 @@ def test_juzgados(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -35,6 +36,7 @@ def test_juzgados(page):
 
     # Fill input[name="descripcion"]
     page.fill("input[name=\"descripcion\"]", "Juzgado Municipal")
+    page.press("input[name=\"descripcion\"]", "Tab")
 
     # Click text=Enviar
     page.click("text=Enviar")

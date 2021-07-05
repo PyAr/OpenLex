@@ -16,6 +16,7 @@ def test_expedientes(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -34,12 +35,14 @@ def test_expedientes(page):
 
     # Fill input[name="numero"]
     page.fill("input[name=\"numero\"]", "1")
+    page.press("input[name=\"numero\"]", "Tab")
 
     # Click input[name="caratula"]
     page.click("input[name=\"caratula\"]")
 
     # Fill input[name="caratula"]
     page.fill("input[name=\"caratula\"]", "Ejemplo1")
+    page.press("input[name=\"caratula\"]", "Tab")
 
     # Click input[name="_autocomplete_tipoproceso_descripcion_aux"]
     page.click("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]")
@@ -49,6 +52,7 @@ def test_expedientes(page):
 
     # Fill input[name="_autocomplete_tipoproceso_descripcion_aux"]
     page.fill("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]", "Judicial")
+    page.press("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]", "Tab")
 
     # Click input[name="_autocomplete_juzgado_descripcion_aux"]
     page.click("input[name=\"_autocomplete_juzgado_descripcion_aux\"]", modifiers=["Shift"])
@@ -58,6 +62,7 @@ def test_expedientes(page):
 
     # Fill input[name="_autocomplete_juzgado_descripcion_aux"]
     page.fill("input[name=\"_autocomplete_juzgado_descripcion_aux\"]", "Córdoba")
+    page.press("input[name=\"_autocomplete_juzgado_descripcion_aux\"]", "Tab")
 
     # Click input[name="inicio"]
     page.click("input[name=\"inicio\"]")

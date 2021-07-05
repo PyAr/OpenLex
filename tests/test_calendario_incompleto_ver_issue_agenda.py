@@ -17,6 +17,7 @@ def test_calendario(page):
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
