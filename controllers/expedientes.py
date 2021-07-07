@@ -5,10 +5,10 @@ __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 import zipfile
 import io
 from collections import OrderedDict
+from xhtml2pdf import pisa
 LINKED_TABLES = ['movimiento', 'agenda', 'parte']
 ZIP_FILENAME = 'Movimiento.zip'
 CHUNK_SIZE = 4096
-
 
 @auth.requires_login()
 def index():
@@ -70,33 +70,56 @@ def index():
 
 @auth.requires_login()
 def download():
+    list_temp_directories = []
+    list_full_directories = []
+    file_loc_base = None
     zip_filename = 'Movimiento.zip'
     tempfiles = io.BytesIO()
     temparchive = zipfile.ZipFile(tempfiles, 'w', zipfile.ZIP_DEFLATED)
     #Obtener ID de expediente y guardarlo en una lista.
-    rowB = db(db.movimiento).select()
-    expediente_list = [numero.expediente_id for numero in rowB]
+    rowA = db(db.movimiento).select()
+    expediente_list = [numero.expediente_id for numero in rowA]
     expediente_lists = OrderedDict.fromkeys(expediente_list).keys()
+
         #Separar archivos por el numero de expediente.
     for expedientes in expediente_lists:
-        rows = db(db.movimiento.expediente_id == expedientes).select(orderby=db.movimiento.archivo)
-        rowC = db(db.expediente.id == expedientes).select(db.expediente.numero)
-        expediente = [numero.numero for numero in rowC]
+        rowB = db(db.movimiento.expediente_id == expedientes).select(db.movimiento.archivo, db.movimiento.texto, db.movimiento.titulo)
+        rowD = db(db.expediente.id == expedientes).select(db.expediente.numero)
+        expedient = [numero.numero for numero in rowD]
         try:
-            for file_id in rows:
+            for file_id in rowB:
                 file_single = file_id.archivo
                 if file_single:
                     file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' + file_single
                     file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']
-                    temparchive.write(file_loc, "upload/" + str(expediente[0]) + "/" + file_name)
+                    temparchive.write(file_loc, "upload/" + str(expedient[0]) + "/" + file_name)
         finally:
-            continue
+            for text_id in rowB:
+                text_single_text = text_id.texto
+                text_single_title = text_id.titulo
+                status, result_file = convert_html_to_pdf(text_single_text, text_single_title + ".pdf")
+                temparchive.write(result_file.name, "upload/" + str(expedient[0]) + "/" + result_file.name)
     temparchive.close()
     tempfiles.seek(0)
     response.headers['Content-Type'] = 'application/zip'
     response.headers['Content-Disposition'] = 'attachment; filename = %s' % ZIP_FILENAME
     res = response.stream(tempfiles, CHUNK_SIZE)
     return res
+
+
+def convert_html_to_pdf(source_html, output_filename):
+    # open output file for writing (truncated binary)
+    result_file = open(output_filename, "w+b")
+
+    # convert HTML to PDF
+    pisa_status = pisa.CreatePDF(
+            source_html,                # the HTML to convert
+            dest=result_file)           # file handle to recieve result
+
+    # close output file
+    result_file.close()
+    # return False on success and True on errors
+    return pisa_status, result_file
 
 
 def vista_expediente():
