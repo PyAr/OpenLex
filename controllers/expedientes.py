@@ -10,6 +10,7 @@ LINKED_TABLES = ['movimiento', 'agenda', 'parte']
 ZIP_FILENAME = 'Movimiento.zip'
 CHUNK_SIZE = 4096
 
+
 @auth.requires_login()
 def index():
     'muestra la grilla y permite la edición de los datos de los expedientes'
@@ -70,9 +71,6 @@ def index():
 
 @auth.requires_login()
 def download():
-    list_temp_directories = []
-    list_full_directories = []
-    file_loc_base = None
     zip_filename = 'Movimiento.zip'
     tempfiles = io.BytesIO()
     temparchive = zipfile.ZipFile(tempfiles, 'w', zipfile.ZIP_DEFLATED)
