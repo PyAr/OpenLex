@@ -34,6 +34,7 @@ def calendar():
     query = (db.agenda.created_by == auth.user.id)
     # query&=(db.agenda.cumplido==None)
     query &= (db.agenda.estado == "P")
+    query &= (db.agenda.vencimiento != None)
     rows = db(query).select()
     return dict(rows=rows)
 
