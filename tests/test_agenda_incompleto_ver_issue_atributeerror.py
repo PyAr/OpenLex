@@ -127,9 +127,3 @@ def test_agenda(page):
     # Click text=Enviar
     page.click("text=Enviar")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/agenda/agenda/new/agenda#"
-
-    # Close page
-    page1.close()
-
-    # Close page
-    page.close()

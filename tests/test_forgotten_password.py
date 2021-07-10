@@ -26,9 +26,3 @@ def test_passwordchange(page):
     # Click text=Solicitar reinicio de contraseña
     page.click("text=Solicitar reinicio de contraseña")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/request_reset_password?_next=/OpenLex/default/index#"
-
-    # Close page
-    page1.close()
-
-    # Close page
-    page.close()

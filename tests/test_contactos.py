@@ -192,6 +192,3 @@ def test_contactos(page):
     # Click text=Eliminar
     page.once("dialog", lambda dialog: dialog.dismiss())
     page.click("text=Eliminar")
-
-    # Close page
-    page.close()

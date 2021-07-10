@@ -208,6 +208,3 @@ def test_edituser(page):
     # Click text=Log Out
     page.click("text=Log Out")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/index"
-
-    # Close page
-    page.close()

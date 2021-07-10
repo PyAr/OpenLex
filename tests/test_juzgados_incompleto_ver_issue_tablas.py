@@ -45,6 +45,3 @@ def test_juzgados(page):
     # Click a:has-text("Atrás")
     page.click("a:has-text(\"Atrás\")")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/other_tables/juzgados"
-
-    # Close page
-    page.close()

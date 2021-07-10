@@ -221,6 +221,3 @@ def test_calendario(page):
 
     # Click text=Hoy
     page.click("text=Hoy")
-
-    # Close page
-    page.close()

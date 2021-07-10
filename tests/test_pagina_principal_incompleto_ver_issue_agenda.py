@@ -72,6 +72,3 @@ def test_mainpage(page):
     # Click text=Carátula
     page.click("text=Carátula")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view?order=expediente.caratula&_signature=549494d9439687f9306299879fc0996f2da81a7e"
-
-    # Close page
-    page.close()

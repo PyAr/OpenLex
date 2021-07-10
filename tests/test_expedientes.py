@@ -127,6 +127,3 @@ def test_expedientes(page):
     # Click text=Enviar
     page.click("text=Enviar")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente?_signature=9738bd7a4677227cf1a6e2b1ae9a8747b990925a#"
-
-    # Close page
-    page.close()
