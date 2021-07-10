@@ -24,11 +24,12 @@ myexport = dict(csv_with_hidden_cols=False,
                 tsv=False,
                 json=False)
 # import pdb; breakpoint()
-if os.getenv('WEB2PY_USE_DB_TESTING'):
-    temp_dir = '/dev/shm'
-    db = DAL('sqlite://testing.sqlite', folder=temp_dir)
-else:
+test_db = os.getenv('WEB2PY_USE_DB_TESTING')
+if test_db is None:
     db = DAL('sqlite://openlex.sqlite')
+else:
+    db = DAL('sqlite://testing.sqlite', folder=test_db)
+
 
 auth = Auth(globals(), db)
 auth.define_tables()
@@ -335,9 +336,6 @@ db.define_table(
         label=T('Texto'),
         widget=advanced_editor,
         represent=advanced_repr),
-    Field('movimiento_id',
-        db.movimiento,
-        label=T('Movimiento')),
     auth.signature)
 
 db.agenda.id.readable = db.agenda.id.writable = False

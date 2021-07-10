@@ -1,11 +1,10 @@
 # this variable can be used on creating database
-export WEB2PY_USE_DB_TESTING="True"
+export WEB2PY_USE_DB_TESTING="/dev/shm/openlex"
 # default port_number
 PORT_NUMBER=8020
 # remove all temporary in memory files
-rm -f /dev/shm/*.table
-rm -f /dev/shm/sql.log
-rm -f /dev/shm/testing.sqlite
+rm -rf $WEB2PY_USE_DB_TESTING
+mkdir -p $WEB2PY_USE_DB_TESTING
 # run web2py
 python ../../web2py.py -a 123 -p ${PORT_NUMBER} --no_gui &
 # run tests
