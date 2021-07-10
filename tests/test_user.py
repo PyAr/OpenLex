@@ -40,6 +40,7 @@ def test_login(page):
     page.goto("")
     # desplegar el menu, ir a la página de registración (y confirmar url)
 
+    login(page)
 
     # confirmar
     assert page.url.endswith("/dashboard/view#")
