@@ -44,7 +44,8 @@ def test_login(page):
     assert page.url.endswith("/dashboard/view#")
     
     
-"""def test_download(page):
+@pytest.mark.skip(reason="Este test funciona en local pero falla en github, no toma el evento download")   
+def test_download(page):
     page.goto("")
     login(page)
     page.goto("expedientes/index")
@@ -55,6 +56,6 @@ def test_login(page):
     download = download_info.value
     # Wait for the download process to complete
     name = download.suggested_filename
-    assert "Movimiento.zip" == name"""
+    assert "Movimiento.zip" == name
     
     
