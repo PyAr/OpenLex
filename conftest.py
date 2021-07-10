@@ -63,6 +63,7 @@ def context(
 ) -> Generator[BrowserContext, None, None]:
     context = browser.new_context(**browser_context_args)
     current_failed_tests = request.session.testsfailed
+    context.setDefaultTimeout(10000)
     yield context
     current_video_name = context.current_video_name
     current_video_path = current_video_name
