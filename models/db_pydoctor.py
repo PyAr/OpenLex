@@ -243,7 +243,7 @@ db.define_table(
     singular=T("Movimiento"),
     plural=T("Movimientos"),
     format='%(titulo)s',
-    migrate='movimiento.table')
+    migrate=True)
 db.movimiento.id.readable = db.movimiento.id.writable = False
 # python web2py.py -S PyDoctor -M
 
