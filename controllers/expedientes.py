@@ -2,8 +2,11 @@
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
-
-linked_tables = ['movimiento', 'agenda', 'parte']
+import zipfile
+import io
+LINKED_TABLES = ['movimiento', 'agenda', 'parte']
+ZIP_FILENAME = 'Movimiento.zip'
+CHUNK_SIZE = 4096
 
 
 @auth.requires_login()
@@ -50,7 +53,7 @@ def index():
         constraints={
             'expediente': (
                 db.expediente.created_by == auth.user.id)},
-        linked_tables=linked_tables,
+        linked_tables=LINKED_TABLES,
         buttons_placement='right',
         exportclasses=myexport,
         advanced_search=False,
@@ -62,6 +65,28 @@ def index():
             'agenda': ~db.agenda.vencimiento},
         maxtextlengths=maxtextlengths)
     return locals()
+
+
+@auth.requires_login()
+def download():
+    tempfile = io.BytesIO()
+    temparchive = zipfile.ZipFile(tempfile, 'w', zipfile.ZIP_DEFLATED)
+    rows = db(db.movimiento.archivo != None).select()
+    try:
+        for file_id in rows:
+            file_single = file_id.archivo
+            if file_single:
+                file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path']+ '/' + file_single
+                file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']
+                temparchive.write(file_loc, file_name)
+    finally:
+        temparchive.close()
+        tempfile.seek(0)
+
+    response.headers['Content-Type'] = 'application/zip'
+    response.headers['Content-Disposition'] = 'attachment; filename = %s' % ZIP_FILENAME
+    res = response.stream(tempfile, CHUNK_SIZE)
+    return res
 
 
 def vista_expediente():
@@ -81,11 +106,15 @@ def vista_expediente():
         user_signature=True)
     links = [A('Expediente', _href=url, _type='button',
                _class='btn btn-default')]
-    for k in linked_tables:
+    for k in LINKED_TABLES:
         args = ['expediente', '%s.expediente_id' % k, request.args[0]]
         url = URL('index', args=args, user_signature=True)
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
+    url = URL('download', args='movimiento.archivo') #Boton de descarga
+    text1="Descarga"
+    links.append(A(text1, _href=url, _type='button',
+                 _class='btn btn-default'))
 
     return dict(links=links, expte=expte)
