@@ -1,3 +1,6 @@
+import pytest
+
+
 def login(page):
     page.click("text=Log In")
     page.click(":nth-match(:text(\"Log In\"), 2)")
