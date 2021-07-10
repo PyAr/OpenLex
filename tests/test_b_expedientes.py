@@ -11,6 +11,13 @@ def test_expedientes(page):
     page.click(":nth-match(i, 3)")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=/OpenLex/default/index"
 
+    # Click input[name="email"]
+    page.click("input[name=\"email\"]")
+
+    # Fill input[name="email"]
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
