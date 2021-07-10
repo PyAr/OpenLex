@@ -41,7 +41,7 @@ def test_login(page):
     login(page)
     # confirmar
     assert page.url.endswith("/dashboard/view#")
-    
+
 
 def test_upload_expedientes(page):
     page.goto("")
@@ -53,10 +53,11 @@ def test_upload_expedientes(page):
     page.press("input[name=\"numero\"]", "Tab")
     page.fill("input[name=\"caratula\"]", "ssdd")
     page.click("input:has-text(\"Enviar\")")
-    
+
 
 def test_download(page):
     page.goto("")
+    page.setDefaultTimeout(10000)
     login(page)
     page.goto("expedientes/index")
     page.click("text=Movimientos")
