@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
+ -*- coding: utf-8 -*-
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
 import zipfile
 import io
+import tempfile
 from collections import OrderedDict
 from xhtml2pdf import pisa
 LINKED_TABLES = ['movimiento', 'agenda', 'parte']
@@ -71,9 +72,13 @@ def index():
 
 @auth.requires_login()
 def download():
+    list_temp_directories = []
+    list_full_directories = []
+    file_loc_base = None
     zip_filename = 'Movimiento.zip'
     tempfiles = io.BytesIO()
     temparchive = zipfile.ZipFile(tempfiles, 'w', zipfile.ZIP_DEFLATED)
+    tempdir7 = tempfile.TemporaryDirectory()
     #Obtener ID de expediente y guardarlo en una lista.
     rowA = db(db.movimiento).select()
     expediente_list = [numero.expediente_id for numero in rowA]
@@ -95,8 +100,9 @@ def download():
             for text_id in rowB:
                 text_single_text = text_id.texto
                 text_single_title = text_id.titulo
-                status, result_file = convert_html_to_pdf(text_single_text, text_single_title + ".pdf")
-                temparchive.write(result_file.name, "upload/" + str(expedient[0]) + "/" + result_file.name)
+                status, result_file = convert_html_to_pdf(text_single_text, tempdir7.name + "/" + text_single_title + ".pdf")
+                temparchive.write(result_file.name, "upload/" + str(expedient[0]) + "/" + text_single_title + ".pdf")
+    del tempdir7
     temparchive.close()
     tempfiles.seek(0)
     response.headers['Content-Type'] = 'application/zip'
