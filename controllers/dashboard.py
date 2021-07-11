@@ -41,7 +41,8 @@ def view():
             db.agenda.titulo,
             db.agenda.vencimiento,
             db.agenda.prioridad,
-            db.agenda.estado],
+            db.agenda.estado,
+            db.agenda.expediente_id],
         orderby=db.agenda.vencimiento,
         paginate=9,
         maxtextlength=40,
@@ -58,7 +59,8 @@ def view():
             db.agenda.titulo,
             db.agenda.vencimiento,
             db.agenda.prioridad,
-            db.agenda.estado],
+            db.agenda.estado,
+            db.agenda.expediente_id],
         orderby=db.agenda.vencimiento,
         paginate=9,
         maxtextlength=40,
@@ -85,3 +87,4 @@ def view():
                         'img': 'juzgados.png', 'alt': T('Oficinas judiciales')})
 
     return locals()
+
