@@ -78,9 +78,6 @@ def test_contactos(page):
     # Click input[name="email"]
     page.click("input[name=\"email\"]")
 
-    # Click html
-    page.frame(url="about:blank").click("html")
-
     # Click input[name="telefono"]
     page.click("input[name=\"telefono\"]")
 

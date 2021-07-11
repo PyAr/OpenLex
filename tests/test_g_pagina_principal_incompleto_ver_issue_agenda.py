@@ -36,10 +36,6 @@ def test_mainpage(page):
     # Click text=Open
     page.click("text=Open")
 
-    # Click text=Inicio
-    page.click("text=Inicio")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view"
-
     # Click img[alt="Expedientes"]
     page.click("img[alt=\"Expedientes\"]")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index"

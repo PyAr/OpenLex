@@ -426,6 +426,7 @@
 'remove compiled': 'eliminar compiladas',
 'Request Reset password': 'Solicitar reinicio de contraseña',
 'Request Reset Password': 'Request Reset Password',
+'Request reset password': 'Request reset password',
 'Reset password': 'Reiniciar contraseña',
 'Reset Password key': 'Restaurar Llave de la Contraseña',
 'Resolve Conflict file': 'archivo Resolución de Conflicto',

@@ -137,6 +137,13 @@ def test_edituser(page):
     page.click("input:has-text(\"Log In\")")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=%2FOpenLex%2Fdefault%2Findex#"
 
+    # Click input[name="email"]
+    page.click("input[name=\"email\"]")
+
+    # Fill input[name="email"]
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
@@ -154,6 +161,10 @@ def test_edituser(page):
     # Click text=Contraseña
     page.click("text=Contraseña")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/change_password?_next=/OpenLex/dashboard/view"
+
+    # Fill input[name="old_password"]
+    page.fill("input[name=\"old_password\"]", "closedlex1234")
+    page.press("input[name=\"old_password\"]", "Tab")
 
     # Click input[name="new_password"]
     page.click("input[name=\"new_password\"]")
@@ -187,6 +198,13 @@ def test_edituser(page):
     page.click(":nth-match(:text(\"Log In\"), 2)")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=/OpenLex/default/index"
 
+    # Click input[name="email"]
+    page.click("input[name=\"email\"]")
+
+    # Fill input[name="email"]
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
@@ -197,6 +215,13 @@ def test_edituser(page):
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=%2FOpenLex%2Fdefault%2Findex#"
+
+    # Click input[name="email"]
+    page.click("input[name=\"email\"]")
+
+    # Fill input[name="email"]
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
 
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
