@@ -1,4 +1,4 @@
- -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
@@ -155,4 +155,3 @@ def vista_expediente():
                  _class='btn btn-default'))
 
     return dict(links=links, expte=expte)
-
