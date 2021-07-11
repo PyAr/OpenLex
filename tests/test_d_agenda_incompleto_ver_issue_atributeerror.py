@@ -3,7 +3,7 @@
 
 def test_agenda(page):
     # Go to main page
-    page.goto("")
+    page.goto("http://127.0.0.1:8020/OpenLex/")
 
     # Click text=Log In
     page.click("text=Log In")
@@ -17,12 +17,14 @@ def test_agenda(page):
 
     # Fill input[name="email"]
     page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
 
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -41,30 +43,21 @@ def test_agenda(page):
 
     # Fill input[name="numero"]
     page.fill("input[name=\"numero\"]", "1")
+    page.press("input[name=\"numero\"]", "Tab")
 
     # Click input[name="caratula"]
     page.click("input[name=\"caratula\"]")
 
     # Fill input[name="caratula"]
     page.fill("input[name=\"caratula\"]", "Ejemplo1")
+    page.press("input[name=\"caratula\"]", "Tab")
 
     # Click input[name="_autocomplete_tipoproceso_descripcion_aux"]
     page.click("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]")
 
     # Fill input[name="_autocomplete_tipoproceso_descripcion_aux"]
     page.fill("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]", "")
-
-    # Click input[name="inicio"]
-    page.click("input[name=\"inicio\"]")
-
-    # Click text=27
-    page.click("text=27")
-
-    # Click input[name="final"]
-    page.click("input[name=\"final\"]")
-
-    # Click :nth-match(:text("30"), 2)
-    page.click(":nth-match(:text(\"30\"), 2)")
+    page.press("input[name=\"_autocomplete_tipoproceso_descripcion_aux\"]", "Tab")
 
     # Click text=Enviar
     page.click("text=Enviar")
@@ -83,6 +76,7 @@ def test_agenda(page):
 
     # Fill input[name="_autocomplete_expediente_numero_aux"]
     page.fill("input[name=\"_autocomplete_expediente_numero_aux\"]", "1")
+    page.press("input[name=\"_autocomplete_expediente_numero_aux\"]", "Tab")
 
     # Click input[name="vencimiento"]
     page.click("input[name=\"vencimiento\"]")
@@ -92,9 +86,6 @@ def test_agenda(page):
 
     # Click input[name="cumplido"]
     page.click("input[name=\"cumplido\"]")
-
-    # Click :nth-match(:text("27"), 2)
-    page.click(":nth-match(:text(\"27\"), 2)")
 
     # Select 2
     page.select_option("select[name=\"prioridad\"]", "2")
@@ -107,24 +98,8 @@ def test_agenda(page):
 
     # Fill input[name="titulo"]
     page.fill("input[name=\"titulo\"]", "Agenda1")
-
-    # Click html
-    page.frame(url="about:blank").click("html")
-
-    # Click text=Agenda
-    page.frame(url="about:blank").click("text=Agenda")
-
-    # Click text=Agenda de ejemplo
-    page.frame(url="about:blank").click("text=Agenda de ejemplo")
+    page.press("input[name=\"titulo\"]", "Tab")
 
     # Click text=Enviar
     page.click("text=Enviar")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/agenda/agenda/new/agenda#"
-
-    # Close page
-    page1.close()
-
-    # Close page
-    page.close()
-
-test_agenda(page)

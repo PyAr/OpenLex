@@ -3,7 +3,7 @@
 
 def test_mainpage(page):
     # Go to main page
-    page.goto("")
+    page.goto("http://127.0.0.1:8020/OpenLex/")
 
     # Click text=Log In
     page.click("text=Log In")
@@ -12,11 +12,19 @@ def test_mainpage(page):
     page.click(":nth-match(:text(\"Log In\"), 2)")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=/OpenLex/default/index"
 
+    # Click input[name="email"]
+    page.click("input[name=\"email\"]")
+
+    # Fill input[name="email"]
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -27,10 +35,6 @@ def test_mainpage(page):
 
     # Click text=Open
     page.click("text=Open")
-
-    # Click text=Inicio
-    page.click("text=Inicio")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view"
 
     # Click img[alt="Expedientes"]
     page.click("img[alt=\"Expedientes\"]")
@@ -71,9 +75,3 @@ def test_mainpage(page):
     # Click text=Carátula
     page.click("text=Carátula")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view?order=expediente.caratula&_signature=549494d9439687f9306299879fc0996f2da81a7e"
-
-    # Close page
-    page.close()
-
-
-test_mainpage(page)

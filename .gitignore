@@ -3,7 +3,8 @@ cache/
 databases/
 errors/
 sessions/
-uploads/git 
+uploads/git
+venv/
 
 # inherit https://github.com/github/gitignore/blob/master/Python.gitignore
 
@@ -44,3 +45,4 @@ pip-log.txt
 
 #PyCharm
 .idea/
+.venv/

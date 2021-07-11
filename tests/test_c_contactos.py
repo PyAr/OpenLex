@@ -2,7 +2,7 @@
 
 def test_contactos(page):
     # Go to main page
-    page.goto("")
+    page.goto("http://127.0.0.1:8020/OpenLex/")
 
     # Click text=Log In
     page.click("text=Log In")
@@ -11,11 +11,19 @@ def test_contactos(page):
     page.click(":nth-match(:text(\"Log In\"), 2)")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=/OpenLex/default/index"
 
+    # Click input[name="email"]
+    page.click("input[name=\"email\"]")
+
+    # Fill input[name="email"]
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+
     # Click input[name="password"]
     page.click("input[name=\"password\"]")
 
     # Fill input[name="password"]
     page.fill("input[name=\"password\"]", "openlex1234")
+    page.press("input[name=\"password\"]", "Tab")
 
     # Click input:has-text("Log In")
     page.click("input:has-text(\"Log In\")")
@@ -37,60 +45,66 @@ def test_contactos(page):
 
     # Fill input[name="apellido"]
     page.fill("input[name=\"apellido\"]", "Gonzalez")
+    page.press("input[name=\"apellido\"]", "Tab")
 
     # Click input[name="nombre"]
     page.click("input[name=\"nombre\"]")
 
     # Fill input[name="nombre"]
     page.fill("input[name=\"nombre\"]", "María Juana")
+    page.press("input[name=\"nombre\"]", "Tab")
 
     # Click input[name="cuitcuil"]
     page.click("input[name=\"cuitcuil\"]")
 
     # Fill input[name="cuitcuil"]
     page.fill("input[name=\"cuitcuil\"]", "20111111115")
+    page.press("input[name=\"cuitcuil\"]", "Tab")
 
     # Click input[name="domicilio"]
     page.click("input[name=\"domicilio\"]")
 
     # Fill input[name="domicilio"]
     page.fill("input[name=\"domicilio\"]", "Avenida del Software Libre 1984, Ciudad GNU")
+    page.press("input[name=\"domicilio\"]", "Tab")
 
     # Click input[name="email"]
     page.click("input[name=\"email\"]")
 
     # Fill input[name="email"]
     page.fill("input[name=\"email\"]", "mariajuana@example.com")
+    page.press("input[name=\"email\"]", "Tab")
 
     # Click input[name="email"]
     page.click("input[name=\"email\"]")
-
-    # Click html
-    page.frame(url="about:blank").click("html")
 
     # Click input[name="telefono"]
     page.click("input[name=\"telefono\"]")
 
     # Fill input[name="telefono"]
     page.fill("input[name=\"telefono\"]", "1166666666")
+    page.press("input[name=\"telefono\"]", "Tab")
 
     # Click input[name="celular"]
     page.click("input[name=\"celular\"]")
 
     # Fill input[name="celular"]
     page.fill("input[name=\"celular\"]", "1177777777")
+    page.press("input[name=\"celular\"]", "Tab")
 
     # Click input[name="matricula"]
     page.click("input[name=\"matricula\"]")
 
     # Fill input[name="matricula"]
     page.fill("input[name=\"matricula\"]", "666777")
+    page.press("input[name=\"matricula\"]", "Tab")
 
     # Click input[name="domiciliolegal"]
     page.click("input[name=\"domiciliolegal\"]")
 
     # Fill input[name="domiciliolegal"]
     page.fill("input[name=\"domiciliolegal\"]", "Boulevard del Tux, Ciudad GNU")
+    page.press("input[name=\"domiciliolegal\"]", "Tab")
 
     # Click input[name="domiciliolegal"]
     page.click("input[name=\"domiciliolegal\"]")
@@ -133,6 +147,7 @@ def test_contactos(page):
 
     # Fill input[name="domiciliolegal"]
     page.fill("input[name=\"domiciliolegal\"]", "Boulevard del Tux 1992, Ciudad GNU")
+    page.press("input[name=\"domiciliolegal\"]", "Tab")
 
     # Click text=Enviar
     page.click("text=Enviar")
@@ -181,8 +196,3 @@ def test_contactos(page):
     # Click text=Eliminar
     page.once("dialog", lambda dialog: dialog.dismiss())
     page.click("text=Eliminar")
-
-    # Close page
-    page.close()
-
-test_contactos(page)
