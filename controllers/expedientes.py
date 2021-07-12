@@ -80,10 +80,12 @@ def download():
     expediente_list = [numero.expediente_id for numero in movimiento_full_row]
     expediente_lists = OrderedDict.fromkeys(expediente_list).keys()
 
-        # Separar archivos por el numero de expediente.
+    # Separar archivos por el numero de expediente.
     for expedient_single_id in expediente_lists:
-        movimiento_filter_row = db(db.movimiento.expediente_id == expedient_single_id).select(db.movimiento.archivo, 
-        		db.movimiento.texto, db.movimiento.titulo)
+        movimiento_filter_row = db(db.movimiento.expediente_id == expedient_single_id).select(
+                                    db.movimiento.archivo,
+                                    db.movimiento.texto,
+                                    db.movimiento.titulo)
         expedient_number_row = db(db.expediente.id == expedient_single_id).select(db.expediente.numero)
         expedient_name = [numero.numero for numero in expedient_number_row]
         try:
@@ -93,8 +95,8 @@ def download():
                     file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' + file_single
                     file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']
                     temparchive.write(file_loc, "upload/" + str(expedient_name[0]) + "/" + file_name)
-        except Exception as error:
-            response.flash = DIV(T('Fallo en la descarga de archivos'), PRE(str(error)))
+        except Exception as err:
+            response.flash = DIV(T('Fallo en la descarga de archivos'), PRE(str(err)))
         finally:
             for text_id in movimiento_filter_row:
                 text_single_text = text_id.texto
@@ -115,8 +117,8 @@ def convert_html_to_pdf(source_html, output_filename):
     with open(output_filename, "w+b") as result_file:
         # convert HTML to PDF
         pisa_status = pisa.CreatePDF(
-                source_html,                # the HTML to convert
-                dest=result_file)           # file handle to recieve result
+                source_html,  # the HTML to convert
+                dest=result_file)  # file handle to recieve result
         # return False on success and True on errors
     return pisa_status, result_file
 
@@ -144,9 +146,9 @@ def vista_expediente():
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
-    url = URL('download', args='movimiento.archivo') # Boton de descarga
-    text1="Descarga"
-    links.append(A(text1, _href=url, _type='button',
+    url = URL('download', args='movimiento.archivo')  # Boton de descarga
+    text_download = "Descarga"
+    links.append(A(text_download, _href=url, _type='button',
                  _class='btn btn-default'))
 
     return dict(links=links, expte=expte)
