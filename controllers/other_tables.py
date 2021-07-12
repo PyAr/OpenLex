@@ -3,7 +3,6 @@ __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
 
-
 def juzgados():
     grid = SQLFORM.grid(db.juzgado,
                         user_signature=False,
@@ -34,6 +33,7 @@ def instancias():
     formcsv = import_table(db(db.instancia))
     return dict(grid=grid, formcsv=formcsv)
 
+
 @auth.requires_membership('admin')
 def jurisdicciones():
     grid = SQLFORM.grid(db.jurisdiccion,
@@ -43,7 +43,6 @@ def jurisdicciones():
                         exportclasses=myexport)
     formcsv = import_table(db(db.jurisdiccion))
     return dict(grid=grid, formcsv=formcsv)
-
 
 
 def tipoproceso():
@@ -59,6 +58,7 @@ def tipoproceso():
 def import_csv(table, file):
     table.import_from_csv_file(file)
 
+
 def import_table(table):
     csv_table = table or request.vars.table
     if csv_table:
@@ -73,6 +73,6 @@ def import_table(table):
             import_csv(db[request.vars.table],
                        request.vars.csvfile.file)
             response.flash = T('data uploaded')
-        except Exception as e:
-            response.flash = DIV(T('unable to parse csv file'), PRE(str(e)))
+        except Exception as err:
+            response.flash = DIV(T('unable to parse csv file'), PRE(str(err)))
     return formcsv
