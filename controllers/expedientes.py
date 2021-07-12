@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 
@@ -72,37 +72,36 @@ def index():
 
 @auth.requires_login()
 def download():
-    list_temp_directories = []
-    list_full_directories = []
-    file_loc_base = None
-    zip_filename = 'Movimiento.zip'
     tempfiles = io.BytesIO()
     temparchive = zipfile.ZipFile(tempfiles, 'w', zipfile.ZIP_DEFLATED)
-    tempdir7 = tempfile.TemporaryDirectory()
-    #Obtener ID de expediente y guardarlo en una lista.
-    rowA = db(db.movimiento).select()
-    expediente_list = [numero.expediente_id for numero in rowA]
+    temp_dir = tempfile.TemporaryDirectory()
+    # Obtener ID de expediente y guardarlo en una lista.
+    movimiento_full_row = db(db.movimiento).select()
+    expediente_list = [numero.expediente_id for numero in movimiento_full_row]
     expediente_lists = OrderedDict.fromkeys(expediente_list).keys()
 
-        #Separar archivos por el numero de expediente.
-    for expedientes in expediente_lists:
-        rowB = db(db.movimiento.expediente_id == expedientes).select(db.movimiento.archivo, db.movimiento.texto, db.movimiento.titulo)
-        rowD = db(db.expediente.id == expedientes).select(db.expediente.numero)
-        expedient = [numero.numero for numero in rowD]
+        # Separar archivos por el numero de expediente.
+    for expedient_single_id in expediente_lists:
+        movimiento_filter_row = db(db.movimiento.expediente_id == expedient_single_id).select(db.movimiento.archivo, 
+        		db.movimiento.texto, db.movimiento.titulo)
+        expedient_number_row = db(db.expediente.id == expedient_single_id).select(db.expediente.numero)
+        expedient_name = [numero.numero for numero in expedient_number_row]
         try:
-            for file_id in rowB:
+            for file_id in movimiento_filter_row:
                 file_single = file_id.archivo
                 if file_single:
                     file_loc = db.movimiento.archivo.retrieve_file_properties(file_single)['path'] + '/' + file_single
                     file_name = db.movimiento.archivo.retrieve_file_properties(file_single)['filename']
-                    temparchive.write(file_loc, "upload/" + str(expedient[0]) + "/" + file_name)
+                    temparchive.write(file_loc, "upload/" + str(expedient_name[0]) + "/" + file_name)
+        except Exception as error:
+            response.flash = DIV(T('Fallo en la descarga de archivos'), PRE(str(error)))
         finally:
-            for text_id in rowB:
+            for text_id in movimiento_filter_row:
                 text_single_text = text_id.texto
                 text_single_title = text_id.titulo
-                status, result_file = convert_html_to_pdf(text_single_text, tempdir7.name + "/" + text_single_title + ".pdf")
-                temparchive.write(result_file.name, "upload/" + str(expedient[0]) + "/" + text_single_title + ".pdf")
-    del tempdir7
+                status, result_file = convert_html_to_pdf(text_single_text, temp_dir.name + "/" + text_single_title + ".pdf")
+                temparchive.write(result_file.name, "upload/" + str(expedient_name[0]) + "/" + text_single_title + ".pdf")
+    del temp_dir
     temparchive.close()
     tempfiles.seek(0)
     response.headers['Content-Type'] = 'application/zip'
@@ -113,16 +112,12 @@ def download():
 
 def convert_html_to_pdf(source_html, output_filename):
     # open output file for writing (truncated binary)
-    result_file = open(output_filename, "w+b")
-
-    # convert HTML to PDF
-    pisa_status = pisa.CreatePDF(
-            source_html,                # the HTML to convert
-            dest=result_file)           # file handle to recieve result
-
-    # close output file
-    result_file.close()
-    # return False on success and True on errors
+    with open(output_filename, "w+b") as result_file:
+        # convert HTML to PDF
+        pisa_status = pisa.CreatePDF(
+                source_html,                # the HTML to convert
+                dest=result_file)           # file handle to recieve result
+        # return False on success and True on errors
     return pisa_status, result_file
 
 
@@ -149,7 +144,7 @@ def vista_expediente():
         text = SPAN(k.capitalize() + 's', _class='buttontext button')
         links.append(A(text, _href=url, _type='button',
                        _class='btn btn-default'))
-    url = URL('download', args='movimiento.archivo') #Boton de descarga
+    url = URL('download', args='movimiento.archivo') # Boton de descarga
     text1="Descarga"
     links.append(A(text1, _href=url, _type='button',
                  _class='btn btn-default'))
