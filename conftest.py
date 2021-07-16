@@ -67,7 +67,7 @@ def context(
     current_video_name = context.current_video_name
     current_video_path = current_video_name
     updated_video_path = os.path.join(
-        video_path, f"{request.node.originalname}_{browser_name}.webm"
+        video_path, f"{request.node.originalname}_{browser_name}.mp4"
     )
     context.close()
     os.rename(current_video_path, updated_video_path)
@@ -80,3 +80,14 @@ def _handle_page_goto(
     if not (url.startswith("http://") or url.startswith("https://")):
         url = base_url + url
     return page._goto(url, *args, **kwargs)  # type: ignore
+
+
+@pytest.fixture
+def login(page):
+    page.goto("")
+    page.click("text=Log In")
+    page.click(":nth-match(:text(\"Log In\"), 2)")
+    page.fill("input[name=\"email\"]", "example@example.com")
+    page.press("input[name=\"email\"]", "Tab")
+    page.fill("input[name=\"password\"]", "openlex1234")
+    page.click("input:has-text(\"Log In\")")

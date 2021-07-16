@@ -58,7 +58,7 @@ else:
         response.menu.append((T('Tablas'), False, '#', [
             (T('Tipos de proceso'), False, URL('other_tables', 'tipoproceso')),
             (T('Instancias'), False, URL('other_tables', 'instancias')),
-            (T('Fueros'), False, URL('other_tables', 'fueros'))
+            (T('Fueros'), False, URL('other_tables', 'fueros')),
             (T('Jurisdicciones'), False, URL('other_tables', 'jurisdicciones'))
         ]))
 

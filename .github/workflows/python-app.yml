@@ -32,7 +32,7 @@ jobs:
         pip install -r web2py/applications/OpenLex/requirements.txt
     - name: Install playwright & browsers
       run: |
-        playwright install chromium ffmpeg
+        playwright install
     - name: Serve website locally
       run: |
         python web2py/web2py.py -a 'admin1234' -p 8020 &
