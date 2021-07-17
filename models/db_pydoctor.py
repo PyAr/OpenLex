@@ -210,7 +210,7 @@ db.define_table(
         'expediente_id',
         db.expediente,
         label=T('Expediente'),
-        #widget=autocomplete_expte_widget
+        widget=autocomplete_expte_widget
         ),
     Field(
         'estado',
