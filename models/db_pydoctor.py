@@ -323,6 +323,18 @@ db.define_table(
             zero=None,
             error_message=T('Establezca un estado'))),
     Field(
+        'recordatorio',
+        length=2,
+        readable=False,
+        requires=IS_IN_SET(
+            {
+                'S': T('Sin alerta'),
+                'O': T('1 dia antes'),
+                'TW': T('2 dias antes'),
+                'TH': T('3 dias antes')},
+            zero=T('Elija la frecuencia de la alerta por correo'),  # later we should be able to customize the reminder
+            error_message=T('Establezca la frecuencia correcta'))),
+    Field(
         'titulo',
         length=150,
         required=True,
