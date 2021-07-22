@@ -1,2 +1,2 @@
 #crontab
-* * * * * root *applications/OpenLex_pruebs/cron/check_email.py
+0 0 * * * root *applications/OpenLex_pruebs/cron/check_email.py
