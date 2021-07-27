@@ -341,6 +341,7 @@ db.define_table(
     auth.signature)
 
 db.agenda.id.readable = db.agenda.id.writable = False
+db.agenda.expediente_id.requires = IS_IN_DB(db, db.expediente.id, error_message=T('Vincular con un expediente'))
 
 
 db.define_table(
