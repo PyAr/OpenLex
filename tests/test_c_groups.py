@@ -1,6 +1,5 @@
 def test_groups(page, login):
-    # Go to http://127.0.0.1:8000/OpenLex_pruebs/dashboard/view#
-    page.goto("http://127.0.0.1:8000/OpenLex_pruebs/dashboard/view#")
+    page.goto("/dashboard/view#")
     # Click text=Grupos
     page.click("text=Grupos")
     assert page.url.endswith("/groups/groups")
@@ -9,7 +8,7 @@ def test_groups(page, login):
     assert page.url.endswith("/groups/create_groups")
     # Click a:has-text("Agregar")
     page.click("a:has-text(\"Agregar\")")
-    assert page.url.endswith("http://127.0.0.1:8000/OpenLex_pruebs/groups/create_groups/new/auth_group")
+    assert page.url.endswith("/groups/create_groups/new/auth_group")
     # Click input[name="role"]
     page.click("input[name=\"role\"]")
     page.fill("input[name=\"role\"]", "Nuevo")
