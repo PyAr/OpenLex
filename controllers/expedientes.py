@@ -12,6 +12,11 @@ ZIP_FILENAME = 'Movimiento.zip'
 CHUNK_SIZE = 4096
 
 
+def group():
+    group_name=db(db.auth_group.role).select().first()
+    return group_name
+    
+
 @auth.requires_login()
 def index():
     'muestra la grilla y permite la edición de los datos de los expedientes'
@@ -55,7 +60,7 @@ def index():
         ],
         constraints={
             'expediente': (
-                db.expediente.created_by == auth.user.id)},
+                db.expediente.created_by_group == group())},
         linked_tables=LINKED_TABLES,
         buttons_placement='right',
         exportclasses=myexport,
