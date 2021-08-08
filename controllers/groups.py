@@ -26,18 +26,6 @@ def create_groups():
 
 
 def control():
-    """url = URL('create_groups')
-    text_assign = "admin"
-    link = (A(text_assign, _href=url, _type='button',
-                 _class='btn btn-default'))
-    groups_row = db(db.auth_group).select()
-    for group_single in groups_row:
-        
-        url = URL('control_groups')
-        text_assign = group_single.role
-        link.append(A(text_assign, _href=url, _type='button',
-                 _class='btn btn-default'))
-        save_name_group(text_assign)"""
     db.expediente.modified_by.readable = True
     db.expediente.modified_on.readable = True 
     db.expediente.writable = False
