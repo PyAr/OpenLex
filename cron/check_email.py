@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import datetime
 
 
 def send_reminder(agenda):
@@ -9,9 +8,9 @@ def send_reminder(agenda):
     user_info = db(db.auth_user.id == user).select(db.auth_user.first_name, db.auth_user.email).first()
     context = dict(user_info=user_info, agenda=agenda)
     message = response.render('message.html', context)
-    while failed < 4:
+    while failed < myconf.take('email_var.error'):
         if mail.send(to=user_info.email,
-                        subject='None',
+                        subject='Recordatorio de Openlex',
                         message=message):
             return db.commit()
         else:
@@ -19,15 +18,15 @@ def send_reminder(agenda):
 
 
 def daily_check_email():
-    reminder_lst = ["O", "TW", "TH"]
-    today = datetime.datetime.now()
-    agenda = db(db.agenda.vencimiento != None).select(db.agenda.vencimiento, db.agenda.recordatorio, db.agenda.titulo)
+    today = request.now
+    agenda = db(db.agenda.vencimiento != None).select(db.agenda.vencimiento, db.agenda.recordatorio, db.agenda.titulo, db.agenda.created_by)
     for agenda_single in agenda:
-        if agenda_single.recordatorio != "S" :
-            reminder_id = [(n+1) for n, i in enumerate(reminder_lst) if agenda_single.recordatorio == i]
+        if agenda_single.recordatorio != 0 :
+            reminder_id = agenda_single.recordatorio
             vencimientos = (agenda_single.vencimiento - today).days
-            if (vencimientos == reminder_id[0]):
+            if (vencimientos == int(reminder_id)):
                 send_reminder(agenda_single)
 
 
-daily_check_email()
+if __name__ == "__main__":
+    daily_check_email()
