@@ -1,34 +1,6 @@
 # Este es un testing de la funcionalidad de carga y eliminación de expedientes.
 
-def test_expedientes(page):
-    # Go to main page
-    page.goto("http://127.0.0.1:8020/OpenLex/")
-
-    # Click text=Log In
-    page.click("text=Log In")
-
-    # Click :nth-match(i, 3)
-    page.click(":nth-match(i, 3)")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=/OpenLex/default/index"
-
-    # Click input[name="email"]
-    page.click("input[name=\"email\"]")
-
-    # Fill input[name="email"]
-    page.fill("input[name=\"email\"]", "example@example.com")
-    page.press("input[name=\"email\"]", "Tab")
-
-    # Click input[name="password"]
-    page.click("input[name=\"password\"]")
-
-    # Fill input[name="password"]
-    page.fill("input[name=\"password\"]", "openlex1234")
-    page.press("input[name=\"password\"]", "Tab")
-
-    # Click input:has-text("Log In")
-    page.click("input:has-text(\"Log In\")")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view#"
-
+def test_expedientes(page, login):
     # Click text=Expedientes
     page.click("text=Expedientes")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index"
