@@ -86,7 +86,7 @@ def view():
         modules.append({'url': URL('other_tables', 'juzgados'),
                         'img': 'juzgados.png', 'alt': T('Oficinas judiciales')})
     admin = db.auth_group.role.validate('admin')
-    if None in admin:
+    if admin is None:
         auto_assign_role_admin()
     return locals()
 
