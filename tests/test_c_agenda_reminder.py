@@ -20,7 +20,7 @@ def test_agenda_issue56_without_reminder(page, login):
     # Click text=Establezca la frecuencia correcta
     page.click("text=Establezca la frecuencia correcta")
     # Select S
-    page.select_option("select[name=\"recordatorio\"]", "S")
+    page.select_option("select[name=\"recordatorio\"]", "0")
     # Click text=Enviar
     page.click("text=Enviar")
     assert page.url.endswith("/agenda/agenda/new/agenda#")
