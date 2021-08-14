@@ -30,10 +30,9 @@ def view():
     query_agenda &= (db.agenda.estado == 'P')
     ahora = datetime.datetime.now()
     query_semana = query_agenda & (db.agenda.vencimiento > ahora)
-    if not request.is_local:
-        ahora += datetime.timedelta(6)
-        update_task_week(ahora)
     ahora += datetime.timedelta(7)
+    if not request.is_local:
+        update_task_week(ahora)
     query_semana &= (db.agenda.vencimiento < ahora)
     query_vencidos = query_agenda & (
         db.agenda.vencimiento < datetime.datetime.now())
@@ -93,5 +92,5 @@ def view():
 
 
 def update_task_week(ahora):
-    db(db.agenda.id == "6").update(vencimiento=ahora)
+    db(db.agenda.id == myconf.take('test-version.update')).update(vencimiento=ahora)
     
