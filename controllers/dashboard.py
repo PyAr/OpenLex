@@ -31,6 +31,8 @@ def view():
     ahora = datetime.datetime.now()
     query_semana = query_agenda & (db.agenda.vencimiento > ahora)
     ahora += datetime.timedelta(7)
+    if not request.is_local:
+        update_task_week(ahora)  # Para mantener visible la agenda en tareas urgentes en la version de testeo online
     query_semana &= (db.agenda.vencimiento < ahora)
     query_vencidos = query_agenda & (
         db.agenda.vencimiento < datetime.datetime.now())
@@ -88,3 +90,7 @@ def view():
 
     return locals()
 
+
+def update_task_week(ahora):
+    db(db.agenda.id == myconf.take('test-version.update')).update(vencimiento=ahora)
+    

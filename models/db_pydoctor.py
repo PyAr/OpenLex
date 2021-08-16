@@ -24,11 +24,10 @@ myexport = dict(csv_with_hidden_cols=False,
                 tsv=False,
                 json=False)
 # import pdb; breakpoint()
-if os.getenv('WEB2PY_USE_DB_TESTING'):
-    temp_dir = '/dev/shm'
-    db = DAL('sqlite://testing.sqlite', folder=temp_dir)
-else:
+if request.is_local:
     db = DAL('sqlite://openlex.sqlite')
+else:
+    db = DAL('sqlite://testing.sqlite')
 
 auth = Auth(globals(), db)
 auth.define_tables()
