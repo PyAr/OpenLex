@@ -5,7 +5,7 @@ __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
 import os
 from gluon.contrib.markdown.markdown2 import markdown
 from gluon.tools import *
-
+from enum import Enum
 import html2text
 
 '''export=dict(csv_with_hidden_cols=(ExporterCSV, 'CSV (columnas ocultas)'),
@@ -33,6 +33,13 @@ auth = Auth(globals(), db)
 auth.define_tables()
 crud = Crud(globals(), db)
 
+
+class reminder(Enum):
+    no_alert = 0
+    one_day_before = 1
+    two_day_before = 2
+    three_day_before = 3
+    
 
 # Crear el editor avanzado
 
@@ -321,6 +328,18 @@ db.define_table(
                 'R': T('Realizada')},
             zero=None,
             error_message=T('Establezca un estado'))),
+    Field(
+        'recordatorio',
+        length=2,
+        readable=False,
+        requires=IS_IN_SET(
+            {
+                reminder.no_alert.value: T('Sin alerta'),
+                reminder.one_day_before.value: T('1 dia antes'),
+                reminder.two_day_before.value: T('2 dias antes'),
+                reminder.three_day_before.value: T('3 dias antes')},
+            zero=T('Elija la frecuencia de la alerta por correo'), #later we should be able to customize the reminder
+            error_message=T('Establezca la frecuencia correcta'))),
     Field(
         'titulo',
         length=150,
