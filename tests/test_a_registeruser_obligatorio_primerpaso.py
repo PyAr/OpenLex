@@ -9,7 +9,7 @@ def test_register(page):
 
     # Click text=Registrarse
     page.click("text=Registrarse")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/register?_next=/OpenLex/default/index"
+    assert page.url.endswith("/default/user/register?_next=/OpenLex/default/index")
 
 
     # Click input[name="first_name"]
@@ -49,4 +49,4 @@ def test_register(page):
 
     # Click input:has-text("Registrarse")
     page.click("input:has-text(\"Registrarse\")")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view#"
+    assert page.url.endswith("/dashboard/view#")
