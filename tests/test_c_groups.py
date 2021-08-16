@@ -1,5 +1,7 @@
 def test_groups(page, login):
-    page.goto("/dashboard/view#")
+    page.click("text=Bienvenido")
+    page.click("text=Inicio")
+    page.click("text=Bienvenido")
     # Click text=Grupos
     page.click("text=Grupos")
     assert page.url.endswith("/groups/groups")
