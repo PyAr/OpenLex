@@ -33,6 +33,10 @@ def index():
                      'alt': T('Tendrá sus datos en la seguridad absoluta de nuestros servidores. ¡Olvídese de las copias de seguridad!')},
                     {'img': 'feature-fast.png',
                      'alt': T('Rápido de usar y veloz para empezar. Ahórrese el tiempo para instalar y configurar su software. Úselo ya mismo')}]
+        if not request.is_local:
+            features.append(
+                   {'img': ' ',
+                    'alt': T('Para acceder al usuario demo ingrese con el correo: "prueba@prueba.com" y su contraseña: "password"')})
         return dict(message=message, features=features)
 
 
