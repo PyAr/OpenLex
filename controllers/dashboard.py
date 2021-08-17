@@ -88,7 +88,7 @@ def view():
         modules.append({'url': URL('other_tables', 'juzgados'),
                         'img': 'juzgados.png', 'alt': T('Oficinas judiciales')})
     admin = db.auth_group.role.validate('admin')
-    if admin is None:
+    if None in admin:
         auto_assign_role_admin()
     return locals()
 
@@ -97,6 +97,7 @@ def auto_assign_role_admin():
     id_grupo = auth.add_group('admin', 'administrador de la aplicacion')
     auth.add_membership(id_grupo)
     db.commit()
-
+    
+    
 def update_task_week(ahora):
     db(db.agenda.id == myconf.take('test-version.update')).update(vencimiento=ahora)   
