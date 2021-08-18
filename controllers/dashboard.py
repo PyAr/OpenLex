@@ -5,7 +5,7 @@
 # mostrando un resumen de la tarea junto con accesos al expediente
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
-
+import datetime
 
 @auth.requires_login()
 def view():
