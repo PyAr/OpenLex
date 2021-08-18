@@ -1,34 +1,4 @@
-# Este es un testing de la funcionalidad de carga y eliminación de expedientes.
-
-def test_expedientes(page):
-    # Go to main page
-    page.goto("http://127.0.0.1:8020/OpenLex/")
-
-    # Click text=Log In
-    page.click("text=Log In")
-
-    # Click :nth-match(i, 3)
-    page.click(":nth-match(i, 3)")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/default/user/login?_next=/OpenLex/default/index"
-
-    # Click input[name="email"]
-    page.click("input[name=\"email\"]")
-
-    # Fill input[name="email"]
-    page.fill("input[name=\"email\"]", "example@example.com")
-    page.press("input[name=\"email\"]", "Tab")
-
-    # Click input[name="password"]
-    page.click("input[name=\"password\"]")
-
-    # Fill input[name="password"]
-    page.fill("input[name=\"password\"]", "openlex1234")
-    page.press("input[name=\"password\"]", "Tab")
-
-    # Click input:has-text("Log In")
-    page.click("input:has-text(\"Log In\")")
-    # assert page.url == "http://127.0.0.1:8020/OpenLex/dashboard/view#"
-
+def test_expedientes(page, login):
     # Click text=Expedientes
     page.click("text=Expedientes")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index"
@@ -86,6 +56,18 @@ def test_expedientes(page):
     # Click text=Partes
     page.click("text=Partes")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente/parte.expediente_id/1?_signature=ab994621f5dadf11fe43424968092cb8f7cb7240"
+
+    # Click text=Expedientes
+    page.click("text=Expedientes")
+    # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index"
+
+    # Click a:has-text("Editar")
+    page.click("a:has-text(\"Editar\")")
+    # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente/edit/expediente/1?_signature=91f6e51c077f52497a3812868aaebf58ff7b18d4"
+
+    # Click text=Enviar
+    page.click("text=Enviar")
+    # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente?_signature=9738bd7a4677227cf1a6e2b1ae9a8747b990925a#"
 
     # Click text=Expedientes
     page.click("text=Expedientes")
