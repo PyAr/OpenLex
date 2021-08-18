@@ -7,7 +7,7 @@ import io
 import tempfile
 from collections import OrderedDict
 from xhtml2pdf import pisa
-LINKED_TABLES = ['movimiento', 'agenda', 'parte']
+LINKED_TABLES = ['movimiento', 'parte']
 ZIP_FILENAME = 'Movimiento.zip'
 CHUNK_SIZE = 4096
 
@@ -125,6 +125,7 @@ def convert_html_to_pdf(source_html, output_filename):
 
 def vista_expediente():
     'muestra un panel a la izquierda que tiene los datos del expediente y permite navegar en él'
+    LINKED_TABLES.append("agenda")
     expte = SQLFORM(db.expediente,
                     int(request.args[0]),
                     formstyle='bootstrap',

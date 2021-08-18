@@ -5,9 +5,7 @@
 # mostrando un resumen de la tarea junto con accesos al expediente
 __author__ = "María Andrea Vignau (mavignau@gmail.com)"
 __copyright__ = "(C) 2016 María Andrea Vignau. GNU GPL 3."
-
 import datetime
-
 
 @auth.requires_login()
 def view():
@@ -28,14 +26,14 @@ def view():
         exportclasses=myexport)
     query_agenda = (db.agenda.created_by == auth.user.id)
     query_agenda &= (db.agenda.estado == 'P')
-    ahora = datetime.datetime.now()
+    ahora = request.now
     query_semana = query_agenda & (db.agenda.vencimiento > ahora)
+    query_vencidos = query_agenda & (
+        db.agenda.vencimiento < ahora)
     ahora += datetime.timedelta(7)
     if not request.is_local:
         update_task_week(ahora)  # Para mantener visible la agenda en tareas urgentes en la version de testeo online
     query_semana &= (db.agenda.vencimiento < ahora)
-    query_vencidos = query_agenda & (
-        db.agenda.vencimiento < datetime.datetime.now())
 
     semanal_grid = SQLFORM.grid(
         query_semana,
