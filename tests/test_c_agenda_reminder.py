@@ -1,27 +1,26 @@
-def test_agenda_issue56_without_expediente_id(page, login):
+def test_agenda_issue56_without_reminder(page, login):
     # Click text=Agenda
     page.click("text=Agenda")
     assert page.url.endswith("/agenda/agenda")
     # Click a:has-text("Agregar")
     page.click("a:has-text(\"Agregar\")")
     assert page.url.endswith("/agenda/agenda/new/agenda")
+    # Click input[name="_autocomplete_expediente_numero_aux"]
+    page.click("input[name=\"_autocomplete_expediente_numero_aux\"]")
+    # Fill input[name="_autocomplete_expediente_numero_aux"]
+    page.fill("input[name=\"_autocomplete_expediente_numero_aux\"]", "11")
     # Click input[name="titulo"]
-    # Fill Without the field expediente_id
     page.click("input[name=\"titulo\"]")
     # Fill input[name="titulo"]
-    page.fill("input[name=\"titulo\"]", "tarea erronea")
+    page.fill("input[name=\"titulo\"]", "tarea erronea sin recordatorio")
     # Click text=Enviar
     page.click("text=Enviar")
     assert page.url.endswith("/agenda/agenda/new/agenda#")
     # Error Message
-    # Click text=Vincular con un expediente
-    page.click("text=Vincular con un expediente")
-    # Fill the field expediente_id
-    # Click input[name="_autocomplete_expediente_numero_aux"]
-    page.click("input[name=\"_autocomplete_expediente_numero_aux\"]")
-    # Fill input[name="_autocomplete_expediente_numero_aux"]
-    page.fill("input[name=\"_autocomplete_expediente_numero_aux\"]", "1111")
+    # Click text=Establezca la frecuencia correcta
+    page.click("text=Establezca la frecuencia correcta")
+    # Select S
+    page.select_option("select[name=\"recordatorio\"]", "0")
     # Click text=Enviar
     page.click("text=Enviar")
     assert page.url.endswith("/agenda/agenda/new/agenda#")
-

@@ -11,8 +11,8 @@ def test_agenda_issue47_calendar_with_expiration(page, login):
     page.fill("input[name=\"_autocomplete_expediente_numero_aux\"]", "1111")
     # Click input[name="vencimiento"]
     page.click("input[name=\"vencimiento\"]")
-    # Click :nth-match(:text("29"), 2)
-    page.click(":nth-match(:text(\"29\"), 2)")
+    # Click :nth-match(:text("30"), 2)
+    page.click(":nth-match(:text(\"30\"), 2)")
     # Click input[name="titulo"]
     page.click("input[name=\"titulo\"]")
     # Fill input[name="titulo"]

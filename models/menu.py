@@ -55,6 +55,7 @@ else:
         (T('Juzgados'), False, URL('other_tables', 'juzgados')),
     ]
     if auth.has_membership(user_id=auth.user.id, role='admin'):
+        response.menu.append((T('Grupos'), False, URL('groups', 'groups')))
         response.menu.append((T('Tablas'), False, '#', [
             (T('Tipos de proceso'), False, URL('other_tables', 'tipoproceso')),
             (T('Instancias'), False, URL('other_tables', 'instancias')),

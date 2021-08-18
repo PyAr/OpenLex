@@ -1,3 +1,5 @@
+# Este es un testing de la funcionalidad de carga y eliminación de expedientes.
+
 def test_expedientes(page, login):
     # Click text=Expedientes
     page.click("text=Expedientes")
