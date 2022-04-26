@@ -170,6 +170,14 @@ def expediente_numero(value, row):
     return anchor
 
 
+def get_group():
+    groups = auth.user_groups
+    if not groups:
+        return None
+    group_ids = [id for id in groups if not groups[id].startswith('user_')]
+    return group_ids[0] if group_ids else None
+    
+
 db.define_table('expediente',
                 Field('numero', length=40,
                       requires=IS_NOT_IN_DB(db, 'expediente.numero'),
@@ -185,6 +193,7 @@ db.define_table('expediente',
                 Field('final', 'date', label=T('Fecha fin')),
                 Field('changed_at', 'datetime',
                       update=request.now, readable=False, writable=False),
+                Field('created_by_group', 'reference auth_group', default=get_group(), update=get_group(), writable=False ),
                 auth.signature, migrate=True,
                 format=expediente_format)
 

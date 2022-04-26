@@ -70,3 +70,15 @@ def test_expedientes(page, login):
     # Click text=Enviar
     page.click("text=Enviar")
     # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente?_signature=9738bd7a4677227cf1a6e2b1ae9a8747b990925a#"
+
+    # Click text=Expedientes
+    page.click("text=Expedientes")
+    # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index"
+
+    # Click a:has-text("Editar")
+    page.click("a:has-text(\"Editar\")")
+    # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente/edit/expediente/1?_signature=91f6e51c077f52497a3812868aaebf58ff7b18d4"
+
+    # Click text=Enviar
+    page.click("text=Enviar")
+    # assert page.url == "http://127.0.0.1:8020/OpenLex/expedientes/index/expediente?_signature=9738bd7a4677227cf1a6e2b1ae9a8747b990925a#"
